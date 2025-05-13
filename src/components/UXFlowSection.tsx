@@ -265,7 +265,7 @@ const UXFlowSection: React.FC = () => {
             <div className="flex justify-center">
               <div className="imac-container flex flex-col items-center">
                 {/* iMac Display */}
-                <div className="imac-display w-[32rem] h-[20rem] rounded-lg p-2.5 flex flex-col items-center">
+                <div className="imac-display w-[40rem] h-[26.5rem] rounded-lg p-2.5 flex flex-col items-center">
                   {/* Screen - 16:10 aspect ratio */}
                   <div 
                     className="imac-screen w-full h-full rounded-sm flex items-center justify-center relative overflow-hidden"
