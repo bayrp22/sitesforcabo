@@ -36,7 +36,7 @@ const phases = [
   {
     title: "Site",
     subtitle: "1",
-    cardTitle: "Development & Integration",
+    cardTitle: "First Build & Launch",
     duration: "Weeks 3-6",
     description: "Building the microsites and functionality",
     hideTasks: true,
@@ -45,19 +45,19 @@ const phases = [
     customLayout: true,
     bulletPoints: {
       left: [
-        "Frontend Development",
-        "Backend Integration"
+        "Experience Details",
+        "Unique Tour Features"
       ],
       right: [
-        "CMS Implementation",
-        "Responsive Design"
+        "Custom Design & Layout",
+        "Booking Checkout Integration"
       ]
     }
   },
   {
-    title: "Phase",
-    subtitle: "3",
-    cardTitle: "Testing & Launch",
+    title: "Bi-Weekly Rollouts",
+    subtitle: "",
+    cardTitle: "Remaining Sites",
     duration: "Weeks 7-8",
     description: "Final testing, deployment, and ongoing support",
     hideTasks: true,
@@ -66,12 +66,12 @@ const phases = [
     customLayout: true,
     bulletPoints: {
       left: [
-        "Quality Assurance",
-        "Performance Testing"
+        "Site Specific Assets",
+        "Minor Feedback"
       ],
       right: [
-        "Launch Preparation",
-        "Training & Support"
+        "QA / Launch / Indexing",
+        "Custom Integrations"
       ]
     }
   }
