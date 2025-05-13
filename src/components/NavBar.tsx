@@ -1,15 +1,14 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { name: 'Home', href: '#' },
-  { name: 'Tiers', href: '#tier-showcase' },
-  { name: 'UX Flow', href: '#ux-flow' },
-  { name: 'Demos', href: '#site-demo' },
-  { name: 'Pricing', href: '#pricing-table' },
-  { name: 'Timeline', href: '#delivery-timeline' },
-  { name: 'Summary', href: '#proposal-summary' },
+  { name: 'Home', href: '#', id: 'home' },
+  { name: 'Tiers', href: '#tier-showcase', id: 'tier-showcase' },
+  { name: 'UX Flow', href: '#ux-flow', id: 'ux-flow' },
+  { name: 'Demos', href: '#site-demo', id: 'site-demo' },
+  { name: 'Pricing', href: '#pricing-table', id: 'pricing-table' },
+  { name: 'Timeline', href: '#delivery-timeline', id: 'delivery-timeline' },
+  { name: 'Summary', href: '#proposal-summary', id: 'proposal-summary' },
 ];
 
 const NavBar: React.FC = () => {
@@ -31,6 +30,19 @@ const NavBar: React.FC = () => {
     };
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+  };
+
   return (
     <nav 
       className={cn(
@@ -41,7 +53,11 @@ const NavBar: React.FC = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#" className="flex items-center">
+        <a 
+          href="#" 
+          className="flex items-center"
+          onClick={(e) => handleNavClick(e, 'home')}
+        >
           <span className={cn(
             "font-bold text-xl",
             isScrolled ? "text-cabo-blue" : "text-white"
@@ -58,6 +74,7 @@ const NavBar: React.FC = () => {
                 "font-medium hover:text-cabo-blue transition-colors",
                 isScrolled ? "text-gray-700" : "text-white"
               )}
+              onClick={(e) => handleNavClick(e, item.id)}
             >
               {item.name}
             </a>
@@ -105,7 +122,7 @@ const NavBar: React.FC = () => {
                 key={item.name}
                 href={item.href} 
                 className="text-gray-700 font-medium hover:text-cabo-blue transition-colors text-lg"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, item.id)}
               >
                 {item.name}
               </a>

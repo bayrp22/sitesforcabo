@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -16,7 +15,7 @@ const SectionContainer: React.FC<SectionContainerProps> = ({
   bgColor = "bg-white" 
 }) => {
   return (
-    <section id={id} className={cn(bgColor, className)}>
+    <section id={id} className={cn(bgColor, "min-h-screen flex flex-col justify-center", className)}>
       <div className="section-container">
         {children}
       </div>

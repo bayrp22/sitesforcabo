@@ -1,4 +1,3 @@
-
 import React from 'react';
 import NavBar from '@/components/NavBar';
 import HeroSection from '@/components/HeroSection';
@@ -12,22 +11,24 @@ import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="h-full">
       <NavBar />
       
-      <HeroSection />
-      
-      <TierShowcaseSection />
-      
-      <UXFlowSection />
-      
-      <SiteDemoSection />
-      
-      <PricingTableSection />
-      
-      <DeliveryTimelineSection />
-      
-      <ProposalSummarySection />
+      <main className="snap-container">
+        <HeroSection />
+        
+        <TierShowcaseSection />
+        
+        <UXFlowSection />
+        
+        <SiteDemoSection />
+        
+        <PricingTableSection />
+        
+        <DeliveryTimelineSection />
+        
+        <ProposalSummarySection />
+      </main>
       
       <Footer />
     </div>

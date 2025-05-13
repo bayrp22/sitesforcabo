@@ -1,14 +1,15 @@
-
 import React from 'react';
 import SectionContainer from './SectionContainer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar, CircleCheck, CircleX, LayoutList } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const phases = [
   {
     title: "Phase 1: Planning & Design",
     duration: "Weeks 1-2",
     description: "Initial consultation and design creation",
+    hideTasks: true,
     tasks: [
       { name: "Kickoff meeting and requirements gathering", completed: true },
       { name: "User experience wireframing", completed: true },
@@ -21,6 +22,7 @@ const phases = [
     title: "Phase 2: Development",
     duration: "Weeks 3-6",
     description: "Building the microsites and functionality",
+    hideTasks: true,
     tasks: [
       { name: "Frontend development", completed: false },
       { name: "Backend integration", completed: false },
@@ -33,6 +35,7 @@ const phases = [
     title: "Phase 3: Launch & Support",
     duration: "Weeks 7-8",
     description: "Final testing, deployment, and ongoing support",
+    hideTasks: true,
     tasks: [
       { name: "Quality assurance testing", completed: false },
       { name: "Content population", completed: false },
@@ -45,10 +48,10 @@ const phases = [
 
 const DeliveryTimelineSection: React.FC = () => {
   return (
-    <SectionContainer id="delivery-timeline" bgColor="bg-gray-50">
-      <div className="flex items-center justify-center gap-2 mb-4">
-        <Calendar className="w-6 h-6 text-cabo-blue" />
-        <h2 className="section-title">Delivery Timeline</h2>
+    <SectionContainer id="delivery-timeline" bgColor="bg-gray-100">
+      <div className="flex items-center justify-center mb-4">
+        <Calendar className="w-8 h-8 text-cabo-blue mr-3" />
+        <h2 className="section-title mb-0">Delivery Timeline</h2>
       </div>
       <p className="section-subtitle">Your project roadmap from concept to launch</p>
       
@@ -56,9 +59,9 @@ const DeliveryTimelineSection: React.FC = () => {
         {phases.map((phase, index) => (
           <div key={index} className="relative">
             {index !== phases.length - 1 && (
-              <div className="absolute left-8 top-36 bottom-0 w-1 bg-gradient-to-b from-cabo-turquoise to-cabo-blue"></div>
+              <div className="absolute left-8 top-24 bottom-0 w-1 bg-gradient-to-b from-cabo-turquoise to-cabo-blue"></div>
             )}
-            <Card className="card relative z-10">
+            <Card className={cn("relative z-10 bg-white bg-opacity-95 shadow-lg")}>
               <CardHeader>
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 rounded-full bg-cabo-gradient flex items-center justify-center flex-shrink-0">
@@ -74,22 +77,24 @@ const DeliveryTimelineSection: React.FC = () => {
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {phase.tasks.map((task, i) => (
-                    <li key={i} className="flex items-center gap-3">
-                      {task.completed ? (
-                        <CircleCheck className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      ) : (
-                        <CircleX className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                      )}
-                      <span className={task.completed ? "text-gray-900" : "text-gray-600"}>
-                        {task.name}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
+              {!phase.hideTasks && (
+                <CardContent>
+                  <ul className="space-y-3">
+                    {phase.tasks.map((task, i) => (
+                      <li key={i} className="flex items-center gap-3">
+                        {task.completed ? (
+                          <CircleCheck className="w-5 h-5 text-green-500 flex-shrink-0" />
+                        ) : (
+                          <CircleX className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                        )}
+                        <span className={task.completed ? "text-gray-900" : "text-gray-600"}>
+                          {task.name}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              )}
             </Card>
           </div>
         ))}

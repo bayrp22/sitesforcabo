@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -98,17 +97,38 @@
     @apply border-border;
   }
 
+  html, body {
+    height: 100%;
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-background text-foreground font-[Inter];
-    scroll-behavior: smooth;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold;
   }
 
+  .snap-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  section {
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .section-container {
-    @apply max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24;
+    @apply max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 w-full;
   }
 
   .section-title {
