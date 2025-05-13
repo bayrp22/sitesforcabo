@@ -3,6 +3,19 @@ import SectionContainer from './SectionContainer';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, CircleCheck, DollarSign } from 'lucide-react';
 
+// Add CSS for hover effects
+const hoverStyles = `
+  .pricing-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .pricing-card:hover {
+    transform: scale(1.12);
+    z-index: 10;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+`;
+
 const plans = [
   {
     name: "Single Storefront",
@@ -40,8 +53,7 @@ const plans = [
     features: [
       "Share your FareHarbor developer credentials.",
       "We embed the Lightframe modal into your site.",
-      "We manage all API/webhook configuration.",
-      "We work directly with FareHarbor support, for any code related queries."
+      "We manage all API/webhook configuration."
     ],
     supportLine: "Full embed support & testing",
     highlight: false
@@ -51,6 +63,9 @@ const plans = [
 const PricingTableSection: React.FC = () => {
   return (
     <SectionContainer id="pricing-table" bgColor="bg-white">
+      {/* Add the hover styles */}
+      <style>{hoverStyles}</style>
+      
       <h2 className="section-title">Pricing Options</h2>
       <p className="section-subtitle">Transparent pricing with no hidden fees</p>
       
@@ -58,7 +73,7 @@ const PricingTableSection: React.FC = () => {
         {plans.map((plan, index) => (
           <Card 
             key={index} 
-            className="card h-full flex flex-col"
+            className="card pricing-card min-h-[600px] flex flex-col"
           >
             <CardHeader>
               <div className="flex justify-center mb-2">
@@ -67,21 +82,22 @@ const PricingTableSection: React.FC = () => {
                 </div>
               </div>
               <CardTitle className="text-center">{plan.name}</CardTitle>
-              <div className="text-center mt-2">
+              <div className={`text-center mt-2 ${plan.name === "FareHarbor Add-On" ? "mb-2" : "mb-4"}`}>
                 <span className="text-3xl font-bold">{plan.price}</span>
                 {plan.currency && <span className="text-base font-bold text-gray-600 ml-1">{plan.currency}</span>}
-                {plan.name !== "FareHarbor Integration" ? (
-                  <span className="text-gray-500">{plan.name === "Single Storefront" ? "/Site" : plan.name === "Fleet Bundle" ? "/Site" : "/Site"}</span>
-                ) : (
-                  <span className="text-gray-500">/Site</span>
-                )}
+                <span className="text-gray-500">/Site</span>
               </div>
-              <p className="text-center text-gray-600 mt-2">{plan.description}</p>
+              <p className={`text-center text-gray-600 ${plan.name === "FareHarbor Add-On" ? "text-lg font-medium mb-4" : ""}`}>
+                {plan.description}
+              </p>
             </CardHeader>
             <CardContent className="flex-grow">
               <ul className="space-y-3">
                 {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-start">
+                  <li 
+                    key={i} 
+                    className={`flex items-start ${plan.name === "FareHarbor Add-On" ? "leading-relaxed mb-2" : ""}`}
+                  >
                     <CircleCheck className="w-5 h-5 text-cabo-blue mr-2 flex-shrink-0 mt-0.5" />
                     <span>{feature}</span>
                   </li>
@@ -90,7 +106,7 @@ const PricingTableSection: React.FC = () => {
             </CardContent>
             {plan.supportLine && (
               <CardFooter className="pt-0">
-                <p className="text-center text-cabo-blue w-full font-medium text-sm">
+                <p className={`text-center w-full font-medium ${plan.name === "FareHarbor Add-On" ? "text-base text-[#059D9C]" : "text-sm text-cabo-blue"}`}>
                   {plan.supportLine}
                 </p>
               </CardFooter>
