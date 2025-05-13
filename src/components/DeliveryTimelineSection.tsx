@@ -24,18 +24,18 @@ const phases = [
     customLayout: true,
     bulletPoints: {
       left: [
-        "Research & Analysis",
-        "Stakeholder Interviews"
+        "Vessel List & Site Tier Selection",
+        "Brand ID Portfolio, Pics, & FH Login"
       ],
       right: [
-        "UX Flow Definition",
-        "Design System Setup"
+        "Site Planning Matrix",
+        "Timeline Lock & Repo Spin Up"
       ]
     }
   },
   {
-    title: "Phase",
-    subtitle: "2",
+    title: "Site",
+    subtitle: "1",
     cardTitle: "Development & Integration",
     duration: "Weeks 3-6",
     description: "Building the microsites and functionality",
