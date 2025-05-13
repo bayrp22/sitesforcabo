@@ -55,47 +55,49 @@ const DeliveryTimelineSection: React.FC = () => {
       </div>
       <p className="section-subtitle">Your project roadmap from concept to launch</p>
       
-      <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+      <div className="flex flex-col gap-16 max-w-5xl mx-auto">
         {phases.map((phase, index) => (
           <div key={index} className="relative">
             {index !== phases.length - 1 && (
-              <div className="absolute left-8 top-24 bottom-0 w-1 bg-gradient-to-b from-cabo-turquoise to-cabo-blue"></div>
+              <div className="absolute left-10 top-32 bottom-0 w-1 bg-gradient-to-b from-cabo-turquoise to-cabo-blue"></div>
             )}
-            <Card className={cn("relative z-10 bg-white bg-opacity-95 shadow-lg")}>
-              <CardHeader>
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 rounded-full bg-cabo-gradient flex items-center justify-center flex-shrink-0">
-                    <span className="text-2xl font-bold text-white">{index + 1}</span>
-                  </div>
-                  <div>
-                    <CardTitle className="text-xl">{phase.title}</CardTitle>
-                    <div className="flex items-center gap-2 mt-1">
-                      <LayoutList className="w-4 h-4 text-gray-500" />
-                      <span className="text-gray-500">{phase.duration}</span>
+            <div className="fade-card-container relative z-10 rounded-lg overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/95 before:via-white/80 before:to-transparent before:border-l-4 before:border-l-cabo-turquoise before:rounded-l-lg before:-z-10 before:shadow-[-8px_0_15px_-3px_rgba(0,0,0,0.1)]">
+              <Card className={cn("relative border-0 shadow-none p-8 bg-transparent")}>
+                <CardHeader className="p-0 pb-6">
+                  <div className="flex items-start gap-6">
+                    <div className="w-20 h-20 rounded-full bg-cabo-gradient flex items-center justify-center flex-shrink-0">
+                      <span className="text-3xl font-bold text-white">{index + 1}</span>
                     </div>
-                    <p className="mt-2 text-gray-600">{phase.description}</p>
+                    <div>
+                      <CardTitle className="text-2xl mb-2">{phase.title}</CardTitle>
+                      <div className="flex items-center gap-2 mt-2">
+                        <LayoutList className="w-5 h-5 text-gray-500" />
+                        <span className="text-gray-500 text-lg">{phase.duration}</span>
+                      </div>
+                      <p className="mt-3 text-gray-600 text-lg">{phase.description}</p>
+                    </div>
                   </div>
-                </div>
-              </CardHeader>
-              {!phase.hideTasks && (
-                <CardContent>
-                  <ul className="space-y-3">
-                    {phase.tasks.map((task, i) => (
-                      <li key={i} className="flex items-center gap-3">
-                        {task.completed ? (
-                          <CircleCheck className="w-5 h-5 text-green-500 flex-shrink-0" />
-                        ) : (
-                          <CircleX className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                        )}
-                        <span className={task.completed ? "text-gray-900" : "text-gray-600"}>
-                          {task.name}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              )}
-            </Card>
+                </CardHeader>
+                {!phase.hideTasks && (
+                  <CardContent className="p-0">
+                    <ul className="space-y-3">
+                      {phase.tasks.map((task, i) => (
+                        <li key={i} className="flex items-center gap-3">
+                          {task.completed ? (
+                            <CircleCheck className="w-5 h-5 text-green-500 flex-shrink-0" />
+                          ) : (
+                            <CircleX className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                          )}
+                          <span className={task.completed ? "text-gray-900" : "text-gray-600"}>
+                            {task.name}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                )}
+              </Card>
+            </div>
           </div>
         ))}
       </div>
