@@ -1,4 +1,3 @@
-
 import React from 'react';
 import SectionContainer from './SectionContainer';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -6,46 +5,45 @@ import { Check, CircleCheck, DollarSign } from 'lucide-react';
 
 const plans = [
   {
-    name: "Single Microsite",
-    price: "$1,999",
-    description: "Perfect for businesses looking to launch one targeted microsite",
+    name: "Single Storefront",
+    price: "$1,000",
+    currency: "USD",
+    description: "Perfect for launching one targeted vessel site",
     features: [
-      "1 microsite design & development",
-      "Content management system",
-      "Mobile responsive design",
-      "Basic SEO optimization",
-      "30 days of support"
+      "Custom design & development",
+      "Mobile-responsive UX",
+      "FareHarbor checkout integration",
+      "Basic SEO & analytics"
     ],
-    buttonText: "Choose Single",
+    supportLine: "30 days post-launch support",
     highlight: false
   },
   {
-    name: "Bundle Package",
-    price: "$4,999",
-    description: "Best value for a complete microsite ecosystem",
+    name: "Fleet Bundle",
+    price: "$750",
+    currency: "USD",
+    description: "Best value for multi-vessel rollouts",
     features: [
-      "3 integrated microsites",
-      "Cross-site analytics",
-      "Advanced customization options",
-      "Premium SEO package",
-      "90 days of priority support",
-      "Training session for your team"
+      "All Single Storefront features",
+      "Priority launch scheduling",
+      "Bulk site provisioning & templating",
+      "Unified analytics dashboard"
     ],
-    buttonText: "Choose Bundle",
-    highlight: true
+    supportLine: "Dedicated account manager",
+    highlight: false
   },
   {
-    name: "Add-On Services",
-    price: "From $499",
-    description: "Enhance your microsite with additional features",
+    name: "FareHarbor Add-On",
+    price: "+ $300",
+    currency: "USD",
+    description: "Integrate Easily",
     features: [
-      "Content creation package",
-      "Advanced analytics setup",
-      "Custom feature development",
-      "Extended support plans",
-      "Performance optimization"
+      "Share your FareHarbor developer credentials.",
+      "We embed the Lightframe modal into your site.",
+      "We manage all API/webhook configuration.",
+      "We work directly with FareHarbor support, for any code related queries."
     ],
-    buttonText: "Explore Add-Ons",
+    supportLine: "Full embed support & testing",
     highlight: false
   }
 ];
@@ -60,7 +58,7 @@ const PricingTableSection: React.FC = () => {
         {plans.map((plan, index) => (
           <Card 
             key={index} 
-            className={`card h-full flex flex-col ${plan.highlight ? 'ring-2 ring-cabo-blue shadow-lg' : ''}`}
+            className="card h-full flex flex-col"
           >
             <CardHeader>
               <div className="flex justify-center mb-2">
@@ -71,7 +69,12 @@ const PricingTableSection: React.FC = () => {
               <CardTitle className="text-center">{plan.name}</CardTitle>
               <div className="text-center mt-2">
                 <span className="text-3xl font-bold">{plan.price}</span>
-                {plan.name === "Add-On Services" ? null : <span className="text-gray-500">/package</span>}
+                {plan.currency && <span className="text-base font-bold text-gray-600 ml-1">{plan.currency}</span>}
+                {plan.name !== "FareHarbor Integration" ? (
+                  <span className="text-gray-500">{plan.name === "Single Storefront" ? "/Site" : plan.name === "Fleet Bundle" ? "/Site" : "/Site"}</span>
+                ) : (
+                  <span className="text-gray-500">/Site</span>
+                )}
               </div>
               <p className="text-center text-gray-600 mt-2">{plan.description}</p>
             </CardHeader>
@@ -85,11 +88,13 @@ const PricingTableSection: React.FC = () => {
                 ))}
               </ul>
             </CardContent>
-            <CardFooter>
-              <a href="#" className={`cta-button w-full text-center ${!plan.highlight ? 'bg-white border border-cabo-blue text-cabo-blue hover:bg-gray-50' : ''}`}>
-                {plan.buttonText}
-              </a>
-            </CardFooter>
+            {plan.supportLine && (
+              <CardFooter className="pt-0">
+                <p className="text-center text-cabo-blue w-full font-medium text-sm">
+                  {plan.supportLine}
+                </p>
+              </CardFooter>
+            )}
           </Card>
         ))}
       </div>

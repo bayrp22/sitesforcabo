@@ -25,7 +25,7 @@ const tiers = [
       "Live commentary integration"
     ],
     hookLine: "Unite guests with local adventures.",
-    highlight: true
+    highlight: false
   },
   {
     title: "Corporate Fleet Site",
@@ -84,7 +84,7 @@ const TierShowcaseSection: React.FC = () => {
           {tiers.map((tier, index) => (
             <div 
               key={index} 
-              className={`bg-white rounded-lg shadow-md border overflow-hidden ${tier.highlight ? 'ring-2 ring-cabo-blue' : ''}`}
+              className="bg-white rounded-lg shadow-md border overflow-hidden"
               style={{ 
                 transition: "transform 200ms, box-shadow 200ms",
                 height: "480px" // Reduced height to account for removed icon
@@ -103,7 +103,7 @@ const TierShowcaseSection: React.FC = () => {
               
               {/* Title */}
               <div className="h-16 px-6 flex items-center justify-center mt-6">
-                <h3 className={`text-2xl font-semibold text-center ${tier.highlight ? 'text-cabo-blue' : ''}`}>
+                <h3 className="text-2xl font-semibold text-center">
                   {tier.title}
                 </h3>
               </div>
