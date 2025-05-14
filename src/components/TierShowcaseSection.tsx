@@ -7,48 +7,48 @@ const tiers = [
     title: "Private Charter Site",
     description: "Personalized booking for a single vessel",
     features: [
-      "Unique vessel branding & imagery", 
-      "Custom itinerary highlights", 
-      "Single-vessel booking integration", 
-      "Premium photography package"
+      "Showcase your vessel's unique character", 
+      "Create and highlight custom itineraries", 
+      "Provide a seamless single-vessel booking experience", 
+      "Feature professional photography that captivates"
     ],
     hookLine: "Your vessel, your brand.",
     highlight: false
   },
   {
-    title: "Shared Tour Site",
+    title: "Shared Tour\nSite",
     description: "Group adventure tours with local guides",
     features: [
-      "Group scheduling & pricing", 
-      "Shared deck tour details", 
-      "Online seat reservations", 
-      "Live commentary integration"
+      "Simplify group scheduling and availability", 
+      "Present detailed deck and tour information", 
+      "Enable easy seat reservations", 
+      "Embed live commentary for an immersive experience"
     ],
     hookLine: "Unite guests with local adventures.",
-    highlight: false
-  },
-  {
-    title: "Corporate Fleet Site",
-    description: "Enterprise-grade fleet management portal",
-    features: [
-      "Fleet overview dashboard", 
-      "Multi-ship booking engine", 
-      "Custom domains per vessel", 
-      "Unified analytics & reporting"
-    ],
-    hookLine: "Manage your fleet like a pro.",
     highlight: false
   },
   {
     title: "Cabo Destination Funnel",
     description: "Full marketing funnel for all services",
     features: [
-      "Dynamic landing pages", 
-      "Lead-capture forms", 
-      "SEO-optimized content", 
-      "Multi-channel tracking"
+      "Drive conversions with dynamic landing pages", 
+      "Capture leads directly via built-in forms", 
+      "Ensure SEO-optimized content structure", 
+      "Track engagement across multiple marketing channels"
     ],
     hookLine: "Capture every lead, drive bookings.",
+    highlight: false
+  },
+  {
+    title: "Corporate Fleet Site",
+    description: "Enterprise-grade fleet management portal",
+    features: [
+      "Showcase large-capacity vessels for corporate outings", 
+      "Feature team-building and group-event packages", 
+      "Highlight amenities designed for corporate clients", 
+      "Promote partnership opportunities and bulk-rates"
+    ],
+    hookLine: "Manage your fleet like a pro.",
     highlight: false
   }
 ];
@@ -104,7 +104,15 @@ const TierShowcaseSection: React.FC = () => {
               {/* Title */}
               <div className="h-16 px-6 flex items-center justify-center mt-6">
                 <h3 className="text-2xl font-semibold text-center">
-                  {tier.title}
+                  {tier.title.includes('\n') 
+                    ? tier.title.split('\n').map((part, i) => (
+                        <React.Fragment key={i}>
+                          {i > 0 && <br />}
+                          {part}
+                        </React.Fragment>
+                      ))
+                    : tier.title
+                  }
                 </h3>
               </div>
               
@@ -116,7 +124,7 @@ const TierShowcaseSection: React.FC = () => {
               </div>
               
               {/* Features List */}
-              <div className="px-6 pt-4 h-56">
+              <div className="px-6 pt-4 pb-8 h-56">
                 <ul className="space-y-4">
                   {tier.features.map((feature, i) => (
                     <li key={i} className="flex items-start h-10">
@@ -128,7 +136,7 @@ const TierShowcaseSection: React.FC = () => {
               </div>
               
               {/* Hook Line (replaced CTA Link) */}
-              <div className="h-16 flex items-center justify-center">
+              <div className="h-16 flex items-center justify-center mt-4">
                 <p className="text-[#059D9C] font-medium text-center">
                   {tier.hookLine}
                 </p>

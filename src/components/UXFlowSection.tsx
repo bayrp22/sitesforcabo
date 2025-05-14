@@ -79,23 +79,23 @@ const deviceStyles = `
   /* Chrome-style tabs */
   .chrome-tabs {
     background-color: transparent;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    padding: 0 6px;
-    height: 50px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    padding: 0 8px;
+    height: 60px;
     position: relative;
     z-index: 1;
   }
 
   .chrome-tab {
     position: relative;
-    height: 50px;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    height: 60px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
-    margin: 0 2px;
+    margin: 0 3px;
     transform-origin: bottom center;
     background-color: #f0f0f4;
   }
@@ -122,7 +122,7 @@ const deviceStyles = `
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 3px;
+    height: 4px;
     background-color: transparent;
     transform-origin: center;
     transform: scaleX(0);
@@ -167,12 +167,12 @@ const deviceStyles = `
   /* Responsive adjustments for iMac */
   @media (max-width: 640px) {
     .imac-container {
-      transform: scale(0.8); /* Scale down for smaller screens */
+      transform: scale(0.85); /* Scale down for smaller screens */
     }
   }
   @media (max-width: 480px) {
     .imac-container {
-      transform: scale(0.65); /* Further scale down for very small screens */
+      transform: scale(0.7); /* Further scale down for very small screens */
     }
   }
 `;
@@ -188,49 +188,38 @@ const UXFlowSection: React.FC = () => {
       {/* Add device styles */}
       <style>{deviceStyles}</style>
       
-      <div className="text-center mb-6">
-      <h2 className="section-title">UX Flow</h2>
-      <p className="section-subtitle">A seamless experience across all devices</p>
-              </div>
-              
       {/* Chrome-style Tabs */}
-      <div className="flex justify-center mb-6">
+      <div className="flex justify-center mb-10">
         <div className="chrome-tabs inline-flex rounded-t-lg overflow-hidden">
           <div
-            className={`chrome-tab px-8 py-4 ${activeTab === 'template' ? 'active' : ''}`}
+            className={`chrome-tab px-10 py-5 ${activeTab === 'template' ? 'active' : ''}`}
             onClick={() => setActiveTab('template')}
           >
-            <span className="text-base font-medium">Template</span>
+            <span className="text-lg font-medium">Template</span>
             <div className="tab-bottom-border"></div>
           </div>
           <div
-            className={`chrome-tab px-8 py-4 ${activeTab === 'pirate' ? 'active' : ''}`}
+            className={`chrome-tab px-10 py-5 ${activeTab === 'pirate' ? 'active' : ''}`}
             onClick={() => setActiveTab('pirate')}
           >
-            <span className="text-base font-medium">Pirate</span>
+            <span className="text-lg font-medium">Pirate</span>
             <div className="tab-bottom-border"></div>
                 </div>
           <div
-            className={`chrome-tab px-8 py-4 ${activeTab === 'caboEscape' ? 'active' : ''}`}
+            className={`chrome-tab px-10 py-5 ${activeTab === 'caboEscape' ? 'active' : ''}`}
             onClick={() => setActiveTab('caboEscape')}
           >
-            <span className="text-base font-medium">Cabo Escape</span>
+            <span className="text-lg font-medium">Cabo Escape</span>
             <div className="tab-bottom-border"></div>
                     </div>
                   </div>
                     </div>
 
-      {/* Content Panel with white background that connects to active tab */}
-      <div className="tab-content-wrapper relative bg-white rounded-lg rounded-tl-none shadow-sm max-w-6xl mx-auto -mt-1">
-        {/* Two-column Grid for Mockups */}
-        <div className={`tab-content tab-animate-in grid grid-cols-1 lg:grid-cols-2 gap-8 p-6`}>
-          {/* Left: Mobile View */}
+      {/* 1:2 Layout for devices, no background wrapper */}
+      <div className={`tab-content tab-animate-in grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 items-center p-6 max-w-6xl mx-auto`}>
+        {/* Left: Mobile View */}
+        <div className="w-full flex justify-center">
           <div className="mobile-mockup">
-            <h3 className="text-xl font-semibold mb-3">Mobile Navigation</h3>
-            <p className="text-gray-600 mb-4">
-              Streamlined for touch interfaces with thumb-friendly navigation.
-            </p>
-            
             {/* Animated iPhone */}
             <div className="flex justify-center">
               <div className="relative iphone-body w-64 h-[32rem] bg-gray-800 rounded-[2.5rem] border-4 border-gray-700 shadow-xl p-2">
@@ -238,7 +227,7 @@ const UXFlowSection: React.FC = () => {
                   {/* Content inside the phone screen */}
                   <div className="w-full h-full flex flex-col items-center justify-center text-white">
                     <p className="font-bold text-lg">{currentMockup.mobileTitle}</p>
-                    <p className="text-sm opacity-80">{currentMockup.tagline}</p>
+                    <p className="text-base opacity-80">{currentMockup.tagline}</p>
                   </div>
 
                   {/* Phone notch */}
@@ -253,19 +242,16 @@ const UXFlowSection: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Right: Desktop View */}
+        {/* Right: Desktop View */}
+        <div className="w-full flex justify-center relative md:-mt-4">
           <div className="desktop-mockup">
-            <h3 className="text-xl font-semibold mb-3">Desktop Navigation</h3>
-                <p className="text-gray-600 mb-4">
-              Optimized for larger screens with intuitive menu structures.
-            </p>
-            
             {/* Photorealistic iMac */}
             <div className="flex justify-center">
-              <div className="imac-container flex flex-col items-center">
+              <div className="imac-container flex flex-col items-center scale-110 transform origin-top">
                 {/* iMac Display */}
-                <div className="imac-display w-[40rem] h-[26.5rem] rounded-lg p-2.5 flex flex-col items-center">
+                <div className="imac-display w-[40rem] h-[26rem] rounded-lg p-2.5 flex flex-col items-center">
                   {/* Screen - 16:10 aspect ratio */}
                   <div 
                     className="imac-screen w-full h-full rounded-sm flex items-center justify-center relative overflow-hidden"
@@ -281,11 +267,11 @@ const UXFlowSection: React.FC = () => {
                           alt={`${currentMockup.title} desktop view`}
                           className={`w-full h-full ${activeTab === 'template' ? 'object-contain' : 'object-cover'}`}
                         />
-                    </div>
+                      </div>
                     ) : (
                       <div className="text-white text-center">
                         <p className="font-bold text-xl">{currentMockup.desktopTitle}</p>
-                        <p className="opacity-80">Full-featured experience</p>
+                        <p className="text-base opacity-80">Full-featured experience</p>
                       </div>
                     )}
                   </div>
@@ -299,7 +285,7 @@ const UXFlowSection: React.FC = () => {
                 </div>
 
                 {/* Stand */}
-                <div className="imac-stand-arm w-12 h-16 -mt-4 rounded-b-md z-[-1] relative">
+                <div className="imac-stand-arm w-12 h-14 -mt-4 rounded-b-md z-[-1] relative">
                 </div>
 
                 <div className="imac-stand-base w-48 h-2 rounded-sm mt-[-1px]">

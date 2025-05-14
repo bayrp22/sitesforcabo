@@ -9,10 +9,13 @@ const hoverStyles = `
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
   
-  .pricing-card:hover {
-    transform: scale(1.12);
-    z-index: 10;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  /* Only apply hover effects on larger screens (desktop/tablet) */
+  @media (min-width: 768px) {
+    .pricing-card:hover {
+      transform: scale(1.12);
+      z-index: 10;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
   }
 `;
 

@@ -16,7 +16,7 @@ const SectionContainer: React.FC<SectionContainerProps> = ({
 }) => {
   return (
     <section id={id} className={cn(bgColor, "min-h-screen flex flex-col justify-center", className)}>
-      <div className="section-container">
+      <div className="section-container-large">
         {children}
       </div>
     </section>
