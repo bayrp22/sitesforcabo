@@ -13,21 +13,21 @@ const Index = () => {
   return (
     <div className="h-full">
       <main className="snap-container">
-        <HeroSection />
-        
-        <TierShowcaseSection />
-        
-        <UXFlowSection />
+      <HeroSection />
+      
+      <TierShowcaseSection />
+      
+      <UXFlowSection />
         
         <SeoPerformanceSection />
-        
-        <SiteDemoSection />
-        
-        <PricingTableSection />
-        
-        <DeliveryTimelineSection />
-        
-        <ProposalSummarySection />
+      
+      <SiteDemoSection />
+      
+      <PricingTableSection />
+      
+      <DeliveryTimelineSection />
+      
+      <ProposalSummarySection />
       </main>
       
       <Footer />

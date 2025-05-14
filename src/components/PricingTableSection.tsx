@@ -112,7 +112,7 @@ const PricingTableSection: React.FC = () => {
                 <p className={`text-center w-full font-medium ${plan.name === "FareHarbor Add-On" ? "text-base text-[#059D9C]" : "text-sm text-cabo-blue"}`}>
                   {plan.supportLine}
                 </p>
-              </CardFooter>
+            </CardFooter>
             )}
           </Card>
         ))}

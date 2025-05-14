@@ -105,15 +105,15 @@ const SiteDemoSection: React.FC = () => {
             <div className="w-full mx-auto">
               <SiteDisplay site={sites[3]} />
             </div>
-          </div>
+                </div>
           
           {/* Corporate Page - Escape Site */}
           <div className="col-span-1">
             <div className="w-full mx-auto">
               <SiteDisplay site={sites[5]} />
-            </div>
-          </div>
-        </div>
+                  </div>
+                </div>
+              </div>
       </div>
     </SectionContainer>
   );

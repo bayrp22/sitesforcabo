@@ -197,7 +197,7 @@ const UXFlowSection: React.FC = () => {
           >
             <span className="text-lg font-medium">Template</span>
             <div className="tab-bottom-border"></div>
-          </div>
+              </div>
           <div
             className={`chrome-tab px-10 py-5 ${activeTab === 'pirate' ? 'active' : ''}`}
             onClick={() => setActiveTab('pirate')}
@@ -242,8 +242,8 @@ const UXFlowSection: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
-
+              </div>
+              
         {/* Right: Desktop View */}
         <div className="w-full flex justify-center relative md:-mt-4">
           <div className="desktop-mockup">
@@ -267,7 +267,7 @@ const UXFlowSection: React.FC = () => {
                           alt={`${currentMockup.title} desktop view`}
                           className={`w-full h-full ${activeTab === 'template' ? 'object-contain' : 'object-cover'}`}
                         />
-                      </div>
+                    </div>
                     ) : (
                       <div className="text-white text-center">
                         <p className="font-bold text-xl">{currentMockup.desktopTitle}</p>

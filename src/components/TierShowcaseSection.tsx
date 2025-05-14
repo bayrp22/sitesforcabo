@@ -81,7 +81,7 @@ const TierShowcaseSection: React.FC = () => {
         
         {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {tiers.map((tier, index) => (
+        {tiers.map((tier, index) => (
             <div 
               key={index} 
               className="bg-white rounded-lg shadow-md border overflow-hidden"
@@ -126,13 +126,13 @@ const TierShowcaseSection: React.FC = () => {
               {/* Features List */}
               <div className="px-6 pt-4 pb-8 h-56">
                 <ul className="space-y-4">
-                  {tier.features.map((feature, i) => (
+                {tier.features.map((feature, i) => (
                     <li key={i} className="flex items-start h-10">
-                      <span className="bg-cabo-gradient w-4 h-4 rounded-full mr-2 mt-1 flex-shrink-0"></span>
+                    <span className="bg-cabo-gradient w-4 h-4 rounded-full mr-2 mt-1 flex-shrink-0"></span>
                       <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                  </li>
+                ))}
+              </ul>
               </div>
               
               {/* Hook Line (replaced CTA Link) */}
@@ -142,7 +142,7 @@ const TierShowcaseSection: React.FC = () => {
                 </p>
               </div>
             </div>
-          ))}
+        ))}
         </div>
       </div>
     </SectionContainer>

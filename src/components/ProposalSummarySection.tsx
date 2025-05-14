@@ -33,8 +33,8 @@ const ProposalSummarySection: React.FC = () => {
             <span>Growth-flexible (integration add-ons)</span>
           </li>
         </ul>
-      </div>
-      
+        </div>
+        
       <p className="mt-4 text-white font-semibold text-xl hover:underline transition duration-200 text-center">
         What's left to decide?
       </p>
