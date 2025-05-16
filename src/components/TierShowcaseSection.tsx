@@ -148,8 +148,8 @@ const TierShowcaseSection: React.FC = () => {
               </div>
               
               {/* Hook Line (replaced CTA Link) */}
-              <div className="h-24 flex items-center justify-center mt-10 px-4"> {/* Increased height and padding */}
-                <p className="text-[#059D9C] font-medium text-center text-base">
+              <div className="h-24 flex items-center justify-center mt-10 px-6 pb-4">
+                <p className="text-[#059D9C] font-medium text-center text-base tracking-wide">
                   {tier.hookLine}
                 </p>
               </div>
