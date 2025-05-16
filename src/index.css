@@ -196,24 +196,29 @@
   margin-top:48px;
 }
 
-/* 1️⃣  base state */
+/* Card base state */
 .concepts__card{
   text-align:center;
+}
+
+/* Image container transitions */
+.concepts__card a {
+  display: block;
   transition:transform .22s cubic-bezier(.25,.46,.45,.94),
              filter     .22s cubic-bezier(.25,.46,.45,.94),
              box-shadow .22s cubic-bezier(.25,.46,.45,.94);
-  will-change:transform,filter;          /* promote to its own layer */
+  will-change:transform,filter;
 }
 
-/* 2️⃣  hover / focus */
-.concepts__card:hover,
-.concepts__card:focus-visible{
+/* Hover/focus effects only for image containers */
+.concepts__card a:hover,
+.concepts__card a:focus-visible{
   transform:translateY(-4px) scale(1.025);
   filter:brightness(1.04) saturate(1.05);
   box-shadow:0 14px 28px rgba(0,0,0,.14);
 }
 
-/* 3️⃣  thumb edge radius matches card on hover (tiny polish) */
+/* Thumb transition */
 .concepts__thumb{
   width:100%;
   border-radius:12px;
@@ -222,8 +227,9 @@
   transition:border-radius .22s cubic-bezier(.25,.46,.45,.94);
 }
 
-.concepts__card:hover .concepts__thumb{
-  border-radius:16px;                    /* softens the pop-out effect */
+/* Border radius change on hover */
+.concepts__card a:hover .concepts__thumb{
+  border-radius:16px;
 }
 
 .concepts__card h3{margin:18px 0 4px;font-size:20px;}
