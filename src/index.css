@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -52,6 +53,14 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Funnel Concepts Variables */
+    --headline-font:'Poppins',system-ui,sans-serif;
+    --headline-size:2.75rem;
+    --headline-weight:600;
+    --headline-spacing:-0.02em;
+    --subhead-color:#64748B;
+    --section-max:1140px;
   }
 
   .dark {
@@ -103,6 +112,11 @@
   100% {
     transform: translateY(0);
   }
+}
+
+@keyframes fc-fade-slide{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:none}
 }
 
 @layer base {
@@ -177,7 +191,58 @@
   }
 }
 
-/* Concepts Section Styles */
+/* Funnel Concepts Styles */
+.funnel-concepts{
+  max-width:var(--section-max);
+  margin-inline:auto;
+  padding:96px 24px;
+  text-align:center;
+}
+
+/* main title */
+.funnel-concepts h2{
+  font-family:var(--headline-font);
+  font-size:var(--headline-size);
+  font-weight:var(--headline-weight);
+  letter-spacing:var(--headline-spacing);
+  line-height:1.15;
+  margin:0 0 12px;
+}
+
+/* subtitle */
+.funnel-concepts p.subtitle{
+  color:var(--subhead-color);
+  font-size:1rem;
+  margin:0 0 56px;
+}
+
+/* card grid */
+.funnel-concepts__grid{
+  display:flex;
+  justify-content:center;
+  gap:48px;
+  flex-wrap:wrap;
+}
+
+/* card base */
+.funnel-concepts__card{
+  transition:transform .22s cubic-bezier(.25,.46,.45,.94),
+             box-shadow .22s cubic-bezier(.25,.46,.45,.94);
+  will-change:transform;
+}
+
+/* hover depth */
+.funnel-concepts__card:hover{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 12px 24px rgba(0,0,0,.08);
+}
+
+/* intersection reveal */
+.funnel-concepts .in-view{
+  animation:fc-fade-slide .6s ease-out both;
+}
+
+/* Previous concepts section styles kept for compatibility */
 .concepts { 
   max-width: 1200px; 
   margin: 60px auto 120px; 

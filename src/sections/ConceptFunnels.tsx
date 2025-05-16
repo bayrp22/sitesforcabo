@@ -1,31 +1,48 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ArrowUpRight as ArrowUpRightIcon } from 'lucide-react';
 
-// Try to import Framer Motion, but don't fail if it's not available
-let motion: any;
-try {
-  motion = require('framer-motion');
-} catch (error) {
-  // Fallback component for when framer-motion is not available
-  motion = {
-    div: 'div'
-  };
-}
-
 export default function ConceptFunnels() {
-  // Use a regular div if framer-motion is not available
-  const MotionDiv = motion.div || 'div';
+  const card1Ref = useRef<HTMLElement>(null);
+  const card2Ref = useRef<HTMLElement>(null);
+  
+  // Set up intersection observer for animation
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    
+    const handleIntersect = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+    
+    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+    
+    if (card1Ref.current) observer.observe(card1Ref.current);
+    if (card2Ref.current) observer.observe(card2Ref.current);
+    
+    return () => {
+      if (card1Ref.current) observer.unobserve(card1Ref.current);
+      if (card2Ref.current) observer.unobserve(card2Ref.current);
+    };
+  }, []);
   
   return (
-    <section className="concepts" id="concept-funnels">
-      <h2 className="concepts__title">Funnel Concepts in Action</h2>
-      <p className="concepts__subtitle">
+    <section className="funnel-concepts" id="concept-funnels">
+      <h2>Funnel Concepts in Action</h2>
+      <p className="subtitle">
         Two live prototypes already gathering data & feedback.
       </p>
 
-      <div className="concepts__grid--two-up">
+      <div className="funnel-concepts__grid">
         {/* General Funnel */}
-        <article className="concepts__card">
+        <article ref={card1Ref} className="funnel-concepts__card">
           <a href="https://wc-funnelconcept.netlify.app/" target="_blank" rel="noopener">
             <img
               className="concepts__thumb"
@@ -39,7 +56,7 @@ export default function ConceptFunnels() {
         </article>
 
         {/* Destination Funnel */}
-        <article className="concepts__card">
+        <article ref={card2Ref} className="funnel-concepts__card">
           <a href="https://wc-destinationconcept.netlify.app/" target="_blank" rel="noopener">
             <img
               className="concepts__thumb"
