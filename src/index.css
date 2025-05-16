@@ -178,3 +178,17 @@
     @apply bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-md p-6;
   }
 }
+
+/* Concepts Section Styles */
+.concepts { max-width:1024px; margin:120px auto; text-align:center; }
+.concepts__title { font-size:44px; font-weight:700; margin-bottom:6px; }
+.concepts__subtitle { color:#667085; margin-bottom:56px; }
+.concepts__grid { display:flex; gap:48px; justify-content:center; flex-wrap:wrap; }
+.concepts__card { width:460px; text-decoration:none; color:#0B0F1A; transition:transform .25s ease, box-shadow .25s ease; }
+.concepts__card:hover { transform:translateY(-6px) scale(1.03); box-shadow:0 14px 32px rgba(0,0,0,.12); }
+.concepts__thumb { border:1px solid #E5E7EB; border-radius:12px; overflow:hidden; margin-bottom:18px; }
+.concepts__thumb img { width:100%; display:block; }
+.concepts__card h3 { font-size:20px; margin:0 0 4px; }
+.concepts__card span { font-size:14px; color:#475569; }
+.concepts__cta { margin-top:64px; padding:14px 32px; border-radius:9999px; background:#0077B6; color:#fff; font-weight:600; border:none; cursor:pointer; transition:background .25s; }
+.concepts__cta:hover { background:#0096C7; }
