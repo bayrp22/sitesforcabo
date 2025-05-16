@@ -41,8 +41,8 @@ export default function ConceptFunnels() {
       </p>
 
       <div className="funnel-concepts__grid">
-        {/* General Funnel */}
-        <div className="fc-card-wrap">
+        {/* General Funnel - Left Side */}
+        <div className="fc-card-wrap fc-card-wrap--left">
           <div className="funnel-concepts__card" ref={cardOneRef}>
             <a href="https://wc-funnelconcept.netlify.app/" target="_blank" rel="noopener">
               <img
@@ -59,8 +59,8 @@ export default function ConceptFunnels() {
           </div>
         </div>
 
-        {/* Destination Funnel */}
-        <div className="fc-card-wrap">
+        {/* Destination Funnel - Right Side */}
+        <div className="fc-card-wrap fc-card-wrap--right">
           <div className="funnel-concepts__card" ref={cardTwoRef}>
             <a href="https://wc-destinationconcept.netlify.app/" target="_blank" rel="noopener">
               <img

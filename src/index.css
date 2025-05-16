@@ -278,22 +278,28 @@
   margin:0 0 56px;
 }
 
-/* card grid */
-.funnel-concepts__grid{
-  display:flex;
-  justify-content:center;
-  gap:var(--grid-gap);
-  flex-wrap:wrap;
-  margin-top:64px;               /* push grid off heading */
+/* Fixed side-by-side layout */
+.funnel-concepts__grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: var(--grid-gap);
+  margin-top: 64px;
+  flex-wrap: nowrap; /* Prevent wrapping */
 }
 
-/* card base */
+/* Card base */
 .funnel-concepts__card{
-  flex:1 1 clamp(320px,45%,520px);
-  max-width:520px;
   transition:transform .22s cubic-bezier(.25,.46,.45,.94),
              box-shadow .22s cubic-bezier(.25,.46,.45,.94);
   will-change:transform;
+}
+
+/* Specific positioning for left and right cards */
+.fc-card-wrap--left,
+.fc-card-wrap--right {
+  width: calc(50% - (var(--grid-gap) / 2));
+  max-width: 520px;
 }
 
 /* hover depth */
@@ -302,23 +308,15 @@
   box-shadow:0 12px 24px rgba(0,0,0,.08);
 }
 
-/* Always keep cards side by side */
-.funnel-concepts__grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--grid-gap);
-}
-
-/* Responsive adjustments - keep side by side but adjust sizing */
+/* Responsive adjustments - maintain side by side layout */
 @media(max-width:960px){
   .funnel-concepts__grid{
     gap: 30px;
   }
   
-  .funnel-concepts__card{
-    flex: 1 1 clamp(280px, 40%, 450px);
+  .fc-card-wrap--left,
+  .fc-card-wrap--right {
+    width: calc(50% - 15px);
   }
 }
 
@@ -327,19 +325,25 @@
     gap: 20px;
   }
   
-  .funnel-concepts__card{
-    flex: 1 1 clamp(250px, 45%, 400px);
+  .fc-card-wrap--left,
+  .fc-card-wrap--right {
+    width: calc(50% - 10px);
   }
 }
 
-/* Mobile bottom margin adjustment */
+/* Mobile adjustments - still keeping side by side */
 @media (max-width: 480px) {
-  .funnel-concepts__card {
-    margin-bottom: 1rem;
+  .funnel-concepts {
+    padding: 60px 10px;
   }
   
-  .funnel-concepts {
-    padding: 60px 16px;
+  .funnel-concepts__grid {
+    gap: 10px;
+  }
+  
+  .fc-card-wrap--left,
+  .fc-card-wrap--right {
+    width: calc(50% - 5px);
   }
 }
 
@@ -365,8 +369,6 @@
   flex-direction:column;
   align-items:center;
   text-align:center;
-  width: 100%;
-  max-width: 520px;
 }
 
 /* Concepts CTA Button */
