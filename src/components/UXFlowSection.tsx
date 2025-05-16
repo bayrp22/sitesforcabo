@@ -15,8 +15,8 @@ const mockupData = {
     title: "Pirate Package",
     mobileTitle: "Pirate Mobile",
     desktopTitle: "Pirate Desktop",
-    mobileScreenshot: "", // Group mobile
-    desktopImage: "https://i.imgur.com/mLFuB99.jpeg ", // Group desktop
+    mobileScreenshot: "https://i.imgur.com/Z4i71qv.png", // Group mobile
+    desktopImage: "https://i.imgur.com/mLFuB99.jpeg", // Group desktop
     tagline: "Swashbuckling experience"
   },
   caboEscape: {
@@ -197,7 +197,7 @@ const deviceStyles = `
 
 const UXFlowSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState('corporate');
-  
+
   // Get the current mockup data based on active tab
   const currentMockup = mockupData[activeTab as keyof typeof mockupData];
 
@@ -205,7 +205,7 @@ const UXFlowSection: React.FC = () => {
     <SectionContainer id="ux-flow" bgColor="bg-white">
       {/* Add device styles */}
       <style>{deviceStyles}</style>
-      
+
       {/* Chrome-style Tabs */}
       <div className="flex justify-center mb-10 overflow-x-auto">
         <div className="chrome-tabs inline-flex rounded-t-lg overflow-hidden">
@@ -258,10 +258,10 @@ const UXFlowSection: React.FC = () => {
                 <div className="w-full h-full rounded-[2rem] overflow-hidden relative">
                   <div className="w-full h-full flex flex-col items-center justify-center relative">
                     <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-900">
-                      <img 
+                      <img
                         src={currentMockup.mobileScreenshot}
                         alt={`${currentMockup.mobileTitle} view`}
-                        className="max-w-full max-h-full object-contain"
+                        className={`${activeTab === 'pirate' ? 'w-full h-full object-cover' : 'max-w-full max-h-full object-contain'}`}
                       />
                     </div>
                     {/* Phone notch */}
@@ -278,7 +278,7 @@ const UXFlowSection: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Right: Desktop View */}
         <div className="w-full flex justify-center relative md:-mt-4">
           <div className="desktop-mockup">
@@ -288,19 +288,19 @@ const UXFlowSection: React.FC = () => {
                 {/* iMac Display */}
                 <div className="imac-display w-[43rem] h-[30rem] rounded-lg p-2.5 flex flex-col items-center">
                   {/* Screen with flexible aspect ratio */}
-                  <div 
+                  <div
                     className="imac-screen w-full h-full rounded-sm flex items-center justify-center relative overflow-hidden"
                   >
                     {/* Content inside screen - use image for all screen types */}
                     <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-900">
-                      <img 
-                        src={currentMockup.desktopImage} 
+                      <img
+                        src={currentMockup.desktopImage}
                         alt={`${currentMockup.title} desktop view`}
                         className="max-w-full max-h-full object-contain"
                       />
                     </div>
                   </div>
-                  
+
                   {/* Bottom bar with logo */}
                   <div className="w-[95%] h-10 mt-2 bg-gray-700 rounded-b-md flex items-center justify-center">
                     <div className="text-gray-200 opacity-60 font-bold">
