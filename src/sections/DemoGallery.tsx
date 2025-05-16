@@ -3,7 +3,7 @@ import React from 'react';
 const demos = [
   { 
     title: <>Pirate <span className="site-type">Group</span></>, 
-    url: 'https://cabopirates.netlify.app/', 
+    url: 'https://wc-pirategroup.netlify.app/', 
     img: 'https://i.imgur.com/X1z5qYi.jpeg', 
     desc: 'Arrrgh! Unleash your inner pirate.' 
   },

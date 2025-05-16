@@ -16,7 +16,7 @@ const sites = [
     description: "Premium design with advanced interactive features",
     imageUrl: "/images/piratelandinghero.png",
     textColor: "text-cabo-blue",
-    url: "https://cabopirates.netlify.app/"
+    url: "https://wc-pirategroup.netlify.app/"
   },
   // Destination Funnel column sites
   {

@@ -106,7 +106,7 @@ const DeliveryTimelineSection: React.FC = () => {
             <div className="pl-8 mb-1">
               <span className="text-lg font-semibold text-gray-800">{phase.cardTitle}</span>
             </div>
-            <div className="fade-card-container relative z-10 rounded-lg overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/95 before:via-white/80 before:to-transparent before:border-l-4 before:border-l-cabo-turquoise before:rounded-l-lg before:-z-10 before:shadow-[-8px_0_15px_-3px_rgba(0,0,0,0.1)]">
+            <div className="fade-card-container relative z-10 rounded-lg overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/95 before:via-white/80 before:to-transparent before:rounded-lg before:-z-10 before:shadow-[-8px_0_15px_-3px_rgba(0,0,0,0.1)]">
               <Card className={cn("relative border-0 shadow-none p-8 bg-transparent")}>
                 <div className="grid grid-cols-3 gap-6">
                   <div className="flex flex-col items-center justify-center">

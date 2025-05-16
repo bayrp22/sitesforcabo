@@ -38,7 +38,7 @@ const plans = [
     name: "Fleet Bundle",
     price: "$750",
     currency: "USD",
-    description: "Best value for multi-vessel rollouts",
+    description: "For 15+ Site Rollouts",
     features: [
       "All Single Storefront features",
       "Priority launch scheduling",

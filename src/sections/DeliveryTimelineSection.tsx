@@ -40,7 +40,7 @@ export default function DeliveryTimelineSection() {
             <h4><span role="img" aria-label="package">📦</span> Assets & Branding</h4>
             <ul>
               <li>Brand Portfolio: Logos, color palette, typography guidelines</li>
-              <li>Vessel Imagery: High-res hero shots & 4–6 highlight photos per boat</li>
+              <li>Vessel Imagery: High-res hero shots & 20+ highlight photos per boat</li>
               <li>Content Assets: Experience descriptions, pricing, FAQs</li>
             </ul>
           </div>

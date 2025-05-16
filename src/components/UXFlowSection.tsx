@@ -7,7 +7,7 @@ const mockupData = {
     title: "Template Microsite",
     mobileTitle: "Template Mobile",
     desktopTitle: "Template Desktop",
-    mobileScreenshot: "https://i.imgur.com/Lvy5soi.jpeg", // Private mobile
+    mobileScreenshot: "https://i.imgur.com/tmygosw.png", // Private mobile
     desktopImage: "https://i.imgur.com/xWB74sr.jpeg", // Private desktop
     tagline: "Tap-optimized interface"
   },
@@ -15,7 +15,7 @@ const mockupData = {
     title: "Pirate Package",
     mobileTitle: "Pirate Mobile",
     desktopTitle: "Pirate Desktop",
-    mobileScreenshot: "https://i.imgur.com/X1z5qYi.jpeg", // Group mobile
+    mobileScreenshot: "", // Group mobile
     desktopImage: "https://i.imgur.com/mLFuB99.jpeg ", // Group desktop
     tagline: "Swashbuckling experience"
   },
@@ -196,7 +196,7 @@ const deviceStyles = `
 `;
 
 const UXFlowSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('template');
+  const [activeTab, setActiveTab] = useState('corporate');
   
   // Get the current mockup data based on active tab
   const currentMockup = mockupData[activeTab as keyof typeof mockupData];
