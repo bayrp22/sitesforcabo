@@ -1,7 +1,49 @@
-import { CheckIcon, BoltIcon, GlobeAltIcon, DocumentTextIcon, ChartBarIcon, CpuChipIcon, PhotoIcon } from "@heroicons/react/24/solid";
+import { CheckIcon, BoltIcon, GlobeAltIcon, DocumentTextIcon, ChartBarIcon, CpuChipIcon, PhotoIcon, XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import SectionContainer from "./SectionContainer";
+import React, { useState } from 'react';
+
+// Image gallery for the modal
+const imageGallery = [
+  {
+    src: "https://i.imgur.com/GAlfbSx.png",
+    alt: "Speed optimization dashboard"
+  },
+  {
+    src: "https://i.imgur.com/A6cHnqZ.png",
+    alt: "SEO performance metrics"
+  },
+  {
+    src: "https://i.imgur.com/wgbIgcy.png ",
+    alt: "Keyword ranking analysis"
+  },
+  {
+    src: "https://i.imgur.com/iewUFQe.png ",
+    alt: "Conversion tracking metrics"
+  }
+];
 
 export default function SeoPerformanceSection() {
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const toggleImageModal = () => {
+    setShowImageModal(!showImageModal);
+  };
+  
+  const nextImage = (e) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === imageGallery.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+  
+  const prevImage = (e) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? imageGallery.length - 1 : prevIndex - 1
+    );
+  };
+  
   return (
     <SectionContainer id="seo-performance" bgColor="bg-white py-16 mt-4">
       <div className="text-center mb-12">
@@ -110,13 +152,16 @@ export default function SeoPerformanceSection() {
               </ul>
             </div>
           </div>
-          {/* Image Optimization - New 6th Card */}
+          {/* Image Card */}
           <div className="flex items-start">
             <div className="w-full">
-              <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
+              <div 
+                className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200 cursor-pointer transition-transform hover:shadow-md hover:scale-[1.02]"
+                onClick={toggleImageModal}
+              >
                 <img 
-                  src="https://i.imgur.com/JkbS8Fo.jpg" 
-                  alt="Speed optimization dashboard" 
+                  src={imageGallery[0].src}
+                  alt={imageGallery[0].alt}
                   className="w-full h-auto"
                 />
               </div>
@@ -139,6 +184,52 @@ export default function SeoPerformanceSection() {
           </div>
         </div>
       </div>
+      
+      {/* Image Preview Modal */}
+      {showImageModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90" onClick={toggleImageModal}>
+          <div className="relative max-w-5xl max-h-[90vh] w-full mx-4">
+            {/* Close button */}
+            <button 
+              className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors z-20"
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleImageModal();
+              }}
+            >
+              <XMarkIcon className="w-6 h-6 text-gray-700" />
+            </button>
+            
+            {/* Navigation buttons */}
+            <button 
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:bg-gray-100 transition-colors z-20"
+              onClick={prevImage}
+            >
+              <ChevronLeftIcon className="w-6 h-6 text-gray-700" />
+            </button>
+            
+            <button 
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:bg-gray-100 transition-colors z-20"
+              onClick={nextImage}
+            >
+              <ChevronRightIcon className="w-6 h-6 text-gray-700" />
+            </button>
+            
+            {/* Image counter */}
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 px-4 py-2 rounded-full text-white z-20">
+              {currentImageIndex + 1} / {imageGallery.length}
+            </div>
+            
+            {/* Current image */}
+            <img 
+              src={imageGallery[currentImageIndex].src}
+              alt={imageGallery[currentImageIndex].alt}
+              className="w-full h-auto rounded-lg shadow-2xl object-contain max-h-[90vh]"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
     </SectionContainer>
   );
 } 

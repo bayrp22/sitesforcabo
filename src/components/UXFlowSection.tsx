@@ -7,25 +7,41 @@ const mockupData = {
     title: "Template Microsite",
     mobileTitle: "Template Mobile",
     desktopTitle: "Template Desktop",
-    mobileScreenshot: "#A0D8C5", // Mint green
-    desktopImage: "/images/templatelandinghero.png", // Template desktop image
+    mobileScreenshot: "https://i.imgur.com/Lvy5soi.jpeg", // Private mobile
+    desktopImage: "https://i.imgur.com/FZPxP3V.jpeg", // Private desktop
     tagline: "Tap-optimized interface"
   },
   pirate: {
     title: "Pirate Package",
     mobileTitle: "Pirate Mobile",
     desktopTitle: "Pirate Desktop",
-    mobileScreenshot: "#F6D55C", // Gold/yellow
-    desktopImage: "/images/piratelandinghero.png", // Pirate desktop image
+    mobileScreenshot: "https://i.imgur.com/X1z5qYi.jpeg", // Group mobile
+    desktopImage: "https://i.imgur.com/a9WwLe3.jpeg", // Group desktop
     tagline: "Swashbuckling experience"
   },
   caboEscape: {
     title: "Escape Route",
     mobileTitle: "Escape Route Mobile",
     desktopTitle: "Escape Route Desktop",
-    mobileScreenshot: "#3CAEA3", // Teal
-    desktopImage: "#20639B", // Deep blue - using color as image for now
+    mobileScreenshot: "https://i.imgur.com/5U3aP5r.jpeg", // Destination mobile
+    desktopImage: "https://i.imgur.com/SOty7KM.pngg", // Destination desktop
     tagline: "Adventure awaits"
+  },
+  vesselShowcase: {
+    title: "Vessel Showcase",
+    mobileTitle: "Vessel Mobile",
+    desktopTitle: "Vessel Desktop",
+    mobileScreenshot: "https://i.imgur.com/N7uN7QZ.png", // Vessel mobile
+    desktopImage: "https://i.imgur.com/KhxPHfg.png", // Vessel desktop
+    tagline: "Your vessel, your story"
+  },
+  corporate: {
+    title: "Corporate Fleet",
+    mobileTitle: "Corporate Mobile",
+    desktopTitle: "Corporate Desktop",
+    mobileScreenshot: "https://i.imgur.com/LyZCxnP.png", // Corporate mobile
+    desktopImage: "https://i.imgur.com/hyAj5YY.png", // Corporate desktop
+    tagline: "Enterprise management"
   }
 };
 
@@ -98,13 +114,15 @@ const deviceStyles = `
     margin: 0 3px;
     transform-origin: bottom center;
     background-color: #f0f0f4;
+    width: 130px; /* Fixed width for all tabs */
+    text-align: center; /* Center the text */
   }
 
   .chrome-tab.active {
-    background-color: #f7f7fa;
-    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+    background-color: #e0f2ff;
+    box-shadow: 0 -3px 10px rgba(0, 120, 215, 0.15);
     z-index: 10;
-    transform: translateY(-3px) scale(1.05);
+    transform: translateY(-3px);
   }
 
   .chrome-tab:not(.active) {
@@ -113,8 +131,7 @@ const deviceStyles = `
   }
 
   .chrome-tab:not(.active):hover {
-    background-color: #f0f0f4;
-    transform: translateY(-2px);
+    background-color: #e6f2ff;
   }
 
   .tab-bottom-border {
@@ -131,6 +148,7 @@ const deviceStyles = `
 
   .chrome-tab.active .tab-bottom-border {
     transform: scaleX(1);
+    background-color: #0078d7; /* Wild Cabo blue color for active tab indicator */
   }
 
   /* Tab content animation */
@@ -189,31 +207,45 @@ const UXFlowSection: React.FC = () => {
       <style>{deviceStyles}</style>
       
       {/* Chrome-style Tabs */}
-      <div className="flex justify-center mb-10">
+      <div className="flex justify-center mb-10 overflow-x-auto">
         <div className="chrome-tabs inline-flex rounded-t-lg overflow-hidden">
           <div
-            className={`chrome-tab px-10 py-5 ${activeTab === 'template' ? 'active' : ''}`}
-            onClick={() => setActiveTab('template')}
-          >
-            <span className="text-lg font-medium">Template</span>
-            <div className="tab-bottom-border"></div>
-              </div>
-          <div
-            className={`chrome-tab px-10 py-5 ${activeTab === 'pirate' ? 'active' : ''}`}
+            className={`chrome-tab flex items-center justify-center ${activeTab === 'pirate' ? 'active' : ''}`}
             onClick={() => setActiveTab('pirate')}
           >
-            <span className="text-lg font-medium">Pirate</span>
+            <span className="text-lg font-medium">Group</span>
             <div className="tab-bottom-border"></div>
-                </div>
+          </div>
           <div
-            className={`chrome-tab px-10 py-5 ${activeTab === 'caboEscape' ? 'active' : ''}`}
+            className={`chrome-tab flex items-center justify-center ${activeTab === 'template' ? 'active' : ''}`}
+            onClick={() => setActiveTab('template')}
+          >
+            <span className="text-lg font-medium">Private</span>
+            <div className="tab-bottom-border"></div>
+          </div>
+          <div
+            className={`chrome-tab flex items-center justify-center ${activeTab === 'vesselShowcase' ? 'active' : ''}`}
+            onClick={() => setActiveTab('vesselShowcase')}
+          >
+            <span className="text-lg font-medium">Vessel</span>
+            <div className="tab-bottom-border"></div>
+          </div>
+          <div
+            className={`chrome-tab flex items-center justify-center ${activeTab === 'caboEscape' ? 'active' : ''}`}
             onClick={() => setActiveTab('caboEscape')}
           >
-            <span className="text-lg font-medium">Cabo Escape</span>
+            <span className="text-lg font-medium">Destination</span>
             <div className="tab-bottom-border"></div>
-                    </div>
-                  </div>
-                    </div>
+          </div>
+          <div
+            className={`chrome-tab flex items-center justify-center ${activeTab === 'corporate' ? 'active' : ''}`}
+            onClick={() => setActiveTab('corporate')}
+          >
+            <span className="text-lg font-medium">Corporate</span>
+            <div className="tab-bottom-border"></div>
+          </div>
+        </div>
+      </div>
 
       {/* 1:2 Layout for devices, no background wrapper */}
       <div className={`tab-content tab-animate-in grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 items-center p-6 max-w-6xl mx-auto`}>
@@ -223,15 +255,18 @@ const UXFlowSection: React.FC = () => {
             {/* Animated iPhone */}
             <div className="flex justify-center">
               <div className="relative iphone-body w-64 h-[32rem] bg-gray-800 rounded-[2.5rem] border-4 border-gray-700 shadow-xl p-2">
-                <div className="w-full h-full rounded-[2rem] overflow-hidden relative" style={{ backgroundColor: currentMockup.mobileScreenshot }}>
-                  {/* Content inside the phone screen */}
-                  <div className="w-full h-full flex flex-col items-center justify-center text-white">
-                    <p className="font-bold text-lg">{currentMockup.mobileTitle}</p>
-                    <p className="text-base opacity-80">{currentMockup.tagline}</p>
+                <div className="w-full h-full rounded-[2rem] overflow-hidden relative">
+                  <div className="w-full h-full flex flex-col items-center justify-center relative">
+                    <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-900">
+                      <img 
+                        src={currentMockup.mobileScreenshot}
+                        alt={`${currentMockup.mobileTitle} view`}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                    {/* Phone notch */}
+                    <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-gray-900 rounded-full border-2 border-gray-800 z-10"></div>
                   </div>
-
-                  {/* Phone notch */}
-                  <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-gray-900 rounded-full border-2 border-gray-800"></div>
                 </div>
 
                 {/* Side buttons */}
@@ -242,8 +277,8 @@ const UXFlowSection: React.FC = () => {
               </div>
             </div>
           </div>
-              </div>
-              
+        </div>
+        
         {/* Right: Desktop View */}
         <div className="w-full flex justify-center relative md:-mt-4">
           <div className="desktop-mockup">
@@ -251,29 +286,19 @@ const UXFlowSection: React.FC = () => {
             <div className="flex justify-center">
               <div className="imac-container flex flex-col items-center scale-110 transform origin-top">
                 {/* iMac Display */}
-                <div className="imac-display w-[40rem] h-[26rem] rounded-lg p-2.5 flex flex-col items-center">
-                  {/* Screen - 16:10 aspect ratio */}
+                <div className="imac-display w-[43rem] h-[30rem] rounded-lg p-2.5 flex flex-col items-center">
+                  {/* Screen with flexible aspect ratio */}
                   <div 
                     className="imac-screen w-full h-full rounded-sm flex items-center justify-center relative overflow-hidden"
-                    style={{ 
-                      backgroundColor: activeTab === 'caboEscape' ? currentMockup.desktopImage : '#111' 
-                    }}
                   >
-                    {/* Content inside screen - use image for template and pirate, solid color for cabo */}
-                    {(activeTab === 'template' || activeTab === 'pirate') ? (
-                      <div className="absolute inset-0 w-full h-full">
-                        <img 
-                          src={currentMockup.desktopImage} 
-                          alt={`${currentMockup.title} desktop view`}
-                          className={`w-full h-full ${activeTab === 'template' ? 'object-contain' : 'object-cover'}`}
-                        />
+                    {/* Content inside screen - use image for all screen types */}
+                    <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-900">
+                      <img 
+                        src={currentMockup.desktopImage} 
+                        alt={`${currentMockup.title} desktop view`}
+                        className="max-w-full max-h-full object-contain"
+                      />
                     </div>
-                    ) : (
-                      <div className="text-white text-center">
-                        <p className="font-bold text-xl">{currentMockup.desktopTitle}</p>
-                        <p className="text-base opacity-80">Full-featured experience</p>
-                      </div>
-                    )}
                   </div>
                   
                   {/* Bottom bar with logo */}
