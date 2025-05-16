@@ -99,7 +99,7 @@ const TierShowcaseSection: React.FC = () => {
               className="bg-white rounded-lg shadow-md border overflow-hidden"
               style={{ 
                 transition: "transform 200ms, box-shadow 200ms",
-                height: "480px" // Reduced height to account for removed icon
+                height: "520px" // Increased height from 480px to 520px
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'scale(1.02)';
@@ -136,19 +136,19 @@ const TierShowcaseSection: React.FC = () => {
               </div>
               
               {/* Features List */}
-              <div className="px-6 pt-4 pb-8 h-56">
-                <ul className="space-y-4">
+              <div className="px-6 pt-4 pb-8 h-64">
+                <ul className="space-y-6">
                 {tier.features.map((feature, i) => (
-                    <li key={i} className="flex items-start h-10">
-                    <span className="bg-cabo-gradient w-4 h-4 rounded-full mr-2 mt-1 flex-shrink-0"></span>
-                      <span className="text-sm">{feature}</span>
+                    <li key={i} className="flex items-start">
+                    <span className="bg-cabo-gradient w-4 h-4 rounded-full mr-3 mt-1 flex-shrink-0"></span>
+                      <span className="text-sm text-gray-700 leading-relaxed">{feature}</span>
                   </li>
                 ))}
               </ul>
               </div>
               
               {/* Hook Line (replaced CTA Link) */}
-              <div className="h-16 flex items-center justify-center mt-4">
+              <div className="h-16 flex items-center justify-center mt-8"> {/* Increased margin-top from mt-4 to mt-8 */}
                 <p className="text-[#059D9C] font-medium text-center">
                   {tier.hookLine}
                 </p>
