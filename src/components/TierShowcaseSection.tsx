@@ -79,9 +79,16 @@ const TierShowcaseSection: React.FC = () => {
       {/* Section Content */}
       <div className="relative z-10">
         {/* Section Title */}
-        <div className="text-center mb-10">
-          <h2 className="section-title text-4xl font-bold inline-flex items-center">
-            <LayoutGrid className="w-9 h-9 mr-3 text-cabo-blue" />
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0077B6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-1">
+              <rect x="3" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="14" width="7" height="7" rx="1" />
+              <rect x="3" y="14" width="7" height="7" rx="1" />
+            </svg>
+          </div>
+          <h2 className="section-title text-4xl font-bold">
             Site Tiers
           </h2>
         </div>
