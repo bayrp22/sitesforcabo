@@ -1,55 +1,83 @@
 import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
-// Demo data
 const demos = [
-  {
-    title: "Homepage Design",
-    image: "https://i.imgur.com/HIVMIo3.png"
+  { 
+    title: <>Pirate <span className="site-type">Group</span></>, 
+    url: 'https://cabopirates.netlify.app/', 
+    img: 'https://i.imgur.com/X1z5qYi.jpeg', 
+    desc: 'Arrrgh! Unleash your inner pirate.' 
   },
-  {
-    title: "Tour Booking Experience",
-    image: "https://i.imgur.com/2dcxLvY.jpeg"
+  { 
+    title: <>Cabo Wave <span className="site-type">Private</span></>, 
+    url: 'https://cabowaveprivate.framer.website/', 
+    img: 'https://i.imgur.com/oWupJDh.jpeg', 
+    desc: 'Private yacht charters & snorkeling.' 
   },
-  {
-    title: "Mobile Responsive Layout",
-    image: "https://i.imgur.com/6yTxGDw.jpg"
+  { 
+    title: <>Tu Enamorado <span className="site-type">Vessel</span></>, 
+    url: 'https://tuenamoradoprivate.framer.website/', 
+    img: 'https://i.imgur.com/nYhcxnd.png', 
+    desc: 'Luxury yacht experience for couples.' 
   },
-  {
-    title: "Tour Details Page",
-    image: "https://i.imgur.com/LThJDWA.jpg"
+  { 
+    title: <><span className="site-type">Destination</span> Funnel</>, 
+    url: 'https://wildcabodestination.framer.website/', 
+    img: 'https://i.imgur.com/gXvZrKp.png', 
+    desc: 'Full marketing funnel demo.' 
+  },
+  { 
+    title: <><span className="site-type">Corporate</span> Site</>, 
+    url: 'https://wildcabocorporate.framer.website/', 
+    img: 'https://i.imgur.com/BWvy16S.png', 
+    desc: 'Enterprise fleet management portal.' 
   }
 ];
 
 export default function DemoGallery() {
-  const settings = { 
-    dots: true, 
-    arrows: false, 
-    infinite: true, 
-    speed: 400, 
-    slidesToShow: 1, 
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    pauseOnHover: true
-  };
-
   return (
-    <section className="demo-gallery" id="demo-gallery">
-      <h2 className="demo-gallery__title">Live Site Samples</h2>
-      <p className="section-subtitle">Browse through our collection of demo designs</p>
-
-      <div className="max-w-4xl mx-auto">
-        <Slider {...settings}>
-          {demos.map(d => (
-            <div key={d.title} className="demo-gallery__slide">
-              <img src={d.image} alt={d.title} className="demo-gallery__img"/>
-              <p className="demo-gallery__caption">{d.title}</p>
+    <section id="demos" className="live-demos section-container">
+      <div className="demos-content">
+        <h2 className="section-title">Live Demos</h2>
+        <p className="demos-intro">These are fully functional builds, not just concepts.</p>
+        
+        <div className="demos-list">
+          {demos.map((demo, index) => (
+            <div key={index} className="demo-card">
+              <div className="demo-card-left">
+                <a
+                  href={demo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="demo-image-link"
+                >
+                  <div className="demo-image-wrapper">
+                    <img src={demo.img} alt={typeof demo.title === 'string' ? demo.title : 'Demo site'} className="demo-image" />
+                    <div className="demo-overlay">
+                      <span className="preview-btn">Preview Site</span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div className="demo-card-right">
+                <h3 className="demo-title">{demo.title}</h3>
+                <p className="demo-desc">{demo.desc}</p>
+                <a 
+                  href={demo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="demo-link"
+                >
+                  Visit Site →
+                </a>
+              </div>
             </div>
           ))}
-        </Slider>
+        </div>
+        
+        <p className="demos-note">
+          We're not showing concepts—we have functional builds for every tier.
+        </p>
       </div>
     </section>
   );

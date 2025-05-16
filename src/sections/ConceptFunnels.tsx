@@ -35,9 +35,9 @@ export default function ConceptFunnels() {
   
   return (
     <section className="funnel-concepts" id="concept-funnels">
-      <h2>Funnel Concepts in Action</h2>
+      <h2>Prototypes in Action</h2>
       <p className="subtitle">
-        Two live prototypes already gathering data & feedback.
+        Two live prototypes to show our general direction & some insight into funnel psychology.
       </p>
 
       <div className="funnel-concepts__grid">
@@ -54,8 +54,8 @@ export default function ConceptFunnels() {
             </a>
           </div>
           <div className="fc-caption">
-            <p className="card-title">General Funnel (Template)</p>
-            <p className="card-sub">High-level marketing entry point</p>
+            <p className="card-title">Funnel Concept Page</p>
+            <p className="card-sub">Method behind our site hierarchy</p>
           </div>
         </div>
 
@@ -72,8 +72,8 @@ export default function ConceptFunnels() {
             </a>
           </div>
           <div className="fc-caption">
-            <p className="card-title">Destination Funnel (Cabo-specific)</p>
-            <p className="card-sub">Laser-focused on tourist searches</p>
+            <p className="card-title">Destination Funnel</p>
+            <p className="card-sub">Laser-focused on tourist searches for Los Cabos</p>
           </div>
         </div>
       </div>

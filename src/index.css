@@ -291,12 +291,12 @@
 /* Card base */
 .funnel-concepts__card {
   position: relative;
-  overflow: hidden; /* Keep scaled image contained */
   border-radius: 12px;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  transform-origin: center;
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, box-shadow;
 }
 
 /* Ensure the anchor tag doesn't block the scaling */
@@ -305,9 +305,18 @@
   width: 100%;
 }
 
-/* Funnel concepts card container hover effect */
+/* Image styling */
+.funnel-concepts__card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+}
+
+/* The complete hover effect on the card wrapper */
 .fc-card-wrap:hover .funnel-concepts__card {
-  transform: scale(1.1);
+  transform: scale(1.05);
   box-shadow: 0 14px 28px rgba(0,0,0,.14);
   z-index: 2;
 }
@@ -388,6 +397,7 @@
   flex-direction:column;
   align-items:center;
   text-align:center;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Concepts CTA Button */
@@ -406,11 +416,203 @@
   background:#006BB3; 
 }
 
-/* Thumb transition */
+/* Demo Gallery Styles - Vertical Cards */
+.live-demos {
+  padding: 5rem 0;
+  text-align: center;
+  position: relative;
+  background: transparent;
+}
+
+.demos-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+  display: inline-block;
+  font-size: 2.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.demos-intro {
+  margin-bottom: 4rem;
+  color: #64748b;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.demos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.demo-card {
+  display: flex;
+  gap: 2.5rem;
+  text-align: left;
+  align-items: center;
+}
+
+.demo-card:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.demo-card-left {
+  flex: 1;
+  max-width: 500px;
+}
+
+.demo-card-right {
+  flex: 1;
+}
+
+.demo-image-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.demo-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.demo-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.demo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.preview-btn {
+  background: rgba(0, 119, 182, 0.9);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.demo-image-wrapper:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.demo-image-wrapper:hover .demo-overlay {
+  opacity: 1;
+}
+
+.demo-title {
+  font-size: 1.8rem;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.site-type {
+  color: #0077b6;
+  font-weight: 700;
+}
+
+.demo-desc {
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.demo-link {
+  display: inline-block;
+  color: #0077b6;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 0;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.demo-link:hover {
+  color: #0096c7;
+}
+
+.demos-note {
+  margin-top: 4rem;
+  color: #475569;
+  font-style: italic;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive Styles for Demo Cards */
+@media (max-width: 900px) {
+  .demo-card,
+  .demo-card:nth-child(even) {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .demo-card-left,
+  .demo-card-right {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .demo-card-right {
+    text-align: center;
+  }
+  
+  .demo-title {
+    font-size: 1.5rem;
+  }
+  
+  .demo-desc {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .live-demos {
+    padding: 3rem 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .demos-list {
+    gap: 3rem;
+  }
+}
+
+/* Thumb transition - removing duplicate styling as it's now handled in the card image styling */
 .concepts__thumb{
   width:100%;
-  border-radius:12px;
-  border:1px solid #E5E7EB;
   display:block;
 }
 
@@ -457,3 +659,37 @@
 
 .concepts__card h3{margin:18px 0 4px;font-size:20px;}
 .concepts__card p{margin:0;color:#475569;font-size:14px;}
+
+/* Enhanced scrolling for mobile */
+@media (max-width: 768px) {
+  .slider-nav-buttons {
+    padding: 0 10px;
+  }
+  
+  .slider-nav-button {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  
+  /* Ensure no overflow clipping on mobile */
+  .live-demos, 
+  .live-demos__content,
+  .slider-container,
+  .live-demos__slider,
+  .live-demos__slider .slick-list {
+    overflow: visible !important;
+  }
+  
+  /* Force horizontal scrolling behavior */
+  .live-demos__slider .slick-track {
+    touch-action: pan-x !important;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .live-demos__slider .slick-track::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
