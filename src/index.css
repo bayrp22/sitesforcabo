@@ -293,6 +293,17 @@
   transition:transform .22s cubic-bezier(.25,.46,.45,.94),
              box-shadow .22s cubic-bezier(.25,.46,.45,.94);
   will-change:transform;
+  overflow: hidden; /* Keep scaled image contained */
+}
+
+/* Funnel concepts card image hover effect */
+.funnel-concepts__card img {
+  transition: transform 0.3s ease-out;
+  transform-origin: center;
+}
+
+.funnel-concepts__card:hover img {
+  transform: scale(1.1);
 }
 
 /* Specific positioning for left and right cards */
@@ -305,7 +316,7 @@
 /* hover depth */
 .funnel-concepts__card:hover{
   transform:translateY(-4px) scale(1.02);
-  box-shadow:0 12px 24px rgba(0,0,0,.08);
+  box-shadow:0 14px 28px rgba(0,0,0,.14);
 }
 
 /* Responsive adjustments - maintain side by side layout */
