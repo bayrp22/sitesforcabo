@@ -16,7 +16,7 @@ const tiers = [
     highlight: false
   },
   {
-    title: "Shared Tour\nSite",
+    title: "Shared Tour Site",
     description: "Group adventure tours with local guides",
     features: [
       "Simplify group scheduling and availability", 
@@ -28,7 +28,7 @@ const tiers = [
     highlight: false
   },
   {
-    title: "Cabo Destination Funnel",
+    title: "Destination Funnel",
     description: "Full marketing funnel for all services",
     features: [
       "Drive conversions with dynamic landing pages", 

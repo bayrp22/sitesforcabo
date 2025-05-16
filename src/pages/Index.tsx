@@ -5,9 +5,11 @@ import UXFlowSection from '@/components/UXFlowSection';
 import SiteDemoSection from '@/components/SiteDemoSection';
 import PricingTableSection from '@/components/PricingTableSection';
 import DeliveryTimelineSection from '@/components/DeliveryTimelineSection';
-import ProposalSummarySection from '@/components/ProposalSummarySection';
 import SeoPerformanceSection from '@/components/SeoPerformanceSection';
-import Footer from '@/components/Footer';
+import ConceptFunnels from '@/sections/ConceptFunnels';
+import ChooseMatrix from '@/sections/ChooseMatrix';
+import DemoGallery from '@/sections/DemoGallery';
+import ProposalSummary from '@/sections/ProposalSummary';
 
 const Index = () => {
   return (
@@ -15,22 +17,24 @@ const Index = () => {
       <main className="snap-container">
       <HeroSection />
       
+      <ConceptFunnels />
+      
       <TierShowcaseSection />
       
+      <DemoGallery />
+      
+      <SeoPerformanceSection />
+      
       <UXFlowSection />
-        
-        <SeoPerformanceSection />
       
-      <SiteDemoSection />
-      
-      <PricingTableSection />
+      <ChooseMatrix />
       
       <DeliveryTimelineSection />
       
-      <ProposalSummarySection />
-      </main>
+      <PricingTableSection />
       
-      <Footer />
+      <ProposalSummary />
+      </main>
     </div>
   );
 };

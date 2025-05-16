@@ -5,7 +5,7 @@ export default function SeoPerformanceSection() {
   return (
     <SectionContainer id="seo-performance" bgColor="bg-white py-16 mt-4">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold">Basic SEO &amp; Performance</h2>
+        <h2 className="text-3xl md:text-4xl font-bold">Performance, SEO &amp; Analytics</h2>
         <p className="mt-2 text-lg text-gray-600">
           Core optimizations to boost visibility and speed
         </p>
