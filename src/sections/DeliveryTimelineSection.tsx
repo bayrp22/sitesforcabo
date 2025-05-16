@@ -137,9 +137,12 @@ export default function DeliveryTimelineSection() {
                   {deliverySteps.map((step, index) => (
                     <React.Fragment key={index}>
                       <div className="step" role="listitem">
-                        <div className="step-circle" aria-label={`Step ${index + 1}: ${step.name}`}>{index + 1}</div>
+                        <div className="step-circle" aria-label={`Step ${index + 1}: ${step.name}`}>
+                          {index + 1}
+                        </div>
                         <div className="step-label">
-                          {step.name}<br/><small>{step.description}</small>
+                          {step.name}
+                          <small>{step.description}</small>
                         </div>
                       </div>
                       {index < deliverySteps.length - 1 && (

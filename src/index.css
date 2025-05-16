@@ -714,7 +714,7 @@
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: var(--cabo-blue);
+  color: var(--cabo-blue, #0077B6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -764,21 +764,20 @@
 
 /* Improved content container for better alignment */
 .delivery-timeline .dt-content-container {
-  max-width: 900px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
 .delivery-timeline .dt-columns {
-  display: flex; 
-  justify-content: center;
   position: relative;
-  min-height: 400px; /* Prevent layout shift when toggling panels */
+  min-height: 450px; /* Prevent layout shift when toggling panels */
 }
 
 .delivery-timeline .dt-column {
   position: absolute;
+  left: 0;
+  right: 0;
   width: 100%;
-  max-width: 600px;
   background: white;
   padding: 2rem;
   border-radius: 0.75rem;
@@ -893,16 +892,17 @@
   font-weight: bold;
   background: linear-gradient(90deg, #4ecdc4, #003f8a);
   color: #fff;
+  z-index: 1;
 }
 
 .timeline-list {
   margin: 0 0 1.5rem 0;
   padding-left: 1.25rem;
+  list-style-position: outside;
 }
 
 .timeline-list li {
   margin-bottom: 0.75rem;
-  position: relative;
   padding-left: 0.25rem;
   line-height: 1.5;
   color: #4A5568;
@@ -912,7 +912,7 @@
 .steps {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
   margin-top: 2rem;
   justify-content: center;
@@ -921,11 +921,12 @@
 .step {
   display: flex;
   align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 .step-circle {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   background: #4ecdc4;
   color: #fff;
@@ -934,6 +935,7 @@
   justify-content: center;
   font-weight: bold;
   transition: transform 150ms ease;
+  flex-shrink: 0;
 }
 
 .step-circle:hover {
@@ -941,18 +943,21 @@
 }
 
 .step-label {
-  margin-left: 0.5rem;
+  margin-left: 0.75rem;
   text-align: left;
+  line-height: 1.4;
 }
 
 .step-label small {
   font-size: 0.75rem;
   color: #718096;
+  display: block;
+  margin-top: 0.25rem;
 }
 
 .step-arrow {
   color: #999;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   transition: color 150ms ease;
 }
 
@@ -963,7 +968,7 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .delivery-timeline .dt-columns {
-    min-height: 500px; /* Adjusted height for mobile */
+    min-height: 550px; /* Adjusted height for mobile */
   }
   
   .you-provide-list {
@@ -975,12 +980,14 @@
   .steps {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 1.5rem;
+    margin-left: 1rem;
   }
   
   .steps .step-arrow {
     transform: rotate(90deg);
     margin-left: 1rem;
+    margin-bottom: 0.5rem;
   }
   
   .delivery-timeline .dt-column {
@@ -988,7 +995,12 @@
   }
   
   .delivery-timeline .dt-columns {
-    min-height: 550px; /* More space on mobile */
+    min-height: 600px; /* More space on mobile */
+  }
+  
+  .step-circle {
+    width: 2.25rem;
+    height: 2.25rem;
   }
 }
 
