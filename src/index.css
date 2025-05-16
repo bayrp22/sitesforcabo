@@ -821,6 +821,86 @@
   border-radius: 0 0.25rem 0.25rem 0;
 }
 
+/* New styles for enhanced delivery timeline */
+.delivery-card {
+  position: relative;
+  padding-top: 2.5rem;
+}
+
+.delivery-card .ribbon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0 0 4px 0;
+  font-weight: bold;
+  background: linear-gradient(90deg, #4ecdc4, #003f8a);
+  color: #fff;
+}
+
+.timeline-list {
+  margin: 0 0 1.5rem 0;
+  padding-left: 1.25rem;
+}
+
+.timeline-list li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 0.25rem;
+  line-height: 1.5;
+  color: #4A5568;
+}
+
+.steps {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+}
+
+.step-circle {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #4ecdc4;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: transform 150ms ease;
+}
+
+.step-circle:hover {
+  transform: scale(1.1);
+}
+
+.step-label {
+  margin-left: 0.5rem;
+  text-align: left;
+}
+
+.step-label small {
+  font-size: 0.75rem;
+  color: #718096;
+}
+
+.step-arrow {
+  color: #999;
+  font-size: 1.25rem;
+  transition: color 150ms ease;
+}
+
+.step-arrow:hover {
+  color: #4ecdc4;
+}
+
 @media (max-width: 768px) {
   .delivery-timeline .dt-columns {
     grid-template-columns: 1fr;
@@ -828,6 +908,19 @@
   
   .delivery-timeline .dt-column:not(.active) {
     display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .steps {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .steps .step-arrow {
+    transform: rotate(90deg);
+    margin-left: 1rem;
   }
 }
 
