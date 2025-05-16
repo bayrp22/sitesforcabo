@@ -94,7 +94,7 @@ const TierShowcaseSection: React.FC = () => {
               className="bg-white rounded-lg shadow-md border overflow-hidden"
               style={{ 
                 transition: "transform 200ms, box-shadow 200ms",
-                height: "500px" // Reduced height since we removed the hookLine
+                height: "510px" // Increased height from 500px to 510px to accommodate more padding
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'scale(1.02)';
@@ -131,7 +131,7 @@ const TierShowcaseSection: React.FC = () => {
               </div>
               
               {/* Features List */}
-              <div className="px-6 pt-4 pb-8 h-64">
+              <div className="px-6 pt-4 pb-12">
                 <ul className="space-y-6">
                 {tier.features.map((feature, i) => (
                     <li key={i} className="flex items-start">
