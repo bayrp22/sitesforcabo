@@ -6,6 +6,21 @@ export default function DeliveryTimelineSection() {
   const containerRef = useRef(null)
   const inView = useInView(containerRef, { threshold: 0.3 })
 
+  const youProvideItems = [
+    "Brand Portfolio: Logos, color palette, typography guidelines",
+    "Vessel Imagery: High-res hero shots & 4–6 highlight photos per boat",
+    "FareHarbor Integration Details: API/webhook credentials & dev docs",
+    "Domain Configuration: DNS access, host records, SSL requirements",
+    "Content Assets: Experience descriptions, pricing, FAQs",
+    "Legal & Billing Info: Terms of service, privacy policy links",
+    "Contact & Support: Primary point of contact & review cadence"
+  ]
+
+  const weProvideItems = [
+    "1–2 week turnaround per site (depending on tier and complexity)",
+    "Custom timeline for 20+ sites (bulk-rollouts coordinated via Sprint 0)"
+  ]
+
   return (
     <section className={`delivery-timeline ${inView ? 'animate' : ''}`} ref={containerRef}>
       <h2><span className="icon">📅</span> Delivery Timeline</h2>
@@ -26,38 +41,25 @@ export default function DeliveryTimelineSection() {
         </button>
       </div>
 
-      <div className="dt-rail-wrap">
-        <div className="dt-rail"></div>
-        <div className="dt-cards">
-        <div className="dt-card">
-          <h3 className="dt-stage">Planning & Setup</h3>
-          <span className="dt-step">Sprint 0</span>
-          <ul>
-            {mode === 'you'
-              ? ['Vessel List & Site Tier Selection', 'Brand ID Portfolio, Pics, & FH Login'].map((item, i) => <li key={i}>{item}</li>)
-              : ['Site Planning Matrix', 'Timeline Lock & Repo Spin Up'].map((item, i) => <li key={i}>{item}</li>)}
+      <div className="dt-columns">
+        <div className={`dt-column ${mode === 'you' ? 'active' : ''}`}>
+          <h3>Before we start, please gather and share:</h3>
+          <ul className="dt-list">
+            {youProvideItems.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
         </div>
-
-        <div className="dt-card">
-          <h3 className="dt-stage">First Build & Launch</h3>
-          <span className="dt-step">Site 1</span>
-          <ul>
-            {mode === 'you'
-              ? ['Experience Details', 'Unique Tour Features'].map((item, i) => <li key={i}>{item}</li>)
-              : ['Custom Design & Layout', 'Booking Checkout Integration'].map((item, i) => <li key={i}>{item}</li>)}
+        
+        <div className={`dt-column ${mode === 'we' ? 'active' : ''}`}>
+          <ul className="dt-list">
+            {weProvideItems.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
-        </div>
-
-        <div className="dt-card">
-          <h3 className="dt-stage">Remaining Sites</h3>
-          <span className="dt-step">Bi-Weekly Rollouts</span>
-          <ul>
-            {mode === 'you'
-              ? ['Site Specific Assets', 'Minor Feedback'].map((item, i) => <li key={i}>{item}</li>)
-              : ['QA / Launch / Indexing', 'Custom Integrations'].map((item, i) => <li key={i}>{item}</li>)}
-          </ul>
-        </div>
+          <p className="dt-callout">
+            "We'll handle all UI/UX, booking integration, SEO setup, QA, launch & live tracking."
+          </p>
         </div>
       </div>
     </section>
