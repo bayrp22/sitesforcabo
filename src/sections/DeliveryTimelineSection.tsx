@@ -96,7 +96,9 @@ export default function DeliveryTimelineSection() {
                       </h4>
                       <ul className="dt-list you-provide-list">
                         {group.items.map((item, itemIndex) => (
-                          <li key={itemIndex}>{item}</li>
+                          <li key={itemIndex}>
+                            <span>{item}</span>
+                          </li>
                         ))}
                       </ul>
                     </div>

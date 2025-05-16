@@ -738,28 +738,32 @@
   display: flex;
   justify-content: center;
   margin-bottom: 2.5rem;
+  gap: 1rem;
 }
 
 .delivery-timeline .dt-toggle button {
   background: #EDF2F7;
   border: none;
   border-radius: 20px;
-  padding: 0.5rem 1.5rem;
-  margin: 0 0.5rem;
+  padding: 0.75rem 1.75rem;
+  margin: 0;
   font-weight: 500;
   color: #4A5568;
   cursor: pointer;
-  transition: background 200ms ease;
+  transition: all 200ms ease;
   font-size: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .delivery-timeline .dt-toggle button.active {
   background: #4299E1;
   color: #FFF;
+  box-shadow: 0 2px 5px rgba(66, 153, 225, 0.3);
 }
 
 .delivery-timeline .dt-toggle button:hover:not(.active) {
   background: #E2E8F0;
+  transform: translateY(-1px);
 }
 
 /* Improved content container for better alignment */
@@ -789,6 +793,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Group title styling - consistent with main heading */
@@ -802,55 +807,49 @@
 }
 
 .dt-group-icon {
-  display: inline-block;
+  display: inline-flex;
   margin-right: 0.75rem;
   font-size: 1.2rem;
+  flex-shrink: 0;
 }
 
-/* Two-column list on desktop */
-.you-provide-list {
-  columns: 2;
-  column-gap: 1.5rem;
-}
-
+/* Fixed bullet point lists */
 .delivery-timeline .dt-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 0.5rem 0;
 }
 
 .delivery-timeline .dt-list li {
   position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
   font-size: 0.95rem;
   line-height: 1.5;
   color: #4A5568;
-  break-inside: avoid; /* Prevent items breaking across columns */
+  display: flex;
 }
 
 .delivery-timeline .dt-list li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 0.6rem;
+  top: 0.55rem;
   width: 8px;
   height: 8px;
   background: #38B2AC;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
-.delivery-timeline .dt-callout {
-  font-style: italic;
-  color: #4A5568;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  padding: 1rem;
-  background: rgba(66, 153, 225, 0.05);
-  border-left: 3px solid #4299E1;
-  border-radius: 0 0.25rem 0.25rem 0;
+.delivery-timeline .dt-list li span {
+  display: block;
+}
+
+/* Two-column list on desktop - disabled for now */
+.you-provide-list {
+  columns: 1;
+  column-gap: 1.5rem;
 }
 
 /* Reminder message styling */
@@ -906,7 +905,7 @@
   padding-left: 0.25rem;
   line-height: 1.5;
   color: #4A5568;
-  font-size: 0.95rem;
+  break-inside: avoid; /* Prevent items breaking across columns */
 }
 
 .steps {
@@ -1002,5 +1001,18 @@
     width: 2.25rem;
     height: 2.25rem;
   }
+}
+
+.delivery-timeline .dt-callout {
+  font-style: italic;
+  color: #4A5568;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 1rem;
+  background: rgba(66, 153, 225, 0.05);
+  border-left: 3px solid #4299E1;
+  border-radius: 0 0.25rem 0.25rem 0;
 }
 
