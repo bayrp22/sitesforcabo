@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { ArrowUpRight as ArrowUpRightIcon } from 'lucide-react';
 
 export default function ConceptFunnels() {
-  const card1Ref = useRef<HTMLElement>(null);
-  const card2Ref = useRef<HTMLElement>(null);
+  const cardOneRef = useRef<HTMLDivElement>(null);
+  const cardTwoRef = useRef<HTMLDivElement>(null);
   
   // Set up intersection observer for animation
   useEffect(() => {
@@ -24,12 +24,12 @@ export default function ConceptFunnels() {
     
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
     
-    if (card1Ref.current) observer.observe(card1Ref.current);
-    if (card2Ref.current) observer.observe(card2Ref.current);
+    if (cardOneRef.current) observer.observe(cardOneRef.current);
+    if (cardTwoRef.current) observer.observe(cardTwoRef.current);
     
     return () => {
-      if (card1Ref.current) observer.unobserve(card1Ref.current);
-      if (card2Ref.current) observer.unobserve(card2Ref.current);
+      if (cardOneRef.current) observer.unobserve(cardOneRef.current);
+      if (cardTwoRef.current) observer.unobserve(cardTwoRef.current);
     };
   }, []);
   
@@ -42,32 +42,40 @@ export default function ConceptFunnels() {
 
       <div className="funnel-concepts__grid">
         {/* General Funnel */}
-        <article ref={card1Ref} className="funnel-concepts__card">
-          <a href="https://wc-funnelconcept.netlify.app/" target="_blank" rel="noopener">
-            <img
-              className="concepts__thumb"
-              src="https://i.imgur.com/HIVMIo3.png"
-              alt="General Funnel prototype homepage"
-              loading="lazy"
-            />
-          </a>
-          <h3>General Funnel (Template)</h3>
-          <p>High-level marketing entry point</p>
-        </article>
+        <div className="fc-card-wrap">
+          <div className="funnel-concepts__card" ref={cardOneRef}>
+            <a href="https://wc-funnelconcept.netlify.app/" target="_blank" rel="noopener">
+              <img
+                className="concepts__thumb"
+                src="https://i.imgur.com/HIVMIo3.png"
+                alt="General Funnel prototype homepage"
+                loading="lazy"
+              />
+            </a>
+          </div>
+          <div className="fc-caption">
+            <p className="card-title">General Funnel (Template)</p>
+            <p className="card-sub">High-level marketing entry point</p>
+          </div>
+        </div>
 
         {/* Destination Funnel */}
-        <article ref={card2Ref} className="funnel-concepts__card">
-          <a href="https://wc-destinationconcept.netlify.app/" target="_blank" rel="noopener">
-            <img
-              className="concepts__thumb"
-              src="https://i.imgur.com/2dcxLvY.jpeg"
-              alt="Destination Funnel prototype homepage"
-              loading="lazy"
-            />
-          </a>
-          <h3>Destination Funnel (Cabo-specific)</h3>
-          <p>Laser-focused on tourist searches</p>
-        </article>
+        <div className="fc-card-wrap">
+          <div className="funnel-concepts__card" ref={cardTwoRef}>
+            <a href="https://wc-destinationconcept.netlify.app/" target="_blank" rel="noopener">
+              <img
+                className="concepts__thumb"
+                src="https://i.imgur.com/2dcxLvY.jpeg"
+                alt="Destination Funnel prototype homepage"
+                loading="lazy"
+              />
+            </a>
+          </div>
+          <div className="fc-caption">
+            <p className="card-title">Destination Funnel (Cabo-specific)</p>
+            <p className="card-sub">Laser-focused on tourist searches</p>
+          </div>
+        </div>
       </div>
 
       <button

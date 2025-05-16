@@ -61,6 +61,7 @@
     --headline-spacing:-0.02em;
     --subhead-color:#64748B;
     --section-max:1140px;
+    --grid-gap:56px;         /* more breathing room */
   }
 
   .dark {
@@ -220,12 +221,15 @@
 .funnel-concepts__grid{
   display:flex;
   justify-content:center;
-  gap:48px;
+  gap:var(--grid-gap);
   flex-wrap:wrap;
+  margin-top:64px;               /* push grid off heading */
 }
 
 /* card base */
 .funnel-concepts__card{
+  flex:1 1 clamp(320px,45%,520px);
+  max-width:520px;
   transition:transform .22s cubic-bezier(.25,.46,.45,.94),
              box-shadow .22s cubic-bezier(.25,.46,.45,.94);
   will-change:transform;
@@ -237,9 +241,37 @@
   box-shadow:0 12px 24px rgba(0,0,0,.08);
 }
 
+/* responsive - switch to 1-column under 960 */
+@media(max-width:960px){
+  .funnel-concepts__grid{
+    flex-direction:column;
+    align-items:center;
+    gap:40px;
+  }
+}
+
 /* intersection reveal */
 .funnel-concepts .in-view{
   animation:fc-fade-slide .6s ease-out both;
+}
+
+.card-title{
+  margin:16px 0 4px;
+  font-weight:600;
+}
+.card-sub{
+  margin:0;
+  font-size:.875rem;
+  color:var(--subhead-color);
+  line-height:1.4;
+}
+
+/* wrap keeps title + sub under each card in a neat column */
+.fc-card-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
 }
 
 /* Previous concepts section styles kept for compatibility */
