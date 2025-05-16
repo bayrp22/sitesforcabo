@@ -290,20 +290,24 @@
 
 /* Card base */
 .funnel-concepts__card{
-  transition:transform .22s cubic-bezier(.25,.46,.45,.94),
-             box-shadow .22s cubic-bezier(.25,.46,.45,.94);
+  transition:transform .3s ease-out,
+             box-shadow .3s ease-out;
   will-change:transform;
   overflow: hidden; /* Keep scaled image contained */
+  border-radius: 12px;
 }
 
-/* Funnel concepts card image hover effect */
-.funnel-concepts__card img {
-  transition: transform 0.3s ease-out;
-  transform-origin: center;
-}
-
-.funnel-concepts__card:hover img {
+/* Funnel concepts card container hover effect */
+.funnel-concepts__card:hover {
   transform: scale(1.1);
+  box-shadow: 0 14px 28px rgba(0,0,0,.14);
+}
+
+/* Ensure text is not affected by the scaling */
+.fc-caption {
+  transition: none;
+  transform: none;
+  will-change: auto;
 }
 
 /* Specific positioning for left and right cards */
@@ -311,12 +315,6 @@
 .fc-card-wrap--right {
   width: calc(50% - (var(--grid-gap) / 2));
   max-width: 520px;
-}
-
-/* hover depth */
-.funnel-concepts__card:hover{
-  transform:translateY(-4px) scale(1.02);
-  box-shadow:0 14px 28px rgba(0,0,0,.14);
 }
 
 /* Responsive adjustments - maintain side by side layout */
