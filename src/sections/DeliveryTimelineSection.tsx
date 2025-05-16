@@ -73,7 +73,7 @@ export default function DeliveryTimelineSection() {
             "We'll handle all UI/UX, booking integration, SEO setup, QA, launch & live tracking."
           </blockquote>
           
-          <div className="process-steps">
+          <div className="process-steps vertical">
             <div className="step">
               <div className="step-number">1</div>
               <div className="step-details">
@@ -82,7 +82,7 @@ export default function DeliveryTimelineSection() {
               </div>
             </div>
             
-            <div className="step-arrow">→</div>
+            <div className="step-arrow">↓</div>
             
             <div className="step">
               <div className="step-number">2</div>
@@ -92,7 +92,7 @@ export default function DeliveryTimelineSection() {
               </div>
             </div>
             
-            <div className="step-arrow">→</div>
+            <div className="step-arrow">↓</div>
             
             <div className="step">
               <div className="step-number">3</div>
