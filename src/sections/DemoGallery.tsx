@@ -1,44 +1,55 @@
 import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
+// Demo data
 const demos = [
   {
-    name: 'Pirate Group Site',
-    url: 'https://cabopirates.netlify.app/',
-    img: '/img/demo-pirate.png',
+    title: "Homepage Design",
+    image: "https://i.imgur.com/HIVMIo3.png"
   },
   {
-    name: 'Cabo Wave Private',
-    url: 'https://cabowaveprivate.framer.website/',
-    img: '/img/demo-wave.png',
+    title: "Tour Booking Experience",
+    image: "https://i.imgur.com/2dcxLvY.jpeg"
   },
   {
-    name: 'Tu Enamorado',
-    url: 'https://tuenamoradoprivate.framer.website/',
-    img: '/img/demo-enamorado.png',
+    title: "Mobile Responsive Layout",
+    image: "https://i.imgur.com/6yTxGDw.jpg"
   },
   {
-    name: 'Destination Funnel',
-    url: 'https://wildcabodestination.framer.website/',
-    img: '/img/demo-destination.png',
-  },
-  {
-    name: 'Corporate Site',
-    url: 'https://wildcabocorporate.framer.website/',
-    img: '/img/demo-corporate.png',
-  },
+    title: "Tour Details Page",
+    image: "https://i.imgur.com/LThJDWA.jpg"
+  }
 ];
 
 export default function DemoGallery() {
+  const settings = { 
+    dots: true, 
+    arrows: false, 
+    infinite: true, 
+    speed: 400, 
+    slidesToShow: 1, 
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    pauseOnHover: true
+  };
+
   return (
-    <section className="py-28">
-      <h2 className="section-title text-center">Live Demos</h2>
-      <div className="mt-14 grid gap-10 md:grid-cols-3">
-        {demos.map(d => (
-          <a key={d.name} href={d.url} target="_blank" className="group">
-            <img src={d.img} alt={d.name} className="rounded shadow-lg w-full h-auto" />
-            <p className="mt-3 font-medium group-hover:text-sky-600">{d.name}</p>
-          </a>
-        ))}
+    <section className="demo-gallery" id="demo-gallery">
+      <h2 className="demo-gallery__title">Live Site Samples</h2>
+      <p className="section-subtitle">Browse through our collection of demo designs</p>
+
+      <div className="max-w-4xl mx-auto">
+        <Slider {...settings}>
+          {demos.map(d => (
+            <div key={d.title} className="demo-gallery__slide">
+              <img src={d.image} alt={d.title} className="demo-gallery__img"/>
+              <p className="demo-gallery__caption">{d.title}</p>
+            </div>
+          ))}
+        </Slider>
       </div>
     </section>
   );

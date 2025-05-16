@@ -50,12 +50,7 @@ const HeroSection: React.FC = () => {
   const Paragraph = isFramerAvailable ? motion.p : 'p';
 
   return (
-    <section 
-      id="home" 
-      className="min-h-screen flex items-center justify-center relative py-16"
-      style={{ background: 'linear-gradient(135deg, #0077B6 0%, #00B4D8 60%, #90E0EF 100%)' }}
-    >
-      {/* Grain overlay */}
+    <section id="home" className="hero">
       <div className="absolute inset-0 hero--grain"></div>
       
       {/* Company logo in top-left corner with SWS text */}
@@ -73,7 +68,7 @@ const HeroSection: React.FC = () => {
         </span>
       </div>
       
-      <div className="text-center px-4 md:px-8 max-w-4xl flex flex-col items-center">
+      <div className="text-center px-4 md:px-8 max-w-4xl mx-auto">
         {/* Logo - moved inside the text container */}
         <img 
           src="/img/wild-cabo-logo.jpeg" 
@@ -81,31 +76,25 @@ const HeroSection: React.FC = () => {
           className="w-24 h-auto rounded-md mb-8"
         />
         
-        <Headline 
-          className="text-4xl md:text-6xl font-bold text-white mb-8 whitespace-pre-line"
-          {...headlineProps}
-        >
-          {"Fill Every Deck.\nGrow Every Vessel."}
-        </Headline>
+        <h1 className="hero__title">
+          Fill Every Deck.<br />Grow Every Vessel.
+        </h1>
         
-        <Paragraph 
-          className="text-xl md:text-2xl text-white/90 mb-10"
-          {...sublineProps}
-        >
+        <p className="hero__subtitle">
           A complete web ecosystem purpose-built for Wild Cabo Tours.
-        </Paragraph>
+        </p>
         
-        <Paragraph 
-          className="text-white/80 mb-12"
-          style={{ fontSize: 14, letterSpacing: 0.3 }}
-          {...proofStripProps}
-        >
+        <p className="text-white/80 mb-12">
           25+ vessels • 300 K annual guests • 4.9⭐ average review
-        </Paragraph>
+        </p>
+        
+        <button className="hero__cta" onClick={scrollToNextSection}>
+          See the Concepts
+        </button>
       </div>
       
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-        <p className="text-white mb-3 text-lg">↓ See the Concepts</p>
+        <p className="text-white mb-3 text-lg">↓ Scroll Down</p>
         <ArrowDown 
           className="w-8 h-8 text-white cursor-pointer"
           onClick={scrollToNextSection}
