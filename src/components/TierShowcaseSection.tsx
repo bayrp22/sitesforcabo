@@ -99,7 +99,7 @@ const TierShowcaseSection: React.FC = () => {
               className="bg-white rounded-lg shadow-md border overflow-hidden"
               style={{ 
                 transition: "transform 200ms, box-shadow 200ms",
-                height: "520px" // Increased height from 480px to 520px
+                height: "540px" // Increased height from 520px to 540px
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'scale(1.02)';
@@ -148,8 +148,8 @@ const TierShowcaseSection: React.FC = () => {
               </div>
               
               {/* Hook Line (replaced CTA Link) */}
-              <div className="h-16 flex items-center justify-center mt-8"> {/* Increased margin-top from mt-4 to mt-8 */}
-                <p className="text-[#059D9C] font-medium text-center">
+              <div className="h-24 flex items-center justify-center mt-10 px-4"> {/* Increased height and padding */}
+                <p className="text-[#059D9C] font-medium text-center text-base">
                   {tier.hookLine}
                 </p>
               </div>
