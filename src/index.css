@@ -289,25 +289,34 @@
 }
 
 /* Card base */
-.funnel-concepts__card{
-  transition:transform .3s ease-out,
-             box-shadow .3s ease-out;
-  will-change:transform;
+.funnel-concepts__card {
+  position: relative;
   overflow: hidden; /* Keep scaled image contained */
   border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transform-origin: center;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+/* Ensure the anchor tag doesn't block the scaling */
+.funnel-concepts__card a {
+  display: block;
+  width: 100%;
 }
 
 /* Funnel concepts card container hover effect */
-.funnel-concepts__card:hover {
+.fc-card-wrap:hover .funnel-concepts__card {
   transform: scale(1.1);
   box-shadow: 0 14px 28px rgba(0,0,0,.14);
+  z-index: 2;
 }
 
 /* Ensure text is not affected by the scaling */
 .fc-caption {
-  transition: none;
-  transform: none;
-  will-change: auto;
+  margin-top: 16px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Specific positioning for left and right cards */
@@ -315,6 +324,7 @@
 .fc-card-wrap--right {
   width: calc(50% - (var(--grid-gap) / 2));
   max-width: 520px;
+  position: relative;
 }
 
 /* Responsive adjustments - maintain side by side layout */
@@ -396,6 +406,14 @@
   background:#006BB3; 
 }
 
+/* Thumb transition */
+.concepts__thumb{
+  width:100%;
+  border-radius:12px;
+  border:1px solid #E5E7EB;
+  display:block;
+}
+
 /* Previous concepts section styles kept for compatibility */
 .concepts { 
   max-width: 1200px; 
@@ -435,20 +453,6 @@
   transform:translateY(-4px) scale(1.025);
   filter:brightness(1.04) saturate(1.05);
   box-shadow:0 14px 28px rgba(0,0,0,.14);
-}
-
-/* Thumb transition */
-.concepts__thumb{
-  width:100%;
-  border-radius:12px;
-  border:1px solid #E5E7EB;
-  display:block;
-  transition:border-radius .22s cubic-bezier(.25,.46,.45,.94);
-}
-
-/* Border radius change on hover */
-.concepts__card a:hover .concepts__thumb{
-  border-radius:16px;
 }
 
 .concepts__card h3{margin:18px 0 4px;font-size:20px;}
