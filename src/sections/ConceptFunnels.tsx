@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArrowUpRight as ArrowUpRightIcon } from 'lucide-react';
 
 // Try to import Framer Motion, but don't fail if it's not available
 let motion: any;
@@ -22,64 +23,44 @@ export default function ConceptFunnels() {
         Two live prototypes already gathering data & feedback.
       </p>
 
-      <div className="concepts__grid">
-        {/* Card 1 */}
-        <MotionDiv
-          initial={motion.div !== 'div' ? { opacity: 0, y: 20 } : undefined}
-          animate={motion.div !== 'div' ? { opacity: 1, y: 0 } : undefined}
-          transition={motion.div !== 'div' ? { duration: 0.4, delay: 0 } : undefined}
-        >
-          <a
-            href="https://wildcabotemplate.netlify.app/"
-            target="_blank"
-            rel="noopener"
-            className="concepts__card"
-          >
-            <div className="concepts__thumb">
-              <img
-                src="https://i.imgur.com/HIVMIo3.png"
-                alt="General Funnel prototype"
-                loading="lazy"
-              />
-            </div>
-            <h3>General Funnel (Template)</h3>
-            <span>High-level marketing entry point</span>
+      <div className="concepts__grid--two-up">
+        {/* General Funnel */}
+        <article className="concepts__card">
+          <a href="https://wc-funnelconcept.netlify.app/" target="_blank" rel="noopener">
+            <img
+              className="concepts__thumb"
+              src="https://i.imgur.com/HIVMIo3.png"
+              alt="General Funnel prototype homepage"
+              loading="lazy"
+            />
           </a>
-        </MotionDiv>
+          <h3>General Funnel (Template)</h3>
+          <p>High-level marketing entry point</p>
+        </article>
 
-        {/* Card 2 */}
-        <MotionDiv
-          initial={motion.div !== 'div' ? { opacity: 0, y: 20 } : undefined}
-          animate={motion.div !== 'div' ? { opacity: 1, y: 0 } : undefined}
-          transition={motion.div !== 'div' ? { duration: 0.4, delay: 0.15 } : undefined}
-        >
-          <a
-            href="https://destinationconcept.netlify.app/"
-            target="_blank"
-            rel="noopener"
-            className="concepts__card"
-          >
-            <div className="concepts__thumb">
-              <img
-                src="https://i.imgur.com/2dcxLvY.jpeg"
-                alt="Destination Funnel prototype"
-                loading="lazy"
-              />
-            </div>
-            <h3>Destination Funnel (Cabo-specific)</h3>
-            <span>Laser-focused on tourist searches</span>
+        {/* Destination Funnel */}
+        <article className="concepts__card">
+          <a href="https://wc-destinationconcept.netlify.app/" target="_blank" rel="noopener">
+            <img
+              className="concepts__thumb"
+              src="https://i.imgur.com/2dcxLvY.jpeg"
+              alt="Destination Funnel prototype homepage"
+              loading="lazy"
+            />
           </a>
-        </MotionDiv>
+          <h3>Destination Funnel (Cabo-specific)</h3>
+          <p>Laser-focused on tourist searches</p>
+        </article>
       </div>
 
       <button
         className="concepts__cta"
         onClick={() => {
-          window.open('https://wildcabotemplate.netlify.app/', '_blank');
-          window.open('https://destinationconcept.netlify.app/', '_blank');
+          window.open('https://wc-funnelconcept.netlify.app/', '_blank');
+          window.open('https://wc-destinationconcept.netlify.app/', '_blank');
         }}
       >
-        Open Both Demos ↗︎
+        Open Both Demos&nbsp;<ArrowUpRightIcon className="w-4 h-4 inline" />
       </button>
     </section>
   );
