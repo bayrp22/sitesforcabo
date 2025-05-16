@@ -20,7 +20,9 @@ export default function DeliveryTimelineSection() {
         >We Provide</button>
       </div>
 
-      <div className="dt-rail">
+      <div className="dt-rail-wrap">
+        <div className="dt-rail"></div>
+        <div className="dt-cards">
         <div className="dt-card">
           <h3 className="dt-stage">Planning & Setup</h3>
           <span className="dt-step">Sprint 0</span>
@@ -49,6 +51,7 @@ export default function DeliveryTimelineSection() {
               ? ['Site Specific Assets', 'Minor Feedback'].map((item, i) => <li key={i}>{item}</li>)
               : ['QA / Launch / Indexing', 'Custom Integrations'].map((item, i) => <li key={i}>{item}</li>)}
           </ul>
+        </div>
         </div>
       </div>
     </section>
