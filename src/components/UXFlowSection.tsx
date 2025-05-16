@@ -8,7 +8,7 @@ const mockupData = {
     mobileTitle: "Template Mobile",
     desktopTitle: "Template Desktop",
     mobileScreenshot: "https://i.imgur.com/Lvy5soi.jpeg", // Private mobile
-    desktopImage: "https://i.imgur.com/FZPxP3V.jpeg", // Private desktop
+    desktopImage: "https://i.imgur.com/xWB74sr.jpeg", // Private desktop
     tagline: "Tap-optimized interface"
   },
   pirate: {
@@ -16,7 +16,7 @@ const mockupData = {
     mobileTitle: "Pirate Mobile",
     desktopTitle: "Pirate Desktop",
     mobileScreenshot: "https://i.imgur.com/X1z5qYi.jpeg", // Group mobile
-    desktopImage: "https://i.imgur.com/a9WwLe3.jpeg", // Group desktop
+    desktopImage: "https://i.imgur.com/mLFuB99.jpeg ", // Group desktop
     tagline: "Swashbuckling experience"
   },
   caboEscape: {
@@ -24,7 +24,7 @@ const mockupData = {
     mobileTitle: "Escape Route Mobile",
     desktopTitle: "Escape Route Desktop",
     mobileScreenshot: "https://i.imgur.com/5U3aP5r.jpeg", // Destination mobile
-    desktopImage: "https://i.imgur.com/SOty7KM.pngg", // Destination desktop
+    desktopImage: "https://i.imgur.com/8y68aJN.png", // Destination desktop
     tagline: "Adventure awaits"
   },
   vesselShowcase: {
@@ -32,7 +32,7 @@ const mockupData = {
     mobileTitle: "Vessel Mobile",
     desktopTitle: "Vessel Desktop",
     mobileScreenshot: "https://i.imgur.com/N7uN7QZ.png", // Vessel mobile
-    desktopImage: "https://i.imgur.com/KhxPHfg.png", // Vessel desktop
+    desktopImage: "https://i.imgur.com/xexfhTw.png", // Vessel desktop
     tagline: "Your vessel, your story"
   },
   corporate: {
@@ -40,7 +40,7 @@ const mockupData = {
     mobileTitle: "Corporate Mobile",
     desktopTitle: "Corporate Desktop",
     mobileScreenshot: "https://i.imgur.com/LyZCxnP.png", // Corporate mobile
-    desktopImage: "https://i.imgur.com/hyAj5YY.png", // Corporate desktop
+    desktopImage: "https://i.imgur.com/xet3GSx.png", // Corporate desktop
     tagline: "Enterprise management"
   }
 };
@@ -254,7 +254,7 @@ const UXFlowSection: React.FC = () => {
           <div className="mobile-mockup">
             {/* Animated iPhone */}
             <div className="flex justify-center">
-              <div className="relative iphone-body w-64 h-[32rem] bg-gray-800 rounded-[2.5rem] border-4 border-gray-700 shadow-xl p-2">
+              <div className="relative iphone-body w-72 h-[36rem] bg-gray-800 rounded-[2.5rem] border-4 border-gray-700 shadow-xl p-2">
                 <div className="w-full h-full rounded-[2rem] overflow-hidden relative">
                   <div className="w-full h-full flex flex-col items-center justify-center relative">
                     <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-900">
