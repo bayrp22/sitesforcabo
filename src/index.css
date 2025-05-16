@@ -208,6 +208,7 @@
   letter-spacing:var(--headline-spacing);
   line-height:1.15;
   margin:0 0 12px;
+  margin-top: 1.5rem;
 }
 
 /* subtitle */
@@ -250,6 +251,13 @@
   }
 }
 
+/* Mobile extra bottom padding under second card */
+@media (max-width: 480px) {
+  .funnel-concepts__card:nth-of-type(2) {
+    margin-bottom: 2rem;
+  }
+}
+
 /* intersection reveal */
 .funnel-concepts .in-view{
   animation:fc-fade-slide .6s ease-out both;
@@ -262,7 +270,7 @@
 .card-sub{
   margin:0;
   font-size:.875rem;
-  color:var(--subhead-color);
+  color:#4A5568;
   line-height:1.4;
 }
 
@@ -272,6 +280,22 @@
   flex-direction:column;
   align-items:center;
   text-align:center;
+}
+
+/* Concepts CTA Button */
+.concepts__cta { 
+  margin-top:64px; 
+  padding:1rem 2rem; 
+  border-radius:9999px; 
+  background:#0077B6; 
+  color:#fff; 
+  font-weight:600; 
+  border:none; 
+  cursor:pointer; 
+  transition: background-color 150ms ease-out; 
+}
+.concepts__cta:hover { 
+  background:#006BB3; 
 }
 
 /* Previous concepts section styles kept for compatibility */
@@ -331,6 +355,3 @@
 
 .concepts__card h3{margin:18px 0 4px;font-size:20px;}
 .concepts__card p{margin:0;color:#475569;font-size:14px;}
-
-.concepts__cta { margin-top:64px; padding:14px 32px; border-radius:9999px; background:#0077B6; color:#fff; font-weight:600; border:none; cursor:pointer; transition:background .25s; }
-.concepts__cta:hover { background:#0096C7; }
