@@ -725,27 +725,31 @@
   margin-right: 0.5rem;
 }
 
-.dt-toggle {
+.delivery-timeline .dt-toggle {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin: 2rem 0;
+  margin-bottom: 1.5rem;
 }
 
-.dt-toggle button {
-  background-color: rgb(243, 244, 246);
-  color: rgb(55, 65, 81);
-  padding: 0.5rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  transition: all 0.2s ease;
+.delivery-timeline .dt-toggle button {
+  background: #EDF2F7;
   border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  font-weight: 500;
+  color: #4A5568;
   cursor: pointer;
+  transition: background 200ms ease;
 }
 
-.dt-toggle button.active {
-  background-color: var(--cabo-blue);
-  color: white;
+.delivery-timeline .dt-toggle button.active {
+  background: #4299E1;
+  color: #FFF;
+}
+
+.delivery-timeline .dt-toggle button:hover {
+  background: #E2E8F0;
 }
 
 .delivery-timeline .dt-rail-wrap {
