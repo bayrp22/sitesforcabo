@@ -12,7 +12,6 @@ const tiers = [
       "Provide a seamless single-vessel booking experience", 
       "Feature professional photography that captivates"
     ],
-    hookLine: "Your vessel, your brand.",
     highlight: false
   },
   {
@@ -24,7 +23,6 @@ const tiers = [
       "Enable easy seat reservations", 
       "Embed live commentary for an immersive experience"
     ],
-    hookLine: "Unite guests with local adventures.",
     highlight: false
   },
   {
@@ -36,7 +34,6 @@ const tiers = [
       "Feature onboard amenities & crew profiles", 
       "Integrate per-experience booking widgets"
     ],
-    hookLine: "Your vessel, your story.",
     highlight: false
   },
   {
@@ -48,7 +45,6 @@ const tiers = [
       "Ensure SEO-optimized content structure", 
       "Track engagement across multiple marketing channels"
     ],
-    hookLine: "Capture every lead, drive bookings.",
     highlight: false
   },
   {
@@ -60,7 +56,6 @@ const tiers = [
       "Highlight amenities designed for corporate clients", 
       "Promote partnership opportunities and bulk-rates"
     ],
-    hookLine: "Manage your fleet like a pro.",
     highlight: false
   }
 ];
@@ -99,7 +94,7 @@ const TierShowcaseSection: React.FC = () => {
               className="bg-white rounded-lg shadow-md border overflow-hidden"
               style={{ 
                 transition: "transform 200ms, box-shadow 200ms",
-                height: "540px" // Increased height from 520px to 540px
+                height: "500px" // Reduced height since we removed the hookLine
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'scale(1.02)';
@@ -145,13 +140,6 @@ const TierShowcaseSection: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              </div>
-              
-              {/* Hook Line (replaced CTA Link) */}
-              <div className="h-24 flex items-center justify-center mt-10 px-6 pb-4">
-                <p className="text-[#059D9C] font-medium text-center text-base tracking-wide">
-                  {tier.hookLine}
-                </p>
               </div>
             </div>
         ))}
