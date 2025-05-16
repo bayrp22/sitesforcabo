@@ -16,7 +16,7 @@ export default function ConceptFunnels() {
   const MotionDiv = motion.div || 'div';
   
   return (
-    <section className="concepts">
+    <section className="concepts" id="concept-funnels">
       <h2 className="concepts__title">Funnel Concepts in Action</h2>
       <p className="concepts__subtitle">
         Two live prototypes already gathering data & feedback.

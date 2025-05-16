@@ -14,7 +14,7 @@ import ProposalSummary from '@/sections/ProposalSummary';
 const Index = () => {
   return (
     <div className="h-full">
-      <main className="snap-container">
+      <main className="main-container">
       <HeroSection />
       
       <ConceptFunnels />

@@ -17,7 +17,7 @@ const HeroSection: React.FC = () => {
   const scrollToNextSection = (e: React.MouseEvent) => {
     e.preventDefault();
     
-    const nextSection = document.getElementById('tier-showcase');
+    const nextSection = document.getElementById('concept-funnels');
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: 'smooth' });
     }
@@ -52,7 +52,7 @@ const HeroSection: React.FC = () => {
   return (
     <section 
       id="home" 
-      className="h-screen flex items-center justify-center relative"
+      className="min-h-screen flex items-center justify-center relative py-16"
       style={{ background: 'linear-gradient(135deg, #0077B6 0%, #00B4D8 60%, #90E0EF 100%)' }}
     >
       {/* Grain overlay */}
