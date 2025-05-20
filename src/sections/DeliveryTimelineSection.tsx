@@ -103,9 +103,6 @@ export default function DeliveryTimelineSection() {
             </div>
           </div>
           
-          <div className="confidence-quote">
-            "You focus on running your boats. We'll handle the web."
-          </div>
         </div>
       </div>
     </section>
