@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SectionContainer from './SectionContainer';
 
 // Mock data for different themes
@@ -151,11 +151,10 @@ const deviceStyles = `
     background-color: #0078d7; /* Wild Cabo blue color for active tab indicator */
   }
 
-  /* Tab content animation */
+  /* Tab content animation - remove fade animation to make it instantaneous */
   .tab-content {
-    transition: opacity 0.4s ease, transform 0.3s ease;
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
 
   .tab-content-wrapper {
@@ -165,21 +164,22 @@ const deviceStyles = `
     transform: translateY(-1px);
   }
 
-  /* Tab animation keyframes */
-  @keyframes tabFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(5px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* Hide/Show tab content immediately without animation */
+  .hidden-tab {
+    display: none;
   }
 
-  /* Apply animation to tab content */
-  .tab-animate-in {
-    animation: tabFadeIn 0.3s forwards;
+  .visible-tab {
+    display: block;
+  }
+
+  /* Pre-loaded images */
+  .preloaded-image {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
   }
 
   /* Responsive adjustments for iMac */
@@ -197,14 +197,50 @@ const deviceStyles = `
 
 const UXFlowSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState('corporate');
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  // Get the current mockup data based on active tab
-  const currentMockup = mockupData[activeTab as keyof typeof mockupData];
+  // Preload all images on component mount
+  useEffect(() => {
+    const imageUrls = Object.values(mockupData).flatMap(mockup => [
+      mockup.mobileScreenshot,
+      mockup.desktopImage
+    ]);
+    
+    let loadedCount = 0;
+    const totalImages = imageUrls.length;
+    
+    imageUrls.forEach(url => {
+      const img = new Image();
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          setImagesLoaded(true);
+        }
+      };
+      img.onerror = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          setImagesLoaded(true);
+        }
+      };
+      img.src = url;
+    });
+  }, []);
 
   return (
     <SectionContainer id="ux-flow" bgColor="bg-white">
       {/* Add device styles */}
       <style>{deviceStyles}</style>
+      
+      {/* Preloader div to ensure all images are loaded */}
+      <div style={{ display: 'none' }}>
+        {Object.values(mockupData).map((mockup, index) => (
+          <React.Fragment key={index}>
+            <img src={mockup.mobileScreenshot} className="preloaded-image" alt="preload" />
+            <img src={mockup.desktopImage} className="preloaded-image" alt="preload" />
+          </React.Fragment>
+        ))}
+      </div>
 
       {/* Chrome-style Tabs */}
       <div className="flex justify-center mb-10 overflow-x-auto">
@@ -247,79 +283,100 @@ const UXFlowSection: React.FC = () => {
         </div>
       </div>
 
-      {/* 1:2 Layout for devices, no background wrapper */}
-      <div className={`tab-content tab-animate-in grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 items-center p-6 max-w-6xl mx-auto`}>
-        {/* Left: Mobile View */}
-        <div className="w-full flex justify-center">
-          <div className="mobile-mockup">
-            {/* Animated iPhone */}
-            <div className="flex justify-center">
-              <div className="relative iphone-body w-72 h-[36rem] bg-gray-800 rounded-[2.5rem] border-4 border-gray-700 shadow-xl p-2">
-                <div className="w-full h-full rounded-[2rem] overflow-hidden relative">
-                  <div className="w-full h-full flex flex-col items-center justify-center relative">
-                    <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-900">
-                      <img
-                        src={currentMockup.mobileScreenshot}
-                        alt={`${currentMockup.mobileTitle} view`}
-                        className={`${activeTab === 'pirate' ? 'w-full h-full object-cover' : 'max-w-full max-h-full object-contain'}`}
-                      />
-                    </div>
-                    {/* Phone notch */}
-                    <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-gray-900 rounded-full border-2 border-gray-800 z-10"></div>
-                  </div>
-                </div>
-
-                {/* Side buttons */}
-                <div className="absolute -right-1 top-24 w-1 h-16 bg-gray-700 rounded-l-sm"></div>
-                <div className="absolute -left-1 top-20 w-1 h-8 bg-gray-700 rounded-r-sm"></div>
-                <div className="absolute -left-1 top-32 w-1 h-8 bg-gray-700 rounded-r-sm"></div>
-                <div className="absolute -left-1 top-12 w-1 h-4 bg-gray-700 rounded-r-sm"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right: Desktop View */}
-        <div className="w-full flex justify-center relative md:-mt-4">
-          <div className="desktop-mockup">
-            {/* Photorealistic iMac */}
-            <div className="flex justify-center">
-              <div className="imac-container flex flex-col items-center scale-110 transform origin-top">
-                {/* iMac Display */}
-                <div className="imac-display w-[43rem] h-[30rem] rounded-lg p-2.5 flex flex-col items-center">
-                  {/* Screen with flexible aspect ratio */}
-                  <div
-                    className="imac-screen w-full h-full rounded-sm flex items-center justify-center relative overflow-hidden"
-                  >
-                    {/* Content inside screen - use image for all screen types */}
-                    <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-900">
-                      <img
-                        src={currentMockup.desktopImage}
-                        alt={`${currentMockup.title} desktop view`}
-                        className="max-w-full max-h-full object-contain"
-                      />
+      {/* Render all layouts at once but only show the active one */}
+      {imagesLoaded ? (
+        <div className="tab-content grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 items-center p-6 max-w-6xl mx-auto">
+          {/* Left: Mobile View */}
+          <div className="w-full flex justify-center">
+            <div className="mobile-mockup">
+              {/* Animated iPhone */}
+              <div className="flex justify-center">
+                <div className="relative iphone-body w-72 h-[36rem] bg-gray-800 rounded-[2.5rem] border-4 border-gray-700 shadow-xl p-2">
+                  <div className="w-full h-full rounded-[2rem] overflow-hidden relative">
+                    <div className="w-full h-full flex flex-col items-center justify-center relative">
+                      {/* Render all mobile images at once but show only the active one */}
+                      {Object.keys(mockupData).map((tabKey) => {
+                        const mockup = mockupData[tabKey as keyof typeof mockupData];
+                        return (
+                          <div 
+                            key={`mobile-${tabKey}`} 
+                            className={`absolute inset-0 w-full h-full flex items-center justify-center bg-gray-900 ${activeTab === tabKey ? 'visible-tab' : 'hidden-tab'}`}
+                          >
+                            <img
+                              src={mockup.mobileScreenshot}
+                              alt={`${mockup.mobileTitle} view`}
+                              className={`${tabKey === 'pirate' ? 'w-full h-full object-cover' : 'max-w-full max-h-full object-contain'}`}
+                            />
+                          </div>
+                        );
+                      })}
+                      {/* Phone notch */}
+                      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-gray-900 rounded-full border-2 border-gray-800 z-10"></div>
                     </div>
                   </div>
 
-                  {/* Bottom bar with logo */}
-                  <div className="w-[95%] h-10 mt-2 bg-gray-700 rounded-b-md flex items-center justify-center">
-                    <div className="text-gray-200 opacity-60 font-bold">
-                      {/* Empty for logo */}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Stand */}
-                <div className="imac-stand-arm w-12 h-14 -mt-4 rounded-b-md z-[-1] relative">
-                </div>
-
-                <div className="imac-stand-base w-48 h-2 rounded-sm mt-[-1px]">
+                  {/* Side buttons */}
+                  <div className="absolute -right-1 top-24 w-1 h-16 bg-gray-700 rounded-l-sm"></div>
+                  <div className="absolute -left-1 top-20 w-1 h-8 bg-gray-700 rounded-r-sm"></div>
+                  <div className="absolute -left-1 top-32 w-1 h-8 bg-gray-700 rounded-r-sm"></div>
+                  <div className="absolute -left-1 top-12 w-1 h-4 bg-gray-700 rounded-r-sm"></div>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Right: Desktop View */}
+          <div className="w-full flex justify-center relative md:-mt-4">
+            <div className="desktop-mockup">
+              {/* Photorealistic iMac */}
+              <div className="flex justify-center">
+                <div className="imac-container flex flex-col items-center scale-110 transform origin-top">
+                  {/* iMac Display */}
+                  <div className="imac-display w-[43rem] h-[30rem] rounded-lg p-2.5 flex flex-col items-center">
+                    {/* Screen with flexible aspect ratio */}
+                    <div className="imac-screen w-full h-full rounded-sm flex items-center justify-center relative overflow-hidden">
+                      {/* Render all desktop images at once but show only the active one */}
+                      {Object.keys(mockupData).map((tabKey) => {
+                        const mockup = mockupData[tabKey as keyof typeof mockupData];
+                        return (
+                          <div 
+                            key={`desktop-${tabKey}`} 
+                            className={`absolute inset-0 w-full h-full flex items-center justify-center bg-gray-900 ${activeTab === tabKey ? 'visible-tab' : 'hidden-tab'}`}
+                          >
+                            <img
+                              src={mockup.desktopImage}
+                              alt={`${mockup.title} desktop view`}
+                              className="max-w-full max-h-full object-contain"
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Bottom bar with logo */}
+                    <div className="w-[95%] h-10 mt-2 bg-gray-700 rounded-b-md flex items-center justify-center">
+                      <div className="text-gray-200 opacity-60 font-bold">
+                        {/* Empty for logo */}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Stand */}
+                  <div className="imac-stand-arm w-12 h-14 -mt-4 rounded-b-md z-[-1] relative">
+                  </div>
+
+                  <div className="imac-stand-base w-48 h-2 rounded-sm mt-[-1px]">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="flex justify-center items-center h-64">
+          <div className="text-xl">Loading mockups...</div>
+        </div>
+      )}
     </SectionContainer>
   );
 };
