@@ -15,7 +15,7 @@ const mockupData = {
     title: "Pirate Package",
     mobileTitle: "Pirate Mobile",
     desktopTitle: "Pirate Desktop",
-    mobileScreenshot: "https://i.imgur.com/Z4i71qv.png", // Group mobile
+    mobileScreenshot: "https://i.imgur.com/dZ1qZ5k.jpeg", // Group mobile
     desktopImage: "https://i.imgur.com/mLFuB99.jpeg", // Group desktop
     tagline: "Swashbuckling experience"
   },
