@@ -28,7 +28,7 @@ const plans = [
     features: [
       "Custom design & development",
       "Mobile-responsive UX",
-      "FareHarbor checkout integration",
+      "Lightning Fast Load Time",
       "Basic SEO & analytics"
     ],
     supportLine: "30 days post-launch support",
