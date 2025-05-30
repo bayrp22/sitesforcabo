@@ -14,7 +14,7 @@ export default function DeliveryTimelineSection() {
     >
       <div className="delivery-container">
         <h2 className="delivery-title">
-          <span role="img" aria-label="calendar">📅</span> Delivery Timeline
+          Delivery Timeline
         </h2>
         
         {/* Tab Navigation */}
@@ -38,22 +38,21 @@ export default function DeliveryTimelineSection() {
           <h3>Before we start, please gather and share:</h3>
           
           <div className="provide-group">
-            <h4><span role="img" aria-label="package">📦</span> Assets & Branding</h4>
-            <ul>
+            <h4>Assets & Branding</h4>
+            <ol className="text-gray-900">
               <li>Brand Portfolio: Logos, color palette, typography guidelines</li>
               <li>Vessel Imagery: High-res hero shots & 20+ highlight photos per boat</li>
               <li>Content Assets: Experience descriptions, pricing, FAQs</li>
-            </ul>
+            </ol>
           </div>
           
           <div className="provide-group">
-            <h4><span role="img" aria-label="gear">⚙️</span> Technical & Legal</h4>
-            <ul>
+            <h4>Technical & Legal</h4>
+            <ol className="text-gray-900">
               <li>FareHarbor Integration Details: API/webhook credentials & dev docs</li>
               <li>Domain Configuration: DNS access, host records, SSL requirements</li>
               <li>Legal & Billing Info: Terms of service, privacy policy links</li>
-              <li>Contact & Support: Primary point of contact & review cadence</li>
-            </ul>
+            </ol>
           </div>
           
           <div className="reminder-box">
