@@ -1,6 +1,5 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
-import TierShowcaseSection from '@/components/TierShowcaseSection';
 import UXFlowSection from '@/components/UXFlowSection';
 import SiteDemoSection from '@/components/SiteDemoSection';
 import PricingTableSection from '@/components/PricingTableSection';
@@ -17,8 +16,6 @@ const Index = () => {
       <HeroSection />
       
       <ConceptFunnels />
-      
-      <TierShowcaseSection />
       
       <DemoGallery />
       

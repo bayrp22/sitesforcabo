@@ -3,7 +3,6 @@ import { cn } from '@/lib/utils';
 
 const navItems = [
   { name: 'Home', href: '#', id: 'home' },
-  { name: 'Tiers', href: '#tier-showcase', id: 'tier-showcase' },
   { name: 'UX Flow', href: '#ux-flow', id: 'ux-flow' },
   { name: 'Demos', href: '#site-demo', id: 'site-demo' },
   { name: 'Pricing', href: '#pricing-table', id: 'pricing-table' },

@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Footer: React.FC = () => {
@@ -16,7 +15,6 @@ const Footer: React.FC = () => {
               <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
               <ul className="space-y-2">
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                <li><a href="#tier-showcase" className="text-gray-400 hover:text-white transition-colors">Tiers</a></li>
                 <li><a href="#pricing-table" className="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
                 <li><a href="#proposal-summary" className="text-gray-400 hover:text-white transition-colors">Summary</a></li>
               </ul>

@@ -193,64 +193,7 @@
 }
 
 /* Site Tiers Section Styles */
-@media (min-width: 768px) {
-  .site-tiers__title {
-    font-size: 2.2rem;
-    margin-top: 1rem;
-  }
-  .site-tiers__grid {
-    column-gap: 2rem;
-    row-gap: 2rem;
-    padding: 1.5rem 0;
-  }
-  .site-tiers__card {
-    max-width: 260px;
-  }
-}
-
-.site-tiers__card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 4px;
-  background: linear-gradient(90deg, #00C0AE, #007AFF);
-  transition: width 200ms ease-out;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-}
-.site-tiers__card:hover::before {
-  width: 100%;
-}
-
-.site-tiers__feature {
-  display: flex;
-  align-items: flex-start;
-}
-.site-tiers__feature-icon {
-  width: 14px;
-  height: 14px;
-  margin-right: 0.5rem;
-  background: url('/icons/gradient-dot.svg') no-repeat center;
-}
-.site-tiers__feature-text {
-  flex: 1;
-}
-
-.site-tiers__subtitle {
-  color: #4A5568;
-  line-height: 1.5;
-}
-
-.site-tiers__slogan {
-  font-size: 1rem;
-  opacity: 0;
-  transition: opacity 150ms ease-in;
-}
-.site-tiers__card:hover .site-tiers__slogan {
-  opacity: 1;
-}
+/* Removed */
 
 /* Funnel Concepts Styles */
 .funnel-concepts{

@@ -20,12 +20,6 @@ const demos = [
     desc: 'Private yacht charters & snorkeling.' 
   },
   { 
-    title: <>Tu Enamorado <span className="site-type">Vessel</span></>, 
-    url: 'https://tuenamoradoprivate.framer.website/', 
-    img: 'https://i.imgur.com/nYhcxnd.png', 
-    desc: 'Luxury yacht experience for couples.' 
-  },
-  { 
     title: <><span className="site-type">Destination</span> Funnel</>, 
     url: 'https://wildcabodestination.framer.website/', 
     img: 'https://i.imgur.com/gXvZrKp.png', 
