@@ -8,6 +8,12 @@ const demos = [
     desc: 'Arrrgh! Unleash your inner pirate.' 
   },
   { 
+    title: <><span className="site-type">Corporate</span> Site</>, 
+    url: 'https://wildcabocorporate.framer.website/', 
+    img: 'https://i.imgur.com/BWvy16S.png', 
+    desc: 'Enterprise fleet management portal.' 
+  },
+  { 
     title: <>Cabo Wave <span className="site-type">Private</span></>, 
     url: 'https://cabowaveprivate.framer.website/', 
     img: 'https://i.imgur.com/oWupJDh.jpeg', 
@@ -24,12 +30,6 @@ const demos = [
     url: 'https://wildcabodestination.framer.website/', 
     img: 'https://i.imgur.com/gXvZrKp.png', 
     desc: 'Full marketing funnel demo.' 
-  },
-  { 
-    title: <><span className="site-type">Corporate</span> Site</>, 
-    url: 'https://wildcabocorporate.framer.website/', 
-    img: 'https://i.imgur.com/BWvy16S.png', 
-    desc: 'Enterprise fleet management portal.' 
   }
 ];
 

@@ -1,10 +1,8 @@
 import { CheckIcon, BoltIcon, GlobeAltIcon, DocumentTextIcon, ChartBarIcon, CpuChipIcon, PhotoIcon, XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import SectionContainer from "./SectionContainer";
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function SeoPerformanceSection() {
-  const [zoomed, setZoomed] = useState(false);
-  const handleImageClick = () => setZoomed(z => !z);
   return (
     <SectionContainer id="seo-performance" bgColor="bg-white py-16 mt-4">
       <div className="text-center mb-12">
@@ -18,18 +16,15 @@ export default function SeoPerformanceSection() {
       {/* Features grid with subtle background */}
       <div className="bg-gray-50 rounded-lg p-8 border border-gray-100">
         <div className="flex flex-col lg:flex-row gap-12 items-center lg:items-start">
-          {/* Image Card - container and image both clickable/zoomable */}
+          {/* Image Card - static image */}
           <div className="w-full lg:w-1/2 flex-shrink-0 flex flex-col gap-8">
             <div 
-              className={`bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200 transition-transform duration-300 hover:shadow-md hover:scale-[1.02] cursor-zoom-in ${zoomed ? 'scale-[2.5] z-30 overflow-visible' : ''}`}
-              style={{ display: 'block', margin: '0 auto', cursor: 'pointer', position: 'relative' }}
-              onClick={handleImageClick}
+              className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200 transition-transform hover:shadow-md hover:scale-[1.02]"
             >
               <img 
                 src="https://i.imgur.com/7XJ5HoZ.png"
                 alt="Speed optimization dashboard"
                 className="w-full h-auto"
-                style={{ display: 'block', margin: '0 auto' }}
               />
             </div>
             {/* Scalable & Extendable callout */}

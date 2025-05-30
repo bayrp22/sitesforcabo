@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import useInView from '../hooks/useInView'
+import { CheckIcon, BoltIcon, GlobeAltIcon, DocumentTextIcon, ChartBarIcon, CpuChipIcon, PhotoIcon, XMarkIcon, ChevronLeftIcon, ChevronRightIcon, CloudArrowDownIcon, SparklesIcon, PaintBrushIcon, ShieldCheckIcon, RocketLaunchIcon } from "@heroicons/react/24/solid";
 
 export default function DeliveryTimelineSection() {
   const [activeTab, setActiveTab] = useState('you')
@@ -62,47 +63,73 @@ export default function DeliveryTimelineSection() {
         
         {/* We Provide Panel */}
         <div className={`tab-panel ${activeTab === 'we' ? 'active' : ''}`} id="we-provide">
-          <div className="ribbon">1–2 Weeks/Site</div>
           
-          <ol className="numbered-list">
-            <li>1–2 week turnaround per site (depending on tier and complexity)</li>
-            <li>Custom timeline for 20+ sites (bulk-rollouts coordinated via Sprint 0)</li>
-          </ol>
-          
-          <blockquote className="callout">
-            "We'll handle all UI/UX, booking integration, SEO setup, QA, launch & live tracking."
-          </blockquote>
-          
-          <div className="process-steps vertical">
-            <div className="step">
-              <div className="step-number">1</div>
-              <div className="step-details">
-                <div className="step-name">Design</div>
-                <div className="step-desc">UI/UX & Branding</div>
+          {/* Delivery Cadence/Rollout Infographic - Enhanced */}
+          <div className="process-infographic vertical flex flex-col items-center">
+            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-start space-x-4">
+              <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                <CloudArrowDownIcon className="w-6 h-6 text-blue-500" />
+              </div>
+              <div>
+                <div className="step-name font-semibold text-lg mt-1">Receive Assets</div>
+                <div className="step-desc text-gray-700 text-sm">We receive site assets</div>
               </div>
             </div>
             
-            <div className="step-arrow">↓</div>
+            <div className="step-arrow text-blue-500 text-3xl my-2">↓</div>
             
-            <div className="step">
-              <div className="step-number">2</div>
-              <div className="step-details">
-                <div className="step-name">Build</div>
-                <div className="step-desc">Development & Integration</div>
+            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-start space-x-4">
+              <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                <SparklesIcon className="w-6 h-6 text-blue-500" />
+              </div>
+              <div>
+                <div className="step-name font-semibold text-lg mt-1">Concept to Reality</div>
+                <div className="step-desc text-gray-700 text-sm">We turn concept to reality</div>
               </div>
             </div>
             
-            <div className="step-arrow">↓</div>
+            <div className="step-arrow text-blue-500 text-3xl my-2">↓</div>
             
-            <div className="step">
-              <div className="step-number">3</div>
-              <div className="step-details">
-                <div className="step-name">Launch</div>
-                <div className="step-desc">QA & Deployment</div>
+            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-start space-x-4">
+              <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                <PaintBrushIcon className="w-6 h-6 text-blue-500" />
+              </div>
+              <div>
+                <div className="step-name font-semibold text-lg mt-1">Polish Details</div>
+                <div className="step-desc text-gray-700 text-sm">We polish to the final detail</div>
+              </div>
+            </div>
+
+            <div className="step-arrow text-blue-500 text-3xl my-2">↓</div>
+
+            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-start space-x-4">
+              <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                <ShieldCheckIcon className="w-6 h-6 text-blue-500" />
+              </div>
+              <div>
+                <div className="step-name font-semibold text-lg mt-1">Test Integrations</div>
+                <div className="step-desc text-gray-700 text-sm">We test all integrations extensively</div>
+              </div>
+            </div>
+
+            <div className="step-arrow text-blue-500 text-3xl my-2">↓</div>
+
+            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-start space-x-4">
+              <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                <RocketLaunchIcon className="w-6 h-6 text-blue-500" />
+              </div>
+              <div>
+                <div className="step-name font-semibold text-lg mt-1">Deploy & Go Live</div>
+                <div className="step-desc text-gray-700 text-sm">We deploy and your site is live!</div>
               </div>
             </div>
           </div>
-          
+
+          {/* Add a note about the 2-week timeline */}
+          <p className="mt-8 text-center text-gray-700 text-sm">
+            This process typically takes around 2 weeks per site, depending on complexity.
+          </p>
+
         </div>
       </div>
     </section>
