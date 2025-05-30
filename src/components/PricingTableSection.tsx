@@ -74,13 +74,13 @@ const plans: Plan[] = [
 
 const PricingTableSection: React.FC = () => {
   return (
-    <SectionContainer id="pricing-table" bgColor="bg-white py-16">
+    <SectionContainer id="pricing-table" bgColor="bg-gray-900 py-16">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Pricing Options</h2>
-        <p className="mt-2 text-lg text-gray-600">
+        <h2 className="text-3xl md:text-4xl font-bold text-white">Pricing Options</h2>
+        <p className="mt-2 text-lg text-gray-300">
           Transparent pricing with no hidden fees
         </p>
-        <div className="w-16 h-1 bg-blue-500 rounded mt-4 mx-auto"></div>
+        <div className="w-16 h-1 bg-blue-400 rounded mt-4 mx-auto"></div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
@@ -88,21 +88,33 @@ const PricingTableSection: React.FC = () => {
         {plans.filter(plan => plan.type === 'standard').map((plan, index) => (
           <div 
             key={index} 
-            className="bg-white rounded-2xl shadow-xl p-8 flex flex-col border border-gray-200 h-full"
+            className={`${
+              plan.name === "Multi-Site" 
+                ? "bg-gradient-to-br from-gray-800 via-slate-800 to-gray-800" 
+                : "bg-gray-800"
+            } rounded-2xl shadow-xl p-8 flex flex-col border ${
+              plan.name === "Multi-Site" 
+                ? "border-blue-400" 
+                : "border-gray-700"
+            } h-full hover:${
+              plan.name === "Multi-Site" 
+                ? "from-slate-750 to-gray-750" 
+                : "bg-gray-750"
+            } transition-all duration-200`}
           >
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">{plan.name}</h3>
-            <p className="text-gray-600 mb-6 flex-grow">{plan.description}</p>
+            <h3 className="text-2xl font-bold text-white mb-4">{plan.name}</h3>
+            <p className="text-gray-300 mb-6 flex-grow">{plan.description}</p>
 
             <div className="mb-6">
-              <span className="text-4xl font-bold text-gray-800">{plan.price}</span>
-              <span className="text-lg font-semibold text-gray-600 ml-1">{plan.currency}</span>
-              <span className="text-gray-500">{plan.unit}</span>
+              <span className="text-4xl font-bold text-white">{plan.price}</span>
+              <span className="text-lg font-semibold text-gray-300 ml-1">{plan.currency}</span>
+              <span className="text-gray-400">{plan.unit}</span>
             </div>
 
             <ul className="space-y-3 mb-8">
               {plan.features.map((feature, i) => (
-                <li key={i} className="flex items-start text-gray-700">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                <li key={i} className="flex items-start text-gray-200">
+                  <Check className="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" />
                   <span>{feature}</span>
                 </li>
               ))}
@@ -114,15 +126,15 @@ const PricingTableSection: React.FC = () => {
         {plans.filter(plan => plan.type === 'integration').map((plan, index) => (
           <div 
             key={index} 
-            className="bg-blue-gray-500 rounded-2xl shadow-xl p-8 flex flex-col border border-gray-200 lg:col-start-3 lg:row-start-1 lg:self-center"
+            className="bg-gray-700 rounded-2xl shadow-xl p-8 flex flex-col border border-gray-600 lg:col-start-3 lg:row-start-1 lg:self-center hover:bg-gray-650 transition-colors duration-200"
           >
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">{plan.name}</h3>
-            <p className="text-gray-600 mb-6 flex-grow">{plan.description}</p>
+            <h3 className="text-2xl font-bold text-white mb-4">{plan.name}</h3>
+            <p className="text-gray-300 mb-6 flex-grow">{plan.description}</p>
 
             <div className="mb-6">
-              <span className="text-4xl font-bold text-gray-800">{plan.price}</span>
-              <span className="text-lg font-semibold text-gray-600 ml-1">{plan.currency}</span>
-              <span className="text-gray-500">{plan.unit}</span>
+              <span className="text-4xl font-bold text-white">{plan.price}</span>
+              <span className="text-lg font-semibold text-gray-300 ml-1">{plan.currency}</span>
+              <span className="text-gray-400">{plan.unit}</span>
             </div>
           </div>
         ))}

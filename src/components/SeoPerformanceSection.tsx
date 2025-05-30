@@ -29,17 +29,17 @@ export default function SeoPerformanceSection() {
             </div>
             {/* Scalable & Extendable callout */}
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 shadow-sm w-full">
-              <div className="flex items-start space-x-4">
+          <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
                   <CheckIcon className="w-6 h-6 text-green-400" />
-                </div>
-                <div>
+            </div>
+            <div>
                   <h3 className="text-xl font-semibold text-white">Scalable & Extendable</h3>
                   <p className="mt-2 text-base text-gray-300">
                     These core services lay the groundwork; as Needs grow, we can layer on advanced SEO, schema markup, content strategy, and more.
                   </p>
-                </div>
-              </div>
+            </div>
+          </div>
             </div>
           </div>
           {/* Feature Cards - new modern card style, centered and visually distinct, now shorter and wider */}
@@ -48,7 +48,7 @@ export default function SeoPerformanceSection() {
             <div className="bg-gray-800 rounded-2xl shadow-lg p-4 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-2xl w-full max-w-md mx-auto">
               <div className="bg-blue-700 p-2 rounded-full mb-2 flex items-center justify-center">
                 <DocumentTextIcon className="w-7 h-7 text-blue-300" />
-              </div>
+            </div>
               <h3 className="text-lg font-bold text-center mb-2 text-white">Essential metadata</h3>
               <p className="text-gray-300 text-center text-sm">We craft custom page titles, meta descriptions, and social tags for maximum search and share visibility.</p>
             </div>
@@ -56,7 +56,7 @@ export default function SeoPerformanceSection() {
             <div className="bg-gray-800 rounded-2xl shadow-lg p-4 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-2xl w-full max-w-md mx-auto">
               <div className="bg-blue-700 p-2 rounded-full mb-2 flex items-center justify-center">
                 <ChartBarIcon className="w-7 h-7 text-blue-300" />
-              </div>
+          </div>
               <h3 className="text-lg font-bold text-center mb-2 text-white">Analytics setup</h3>
               <p className="text-gray-300 text-center text-sm">We handle domain, SSL, and Google Analytics so you can track performance from day one.</p>
             </div>
