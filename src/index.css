@@ -8,8 +8,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 0%; /* Black */
+    --foreground: 0 0% 100%; /* White */
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -364,7 +364,7 @@
   padding: 5rem 0;
   text-align: center;
   position: relative;
-  background: transparent;
+  background: #000000; /* Changed from transparent */
 }
 
 .demos-content {
@@ -375,7 +375,7 @@
 
 .section-title {
   margin-bottom: 0.5rem;
-  color: #1e293b;
+  color: #FFFFFF;
   display: inline-block;
   font-size: 2.5rem;
   font-family: 'Poppins', sans-serif;
@@ -384,7 +384,7 @@
 
 .demos-intro {
   margin-bottom: 4rem;
-  color: #64748b;
+  color: #FFFFFF;
   font-size: 1.1rem;
   max-width: 600px;
   margin-left: auto;
@@ -472,18 +472,18 @@
 
 .demo-title {
   font-size: 1.8rem;
-  color: #1e293b;
+  color: #FFFFFF;
   margin-bottom: 1rem;
   font-weight: 600;
 }
 
 .site-type {
-  color: #0077b6;
+  color: #E0F2F7;
   font-weight: 700;
 }
 
 .demo-desc {
-  color: #64748b;
+  color: #E5E7EB;
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
   line-height: 1.5;
@@ -491,7 +491,7 @@
 
 .demo-link {
   display: inline-block;
-  color: #0077b6;
+  color: #E0F2F7;
   font-weight: 600;
   text-decoration: none;
   padding: 8px 0;
@@ -505,7 +505,7 @@
 
 .demos-note {
   margin-top: 4rem;
-  color: #475569;
+  color: #E5E7EB;
   font-style: italic;
   max-width: 700px;
   margin-left: auto;

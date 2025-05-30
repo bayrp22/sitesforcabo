@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -96,7 +95,7 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
 			backgroundImage: {
-				'cabo-gradient': 'linear-gradient(to right, #A0D8C5, #38ABE2)',
+				'cabo-gradient': 'linear-gradient(to right, #000338 0%, #00155F 40%, #0046C2 75%, #0073F1 100%)',
 			},
 		}
 	},

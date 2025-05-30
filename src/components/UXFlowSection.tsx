@@ -88,7 +88,7 @@ const deviceStyles = `
     border: 1px solid #a0aec0;
     box-shadow:
       0 1px 2px rgba(0,0,0,0.05), /* Bottom edge shadow */
-      0 4px 8px rgba(0,0,0,0.1); /* Floor shadow */
+      0 4px 8px rgba(0,0,0,0.1); /* Floor shadow - Fixed typo */
     transform: perspective(100px) rotateX(10deg) translateY(-5px);
   }
 
@@ -113,25 +113,26 @@ const deviceStyles = `
     cursor: pointer;
     margin: 0 3px;
     transform-origin: bottom center;
-    background-color: #f0f0f4;
+    background-color: #374151; /* Darker gray */
     width: 130px; /* Fixed width for all tabs */
     text-align: center; /* Center the text */
+    color: #ffffff; /* White text */
   }
 
   .chrome-tab.active {
-    background-color: #e0f2ff;
-    box-shadow: 0 -3px 10px rgba(0, 120, 215, 0.15);
+    background-color: #4b5563; /* Even darker gray for active */
+    box-shadow: 0 -3px 10px rgba(0, 120, 215, 0.15); /* Keep a subtle blue shadow */
     z-index: 10;
     transform: translateY(-3px);
   }
 
   .chrome-tab:not(.active) {
-    background-color: #eaebef;
-    border-bottom: 1px solid #e2e8f0;
+    background-color: #374151; /* Ensure consistent background when not active */
+    border-bottom: 1px solid #1f2937; /* Darker border */
   }
 
   .chrome-tab:not(.active):hover {
-    background-color: #e6f2ff;
+    background-color: #4f5b69; /* Slightly lighter dark gray on hover */
   }
 
   .tab-bottom-border {
@@ -228,7 +229,7 @@ const UXFlowSection: React.FC = () => {
   }, []);
 
   return (
-    <SectionContainer id="ux-flow" bgColor="bg-white">
+    <SectionContainer id="ux-flow" bgColor="bg-black">
       {/* Add device styles */}
       <style>{deviceStyles}</style>
       

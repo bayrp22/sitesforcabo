@@ -1,6 +1,6 @@
 export default function ProposalSummary() {
   return (
-    <section className="h-screen flex flex-col items-center justify-center gradient-bg">
+    <section className="h-screen flex flex-col items-center justify-center bg-cabo-gradient">
       <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Launch?</h2>
       <ul className="bg-white rounded-lg shadow-lg p-8 space-y-4 text-left">
         {[
