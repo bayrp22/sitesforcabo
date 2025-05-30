@@ -29,7 +29,7 @@ export default function DeliveryTimelineSection() {
             className={`tab-button ${activeTab === 'we' ? 'active' : ''}`}
             onClick={() => setActiveTab('we')}
           >
-            We Provide
+            We Handle
           </button>
         </div>
         
@@ -65,61 +65,86 @@ export default function DeliveryTimelineSection() {
           
           {/* Delivery Cadence/Rollout Infographic - Enhanced */}
           <div className="process-infographic vertical flex flex-col items-center">
-            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-start space-x-4">
-              <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
-                <CloudArrowDownIcon className="w-6 h-6 text-blue-500" />
+            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-center justify-between space-x-4">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                  <CloudArrowDownIcon className="w-6 h-6 text-blue-500" />
+                </div>
+                <div>
+                  <div className="step-name font-semibold text-lg mt-1">Receive Assets</div>
+                  <div className="step-desc text-gray-700 text-sm">We receive site assets</div>
+                </div>
               </div>
-              <div>
-                <div className="step-name font-semibold text-lg mt-1">Receive Assets</div>
-                <div className="step-desc text-gray-700 text-sm">We receive site assets</div>
-              </div>
-            </div>
-            
-            <div className="step-arrow text-blue-500 text-3xl my-2">↓</div>
-            
-            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-start space-x-4">
-              <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
-                <SparklesIcon className="w-6 h-6 text-blue-500" />
-              </div>
-              <div>
-                <div className="step-name font-semibold text-lg mt-1">Concept to Reality</div>
-                <div className="step-desc text-gray-700 text-sm">We turn concept to reality</div>
+              <div className="flex-shrink-0 text-right">
+                <div className="text-gray-600 font-semibold text-sm">Days 1 - 5</div>
               </div>
             </div>
             
             <div className="step-arrow text-blue-500 text-3xl my-2">↓</div>
             
-            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-start space-x-4">
-              <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
-                <PaintBrushIcon className="w-6 h-6 text-blue-500" />
+            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-center justify-between space-x-4">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                  <SparklesIcon className="w-6 h-6 text-blue-500" />
+                </div>
+                <div>
+                  <div className="step-name font-semibold text-lg mt-1">Build Your Concept</div>
+                  <div className="step-desc text-gray-700 text-sm">We bring concept to life</div>
+                </div>
               </div>
-              <div>
-                <div className="step-name font-semibold text-lg mt-1">Polish Details</div>
-                <div className="step-desc text-gray-700 text-sm">We polish to the final detail</div>
+              <div className="flex-shrink-0 text-right">
+                <div className="text-gray-600 font-semibold text-sm">Days 6 - 10</div>
+              </div>
+            </div>
+            
+            <div className="step-arrow text-blue-500 text-3xl my-2">↓</div>
+            
+            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-center justify-between space-x-4">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                  <PaintBrushIcon className="w-6 h-6 text-blue-500" />
+                </div>
+                <div>
+                  <div className="step-name font-semibold text-lg mt-1">Polish Details</div>
+                  <div className="step-desc text-gray-700 text-sm">We polish to the final detail</div>
+                </div>
+              </div>
+              <div className="flex-shrink-0 text-right">
+                <div className="text-gray-600 font-semibold text-sm">Days 11 - 12</div>
               </div>
             </div>
 
             <div className="step-arrow text-blue-500 text-3xl my-2">↓</div>
 
-            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-start space-x-4">
-              <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
-                <ShieldCheckIcon className="w-6 h-6 text-blue-500" />
+            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-center justify-between space-x-4">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                  <ShieldCheckIcon className="w-6 h-6 text-blue-500" />
+                </div>
+                <div>
+                  <div className="step-name font-semibold text-lg mt-1">Test Integrations</div>
+                  <div className="step-desc text-gray-700 text-sm">We test all integrations extensively</div>
+                </div>
               </div>
-              <div>
-                <div className="step-name font-semibold text-lg mt-1">Test Integrations</div>
-                <div className="step-desc text-gray-700 text-sm">We test all integrations extensively</div>
+              <div className="flex-shrink-0 text-right">
+                <div className="text-gray-600 font-semibold text-sm">Days 13 - 14</div>
               </div>
             </div>
 
             <div className="step-arrow text-blue-500 text-3xl my-2">↓</div>
 
-            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-start space-x-4">
-              <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
-                <RocketLaunchIcon className="w-6 h-6 text-blue-500" />
+            <div className="step bg-white rounded-lg shadow-md p-6 w-full max-w-sm flex items-center justify-between space-x-4">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                  <RocketLaunchIcon className="w-6 h-6 text-blue-500" />
+                </div>
+                <div>
+                  <div className="step-name font-semibold text-lg mt-1">Deploy & Go Live</div>
+                  <div className="step-desc text-gray-700 text-sm">We deploy and your site is live!</div>
+                </div>
               </div>
-              <div>
-                <div className="step-name font-semibold text-lg mt-1">Deploy & Go Live</div>
-                <div className="step-desc text-gray-700 text-sm">We deploy and your site is live!</div>
+              <div className="flex-shrink-0 text-right">
+                <div className="text-gray-600 font-semibold text-sm">Day 15</div>
               </div>
             </div>
           </div>
