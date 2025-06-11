@@ -22,7 +22,7 @@ export default function SeoPerformanceSection() {
               className="bg-gray-800 rounded-lg overflow-hidden shadow-sm border border-gray-700 transition-transform hover:shadow-md hover:scale-[1.02]"
             >
               <img 
-                src="https://i.imgur.com/KaMbHhg.png"
+                src="https://i.imgur.com/vu9gkYR.png"
                 alt="Speed optimization dashboard"
                 className="w-full h-auto"
               />
