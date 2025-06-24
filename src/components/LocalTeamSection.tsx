@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Phone, Mail } from 'lucide-react';
 
 // Try to import Framer Motion, but don't fail if it's not available
@@ -16,6 +16,17 @@ try {
 }
 
 const LocalTeamSection: React.FC = () => {
+  const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
+
+  // Listen for language changes from other components
+  useEffect(() => {
+    const handleLanguageChange = (event: CustomEvent) => {
+      setLanguage(event.detail);
+    };
+    window.addEventListener('languageChanged', handleLanguageChange as EventListener);
+    return () => window.removeEventListener('languageChanged', handleLanguageChange as EventListener);
+  }, []);
+
   // Check if Framer Motion is available
   const isFramerAvailable = typeof motion !== 'object' || motion.section !== 'section';
 
@@ -46,17 +57,34 @@ const LocalTeamSection: React.FC = () => {
   const TextContent = isFramerAvailable ? motion.div : 'div';
   const ProfilesContainer = isFramerAvailable ? motion.div : 'div';
 
+  const content = {
+    EN: {
+      headline1: "Your Local",
+      headline2: "Los Cabos",
+      headline3: "Web Partners",
+      paragraph1: "We're not a faceless agency. We're your neighbors in Los Cabos, building relationships and websites that matter to our community.",
+      paragraph2: "Meet our founders who live and work right here in Los Cabos. We met as kids at Colegio El Camino and now work together locally. We understand Cabo, speak both languages fluently, and are always available for face-to-face meetings."
+    },
+    ES: {
+      headline1: "Tus Socios",
+      headline2: "Los Cabos",
+      headline3: "Web Locales",
+      paragraph1: "No somos una agencia sin rostro. Somos tus vecinos en Los Cabos, construyendo relaciones y sitios web que importan a nuestra comunidad.",
+      paragraph2: "Conoce a nuestros fundadores que viven y trabajan aquí en Los Cabos. Nos conocimos de niños en el Colegio El Camino y ahora trabajamos juntos localmente. Entendemos Cabo, hablamos ambos idiomas con fluidez, y siempre estamos disponibles para reuniones cara a cara."
+    }
+  };
+
   const founders = [
     {
       name: "Bay Purcell",
-      title: "CEO & Founder",
+      title: { EN: "CEO & Founder", ES: "CEO y Fundador" },
       image: "/images/Bay Profile.png",
       phone: "+52 624 123 4567",
       email: "bay@swsloscabos.com"
     },
     {
       name: "Borja Ponce",
-      title: "COO & Co-Founder", 
+      title: { EN: "COO & Co-Founder", ES: "COO y Co-Fundador" }, 
       image: "/images/Borja Profile.png",
       phone: "+52 624 123 4568",
       email: "borja@swsloscabos.com"
@@ -77,19 +105,16 @@ const LocalTeamSection: React.FC = () => {
             className="space-y-6"
             {...textProps}
           >
-                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-               Your Local<br />
-               Los Cabos<br />
-               Web Partners
+                                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+               {content[language].headline1}<br />
+               {content[language].headline2}<br />
+               {content[language].headline3}
              </h2>
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-              We're not a faceless agency. We're your neighbors in Los Cabos, building relationships 
-              and websites that matter to our community.
-            </p>
-                                      <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-               Meet our founders who live and work right here in Los Cabos. We met as kids 
-               at Colegio El Camino and now work together locally. We understand Cabo, 
-               speak both languages fluently, and are always available for face-to-face meetings.
+             <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+               {content[language].paragraph1}
+             </p>
+             <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+               {content[language].paragraph2}
              </p>
           </TextContent>
 
@@ -123,7 +148,7 @@ const LocalTeamSection: React.FC = () => {
                        {founder.name}
                      </h3>
                      <p className="text-gray-600 font-medium mb-6 text-base">
-                       {founder.title}
+                       {founder.title[language]}
                      </p>
                      
                      {/* Contact Information */}

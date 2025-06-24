@@ -17,6 +17,12 @@ try {
 const HeroSection: React.FC = () => {
   const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
 
+  const changeLanguage = (newLanguage: 'EN' | 'ES') => {
+    setLanguage(newLanguage);
+    // Dispatch custom event to notify other components
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: newLanguage }));
+  };
+
   const scrollToNextSection = (e: React.MouseEvent) => {
     e.preventDefault();
 
@@ -125,7 +131,7 @@ const HeroSection: React.FC = () => {
       <div className="absolute top-6 right-6">
         <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2">
           <button
-            onClick={() => setLanguage('ES')}
+            onClick={() => changeLanguage('ES')}
             className={`text-white transition-all duration-200 ${
               language === 'ES' ? 'font-bold underline' : 'hover:opacity-80'
             }`}
@@ -134,7 +140,7 @@ const HeroSection: React.FC = () => {
           </button>
           <span className="text-white/60">|</span>
           <button
-            onClick={() => setLanguage('EN')}
+            onClick={() => changeLanguage('EN')}
             className={`text-white transition-all duration-200 ${
               language === 'EN' ? 'font-bold underline' : 'hover:opacity-80'
             }`}
@@ -173,7 +179,7 @@ const HeroSection: React.FC = () => {
         >
           <div className="flex items-center space-x-2 text-white">
             <span className="text-2xl">📍</span>
-            <span className="text-lg font-medium">Local to Los Cabos</span>
+            <span className="text-lg font-medium">{language === 'EN' ? 'Local to Los Cabos' : 'Local en Los Cabos'}</span>
           </div>
           <div className="flex items-center space-x-2 text-white">
             <span className="text-2xl">🗣️</span>
@@ -181,7 +187,7 @@ const HeroSection: React.FC = () => {
           </div>
           <div className="flex items-center space-x-2 text-white">
             <span className="text-2xl">🤝</span>
-            <span className="text-lg font-medium">Face-to-Face Service</span>
+            <span className="text-lg font-medium">{language === 'EN' ? 'Face-to-Face Service' : 'Servicio Cara a Cara'}</span>
           </div>
         </TrustBadges>
 

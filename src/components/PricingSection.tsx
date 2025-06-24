@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Check } from 'lucide-react';
 
 // Try to import Framer Motion, but don't fail if it's not available
@@ -16,6 +16,17 @@ try {
 }
 
 const PricingSection: React.FC = () => {
+  const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
+
+  // Listen for language changes from other components
+  useEffect(() => {
+    const handleLanguageChange = (event: CustomEvent) => {
+      setLanguage(event.detail);
+    };
+    window.addEventListener('languageChanged', handleLanguageChange as EventListener);
+    return () => window.removeEventListener('languageChanged', handleLanguageChange as EventListener);
+  }, []);
+
   // Check if Framer Motion is available
   const isFramerAvailable = typeof motion !== 'object' || motion.section !== 'section';
 
@@ -54,39 +65,77 @@ const PricingSection: React.FC = () => {
   const Grid = isFramerAvailable ? motion.div : 'div';
   const ButtonContainer = isFramerAvailable ? motion.div : 'div';
 
+  const content = {
+    EN: {
+      headline: "Transparent Packages for Every Budget",
+      buttonText: "Get Your Custom Quote →"
+    },
+    ES: {
+      headline: "Paquetes Transparentes para Cada Presupuesto",
+      buttonText: "Obtener Tu Cotización Personalizada →"
+    }
+  };
+
   const pricingTiers = [
     {
-      name: "Starter",
+      name: { EN: "Starter", ES: "Inicial" },
       price: "$15k",
-      features: [
-        "Professional website design",
-        "Mobile-responsive layout",
-        "Basic SEO optimization",
-        "Contact forms & analytics",
-        "3 months support included"
-      ]
+      features: {
+        EN: [
+          "Professional website design",
+          "Mobile-responsive layout",
+          "Basic SEO optimization",
+          "Contact forms & analytics",
+          "3 months support included"
+        ],
+        ES: [
+          "Diseño web profesional",
+          "Diseño responsivo para móviles",
+          "Optimización SEO básica",
+          "Formularios de contacto y analíticas",
+          "3 meses de soporte incluido"
+        ]
+      }
     },
     {
-      name: "Business",
+      name: { EN: "Business", ES: "Negocio" },
       price: "$30k",
-      features: [
-        "Everything in Starter",
-        "Advanced SEO & content strategy",
-        "E-commerce functionality",
-        "Custom integrations",
-        "6 months priority support"
-      ]
+      features: {
+        EN: [
+          "Everything in Starter",
+          "Advanced SEO & content strategy",
+          "E-commerce functionality",
+          "Custom integrations",
+          "6 months priority support"
+        ],
+        ES: [
+          "Todo lo del Inicial",
+          "SEO avanzado y estrategia de contenido",
+          "Funcionalidad de e-commerce",
+          "Integraciones personalizadas",
+          "6 meses de soporte prioritario"
+        ]
+      }
     },
     {
-      name: "Premium",
+      name: { EN: "Premium", ES: "Premium" },
       price: "+5 sites",
-      features: [
-        "Everything in Business",
-        "Interactive web applications",
-        "Advanced analytics & tracking",
-        "Custom Pricing & Timelines",
-        "12 months dedicated support"
-      ]
+      features: {
+        EN: [
+          "Everything in Business",
+          "Interactive web applications",
+          "Advanced analytics & tracking",
+          "Custom Pricing & Timelines",
+          "12 months dedicated support"
+        ],
+        ES: [
+          "Todo lo del Negocio",
+          "Aplicaciones web interactivas",
+          "Analíticas y seguimiento avanzado",
+          "Precios y Cronogramas Personalizados",
+          "12 meses de soporte dedicado"
+        ]
+      }
     }
   ];
 
@@ -109,7 +158,7 @@ const PricingSection: React.FC = () => {
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 md:mb-8"
             {...headerProps}
           >
-            Transparent Packages for Every Budget
+            {content[language].headline}
           </Header>
         </div>
 
@@ -131,7 +180,7 @@ const PricingSection: React.FC = () => {
               )}
               <div className={`${index === 1 ? 'relative z-10' : ''} text-center mb-6`}>
                 <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                  {tier.name}
+                  {tier.name[language]}
                 </h3>
                 <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                   {tier.price}
@@ -140,7 +189,7 @@ const PricingSection: React.FC = () => {
 
               <div className={`${index === 1 ? 'relative z-10' : ''} flex-grow`}>
                 <ul className="space-y-4">
-                  {tier.features.map((feature, featureIndex) => (
+                  {tier.features[language].map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start space-x-3">
                       <Check className="w-5 h-5 text-gray-700 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-600 text-sm md:text-base">
@@ -162,7 +211,7 @@ const PricingSection: React.FC = () => {
             onClick={scrollToQuote}
             className="bg-[#A5FF00] text-black font-semibold px-10 py-4 rounded-lg text-lg hover:bg-[#94E600] transition-colors duration-200 shadow-lg hover:shadow-xl"
           >
-            Get Your Custom Quote →
+            {content[language].buttonText}
           </button>
         </ButtonContainer>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Zap, Palette, Search, X } from 'lucide-react';
 
 // Try to import Framer Motion, but don't fail if it's not available
@@ -17,6 +17,16 @@ try {
 
 const SolutionSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
+
+  // Listen for language changes from other components
+  useEffect(() => {
+    const handleLanguageChange = (event: CustomEvent) => {
+      setLanguage(event.detail);
+    };
+    window.addEventListener('languageChanged', handleLanguageChange as EventListener);
+    return () => window.removeEventListener('languageChanged', handleLanguageChange as EventListener);
+  }, []);
 
   // Check if Framer Motion is available
   const isFramerAvailable = typeof motion !== 'object' || motion.section !== 'section';
@@ -57,21 +67,43 @@ const SolutionSection: React.FC = () => {
   const Grid = isFramerAvailable ? motion.div : 'div';
   const ButtonContainer = isFramerAvailable ? motion.div : 'div';
 
+  const content = {
+    EN: {
+      headline: "Built for Speed, Designed to Convert, Optimized to Rank",
+      subheadline: "We don't just build websites—we create digital assets that work 24/7 to grow your business with proven strategies that deliver real results.",
+      buttonText: "Learn How It Works"
+    },
+    ES: {
+      headline: "Construido para Velocidad, Diseñado para Convertir, Optimizado para Posicionar",
+      subheadline: "No solo construimos sitios web—creamos activos digitales que trabajan 24/7 para hacer crecer tu negocio con estrategias probadas que entregan resultados reales.",
+      buttonText: "Aprende Cómo Funciona"
+    }
+  };
+
   const solutions = [
     {
       icon: Zap,
-      title: "Built for Speed",
-      description: "Lightning-fast loading times that keep visitors engaged and reduce bounce rates. Your site loads in under 3 seconds, guaranteed."
+      title: { EN: "Built for Speed", ES: "Construido para Velocidad" },
+      description: { 
+        EN: "Lightning-fast loading times that keep visitors engaged and reduce bounce rates. Your site loads in under 3 seconds, guaranteed.",
+        ES: "Tiempos de carga súper rápidos que mantienen a los visitantes comprometidos y reducen las tasas de rebote. Tu sitio carga en menos de 3 segundos, garantizado."
+      }
     },
     {
       icon: Palette,
-      title: "Designed to Convert",
-      description: "Professional designs with strategic call-to-actions that turn visitors into customers. Every element is optimized for conversions."
+      title: { EN: "Designed to Convert", ES: "Diseñado para Convertir" },
+      description: { 
+        EN: "Professional designs with strategic call-to-actions that turn visitors into customers. Every element is optimized for conversions.",
+        ES: "Diseños profesionales con llamadas a la acción estratégicas que convierten visitantes en clientes. Cada elemento está optimizado para conversiones."
+      }
     },
     {
       icon: Search,
-      title: "Optimized to Rank",
-      description: "SEO-optimized from day one with proper structure, meta tags, and content that helps you rank higher on Google searches."
+      title: { EN: "Optimized to Rank", ES: "Optimizado para Posicionar" },
+      description: { 
+        EN: "SEO-optimized from day one with proper structure, meta tags, and content that helps you rank higher on Google searches.",
+        ES: "Optimizado para SEO desde el primer día con estructura adecuada, meta tags y contenido que te ayuda a posicionarte mejor en búsquedas de Google."
+      }
     }
   ];
 
@@ -88,13 +120,13 @@ const SolutionSection: React.FC = () => {
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 md:mb-8"
               {...headerProps}
             >
-              Built for Speed, Designed to Convert, Optimized to Rank
+              {content[language].headline}
             </Header>
             <Subheader
               className="text-lg md:text-xl lg:text-2xl text-white max-w-3xl mx-auto"
               {...headerProps}
             >
-              We don't just build websites—we create digital assets that work 24/7 to grow your business with proven strategies that deliver real results.
+              {content[language].subheadline}
             </Subheader>
           </div>
 
@@ -114,10 +146,10 @@ const SolutionSection: React.FC = () => {
                       <IconComponent className="w-8 h-8 md:w-10 md:h-10 text-gray-900" />
                     </div>
                     <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">
-                      {solution.title}
+                      {solution.title[language]}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
-                      {solution.description}
+                      {solution.description[language]}
                     </p>
                   </div>
                 </div>
@@ -133,7 +165,7 @@ const SolutionSection: React.FC = () => {
               onClick={() => setIsModalOpen(true)}
               className="bg-gray-900 text-white font-semibold px-8 py-4 rounded-lg text-lg hover:bg-gray-800 transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
-              Learn How It Works
+              {content[language].buttonText}
             </button>
           </ButtonContainer>
         </div>
