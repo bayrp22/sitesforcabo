@@ -107,9 +107,9 @@ const HeroSection: React.FC = () => {
 
       {/* Pink flowing lines background - bottom right */}
       <div 
-        className="absolute bottom-0 right-0 w-2/3 h-2/3 bg-no-repeat bg-contain opacity-80 pointer-events-none z-10"
+        className="absolute -bottom-80 -right-40 w-full h-full bg-no-repeat bg-contain opacity-80 pointer-events-none z-10"
         style={{
-          backgroundImage: 'url(/images/2.3%20CUSTOM%20PINK%20BG.png)',
+          backgroundImage: 'url(/images/pink-lines-v2.png)',
           backgroundPosition: 'bottom right',
           backgroundSize: 'contain'
         }}
