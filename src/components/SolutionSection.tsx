@@ -139,7 +139,8 @@ const SolutionSection: React.FC = () => {
               return (
                 <div
                   key={index}
-                  className="text-center group hover:transform hover:scale-105 transition-all duration-300"
+                  className="text-center group hover:transform hover:scale-105 transition-all duration-300 cursor-pointer"
+                  onClick={() => setIsModalOpen(true)}
                 >
                   <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div className="bg-[#A5FF00] rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-[#94E600] transition-colors duration-300">
