@@ -32,12 +32,15 @@ const HeroSection: React.FC = () => {
     }
   };
 
-  const scrollToQuoteWizard = (e: React.MouseEvent) => {
+  const scrollToOfferGate = (e: React.MouseEvent) => {
     e.preventDefault();
 
-    const quoteSection = document.getElementById('quote-wizard');
-    if (quoteSection) {
-      quoteSection.scrollIntoView({ behavior: 'smooth' });
+    const offerGateSection = document.getElementById('quote');
+    if (offerGateSection) {
+      offerGateSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   };
 
@@ -81,14 +84,12 @@ const HeroSection: React.FC = () => {
       headline: "Launch a Professional Website in Weeks – Without Breaking the Bank",
       subhead: "SWS builds custom, high-quality websites fast and at a fraction of typical costs—so Los Cabos businesses get online quickly and affordably.",
       primaryCTA: "Get My Free Quote →",
-      secondaryCTA: "Talk to a Local Expert →",
       arrowText: "↓ See How It Works"
     },
     ES: {
       headline: "Lanza un Sitio Web Profesional en Semanas – Sin Quebrar el Banco",
       subhead: "SWS construye sitios web personalizados y de alta calidad rápidamente y a una fracción de los costos típicos—para que los negocios de Los Cabos se pongan en línea rápida y económicamente.",
       primaryCTA: "Obtener Mi Cotización Gratis →",
-      secondaryCTA: "Hablar con un Experto Local →",
       arrowText: "↓ Ver Cómo Funciona"
     }
   };
@@ -191,22 +192,16 @@ const HeroSection: React.FC = () => {
           </div>
         </TrustBadges>
 
-        {/* Primary & Secondary CTAs */}
+        {/* Primary CTA */}
         <CTAContainer
-          className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 mb-12"
+          className="flex justify-center mb-12"
           {...ctaProps}
         >
           <button
-            onClick={scrollToQuoteWizard}
+            onClick={scrollToOfferGate}
             className="bg-[#A5FF00] text-black font-semibold px-8 py-4 rounded-lg text-lg hover:bg-[#94E600] transition-colors duration-200 shadow-lg"
           >
             {content[language].primaryCTA}
-          </button>
-          <button
-            onClick={scrollToQuoteWizard}
-            className="text-white text-lg font-medium underline hover:no-underline transition-all duration-200"
-          >
-            {content[language].secondaryCTA}
           </button>
         </CTAContainer>
       </div>
