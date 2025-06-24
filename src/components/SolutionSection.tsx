@@ -162,7 +162,15 @@ const SolutionSection: React.FC = () => {
             {...buttonProps}
           >
             <button
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => {
+                const offerGateSection = document.getElementById('quote');
+                if (offerGateSection) {
+                  offerGateSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }
+              }}
               className="bg-gray-900 text-white font-semibold px-8 py-4 rounded-lg text-lg hover:bg-gray-800 transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               {content[language].buttonText}

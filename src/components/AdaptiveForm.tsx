@@ -196,11 +196,7 @@ const AdaptiveForm: React.FC<AdaptiveFormProps> = ({ path, onStatusChange }) => 
                 </label>
                 <input
                   {...register('url', { 
-                    required: 'Website URL is required',
-                    pattern: {
-                      value: /^https?:\/\/.+/,
-                      message: 'Please enter a valid URL (starting with http:// or https://)'
-                    }
+                    required: 'Website URL is required'
                   })}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#A5FF00] focus:border-transparent transition-colors"
                   placeholder={content[language].fields.url.placeholder}

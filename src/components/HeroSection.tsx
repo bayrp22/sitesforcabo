@@ -26,9 +26,12 @@ const HeroSection: React.FC = () => {
   const scrollToNextSection = (e: React.MouseEvent) => {
     e.preventDefault();
 
-    const nextSection = document.getElementById('quote-wizard');
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' });
+    const offerGateSection = document.getElementById('quote');
+    if (offerGateSection) {
+      offerGateSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   };
 
@@ -83,14 +86,14 @@ const HeroSection: React.FC = () => {
     EN: {
       headline: "Launch a Professional Website in Weeks – Without Breaking the Bank",
       subhead: "SWS builds custom, high-quality websites fast and at a fraction of typical costs—so Los Cabos businesses get online quickly and affordably.",
-      primaryCTA: "Get My Free Quote →",
-      arrowText: "↓ See How It Works"
+      primaryCTA: "Get My Free Quote ↓",
+      arrowText: "See How It Works"
     },
     ES: {
       headline: "Lanza un Sitio Web Profesional en Semanas – Sin Quebrar el Banco",
       subhead: "SWS construye sitios web personalizados y de alta calidad rápidamente y a una fracción de los costos típicos—para que los negocios de Los Cabos se pongan en línea rápida y económicamente.",
-      primaryCTA: "Obtener Mi Cotización Gratis →",
-      arrowText: "↓ Ver Cómo Funciona"
+      primaryCTA: "Obtener Mi Cotización Gratis ↓",
+      arrowText: "Ver Cómo Funciona"
     }
   };
 
@@ -207,13 +210,13 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Enhanced Arrow Animation */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+      <button
+        onClick={scrollToNextSection}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer hover:opacity-80 transition-opacity duration-200"
+      >
         <p className="text-white mb-3 text-sm">{content[language].arrowText}</p>
-        <ArrowDown
-          className="w-6 h-6 text-white cursor-pointer animate-pulse-custom"
-          onClick={scrollToNextSection}
-        />
-      </div>
+        <ArrowDown className="w-6 h-6 text-white animate-pulse-custom" />
+      </button>
 
       <style dangerouslySetInnerHTML={{
         __html: `
