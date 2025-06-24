@@ -30,18 +30,18 @@ const ProblemSection: React.FC = () => {
       ]
     },
     ES: {
-      headline: "Invisible en Línea = Perder Negocio",
+      headline: "Sin Página Web = Menos Confianza, Menos Conversiones",
       withSite: "✅ Con un Sitio Web Profesional",
       withoutSite: "❌ Sin un Sitio Web",
       withFeatures: [
         "Los clientes te encuentran 24/7 a través de búsquedas de Google y redes sociales",
-        "Genera confianza instantáneamente con diseño profesional y testimonios de clientes",
-        "Convierte visitantes en clientes con llamadas a la acción claras y formularios de contacto"
+        "Genera confianza con diseño profesional y testimonios de clientes",
+        "Haz que quien te visite también te escriba — con botones claros y formularios que sí funcionan"
       ],
       withoutFeatures: [
-        "Los clientes potenciales no pueden encontrarte cuando buscan en línea",
-        "Competidores con sitios web capturan tus clientes potenciales",
-        "Pierdes ventas que ocurren fuera del horario comercial"
+        "Tus clientes potenciales no te encuentran cuando buscan",
+        "Tus competidores con sitio web capturan tus clientes potenciales",
+        "Pierdes ventas y exposición cuando tu negocio está cerrado"
       ]
     }
   };

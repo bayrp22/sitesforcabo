@@ -74,7 +74,7 @@ const SolutionSection: React.FC = () => {
       buttonText: "Learn How It Works"
     },
     ES: {
-      headline: "Construido para Velocidad, Diseñado para Convertir, Optimizado para Posicionar",
+      headline: "Rápido, Atractivo y Fácil De Encontrar: Así Debe Ser Tu Sitio Web",
       subheadline: "No solo construimos sitios web—creamos activos digitales que trabajan 24/7 para hacer crecer tu negocio con estrategias probadas que entregan resultados reales.",
       buttonText: "Aprende Cómo Funciona"
     }
@@ -83,23 +83,23 @@ const SolutionSection: React.FC = () => {
   const solutions = [
     {
       icon: Zap,
-      title: { EN: "Built for Speed", ES: "Construido para Velocidad" },
+      title: { EN: "Built for Speed", ES: "Potencia y Rapidez" },
       description: { 
         EN: "Lightning-fast loading times that keep visitors engaged and reduce bounce rates. Your site loads in under 3 seconds, guaranteed.",
-        ES: "Tiempos de carga súper rápidos que mantienen a los visitantes comprometidos y reducen las tasas de rebote. Tu sitio carga en menos de 3 segundos, garantizado."
+        ES: "Tiempos de carga rápida que mantienen a los visitantes comprometidos mejorando la retención. Tus sitios cargan en menos de 3 segundos, garantizado."
       }
     },
     {
       icon: Palette,
-      title: { EN: "Designed to Convert", ES: "Diseñado para Convertir" },
+      title: { EN: "Designed to Convert", ES: "Diseños Claros Que Convierten" },
       description: { 
         EN: "Professional designs with strategic call-to-actions that turn visitors into customers. Every element is optimized for conversions.",
-        ES: "Diseños profesionales con llamadas a la acción estratégicas que convierten visitantes en clientes. Cada elemento está optimizado para conversiones."
+        ES: "Diseños profesionales enfocados en que tus visitantes tomen acción. Cada elemento está optimizado para generar conversiones."
       }
     },
     {
       icon: Search,
-      title: { EN: "Optimized to Rank", ES: "Optimizado para Posicionar" },
+      title: { EN: "Optimized to Rank", ES: "Optimizado para SEO" },
       description: { 
         EN: "SEO-optimized from day one with proper structure, meta tags, and content that helps you rank higher on Google searches.",
         ES: "Optimizado para SEO desde el primer día con estructura adecuada, meta tags y contenido que te ayuda a posicionarte mejor en búsquedas de Google."
@@ -187,7 +187,7 @@ const SolutionSection: React.FC = () => {
             <div className="p-6 md:p-8">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
-                  {language === 'EN' ? 'How Our Process Works' : 'Cómo Funciona Nuestro Proceso'}
+                  {language === 'EN' ? 'How Our Process Works' : 'Cómo funciona nuestro proceso'}
                 </h3>
                 <button
                   onClick={() => setIsModalOpen(false)}
