@@ -90,7 +90,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative py-16 bg-gray-900"
+      className="min-h-screen flex items-center justify-center relative py-16 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800"
     >
       {/* Grain overlay */}
       <div className="absolute inset-0 hero--grain"></div>
