@@ -24,7 +24,7 @@ const ProblemSection: React.FC = () => {
         "Convert visitors into customers with clear calls-to-action and contact forms"
       ],
       withoutFeatures: [
-        "Potential customers can't find you when they search online",
+        "Potential customers can't find you when\nthey search online",
         "Competitors with websites capture your potential customers",
         "Miss out on sales that happen outside business hours"
       ]
@@ -51,7 +51,7 @@ const ProblemSection: React.FC = () => {
       id="problem"
       className="bg-gradient-to-b from-gray-800 via-gray-700 to-gray-600 min-h-screen flex items-center justify-center py-16 md:py-20 lg:py-24"
     >
-      <div className="container mx-auto px-4 md:px-8 max-w-6xl w-full">
+      <div className="container mx-auto px-6 md:px-8 max-w-6xl w-full">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-12 md:mb-16 lg:mb-20">
           {content[language].headline}
         </h2>
@@ -85,7 +85,7 @@ const ProblemSection: React.FC = () => {
               {content[language].withoutFeatures.map((feature, index) => (
                 <li key={index} className="flex items-start space-x-3 text-white">
                   <X className="w-5 h-5 lg:w-6 lg:h-6 text-red-400 mt-1 flex-shrink-0" />
-                  <span className="text-lg lg:text-xl">
+                  <span className="text-lg lg:text-xl whitespace-pre-line">
                     {feature}
                   </span>
                 </li>

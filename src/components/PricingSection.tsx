@@ -68,11 +68,11 @@ const PricingSection: React.FC = () => {
   const content = {
     EN: {
       headline: "Transparent Packages for Every Budget",
-      buttonText: "Get Your Custom Quote →"
+      buttonText: "Get Your Custom Quote ↓"
     },
     ES: {
       headline: "Paquetes Transparentes para Cada Presupuesto",
-      buttonText: "Obtener Tu Cotización Personalizada →"
+      buttonText: "Obtener Tu Cotización Personalizada ↓"
     }
   };
 
@@ -169,7 +169,7 @@ const PricingSection: React.FC = () => {
           {pricingTiers.map((tier, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl hover:transform hover:scale-105 transition-all duration-300 flex flex-col ${
+              className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl md:hover:transform md:hover:scale-105 transition-all duration-300 flex flex-col ${
                 index === 1 ? 'relative overflow-hidden' : ''
               }`}
             >

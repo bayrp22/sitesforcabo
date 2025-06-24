@@ -100,16 +100,16 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative py-16 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800 overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative py-16 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800"
     >
       {/* Grain overlay */}
       <div className="absolute inset-0 hero--grain"></div>
 
       {/* Pink flowing lines background - bottom right */}
       <div 
-        className="absolute -bottom-80 -right-40 w-full h-full bg-no-repeat bg-contain opacity-80 pointer-events-none z-10"
+        className="absolute bottom-0 right-0 w-2/3 h-2/3 md:w-4/5 md:h-4/5 lg:w-3/4 lg:h-3/4 bg-no-repeat opacity-80 pointer-events-none z-10"
         style={{
-          backgroundImage: 'url(/images/pink-lines-v2.png)',
+          backgroundImage: 'url(/images/pink-lines-new.png)',
           backgroundPosition: 'bottom right',
           backgroundSize: 'contain'
         }}

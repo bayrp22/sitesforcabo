@@ -129,7 +129,7 @@ const OfferGate: React.FC<OfferGateProps> = ({ onPathSelected }) => {
           {/* Has Website Card */}
           <div
             onClick={() => handleChoice("site")}
-            className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl cursor-pointer transition-all duration-300 hover:transform hover:scale-105 border-2 border-transparent hover:border-[#A5FF00]"
+            className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl cursor-pointer transition-all duration-300 md:hover:transform md:hover:scale-105 border-2 border-transparent hover:border-[#A5FF00]"
           >
             <div className="text-center">
               <div className="bg-green-100 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mx-auto mb-6">
@@ -147,7 +147,7 @@ const OfferGate: React.FC<OfferGateProps> = ({ onPathSelected }) => {
           {/* Needs Website Card */}
           <div
             onClick={() => handleChoice("nosite")}
-            className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl cursor-pointer transition-all duration-300 hover:transform hover:scale-105 border-2 border-transparent hover:border-[#A5FF00]"
+            className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl cursor-pointer transition-all duration-300 md:hover:transform md:hover:scale-105 border-2 border-transparent hover:border-[#A5FF00]"
           >
             <div className="text-center">
               <div className="bg-blue-100 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mx-auto mb-6">
