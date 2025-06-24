@@ -163,7 +163,6 @@ const LocalTeamSection: React.FC = () => {
                          </a>
                        </div>
                        <div className="flex items-center justify-center space-x-3">
-                         <Mail className="w-4 h-4 text-gray-500" />
                          <a 
                            href={`mailto:${founder.email}`}
                            className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-sm"
