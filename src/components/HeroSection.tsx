@@ -90,8 +90,8 @@ const HeroSection: React.FC = () => {
       arrowText: "See How It Works"
     },
     ES: {
-      headline: "Lanza un Sitio Web Profesional en Semanas – Sin Quebrar el Banco",
-      subhead: "SWS construye sitios web personalizados y de alta calidad rápidamente y a una fracción de los costos típicos—para que los negocios de Los Cabos se pongan en línea rápida y económicamente.",
+      headline: "Lanza tu Página Profesional en Cuestión de Semanas — Sin Vaciar la Cartera",
+      subhead: "En SWS creamos sitios web a la medida, con diseño de calidad y listos en poco tiempo. Ideal para negocios de Los Cabos que quieren estar en línea rápido, con buena imagen y sin gastar de más.",
       primaryCTA: "Obtener Mi Cotización Gratis ↓",
       arrowText: "Ver Cómo Funciona"
     }
@@ -183,15 +183,15 @@ const HeroSection: React.FC = () => {
         >
           <div className="flex items-center space-x-2 text-white">
             <span className="text-2xl">📍</span>
-            <span className="text-lg font-medium">{language === 'EN' ? 'Local to Los Cabos' : 'Local en Los Cabos'}</span>
+            <span className="text-lg font-medium">{language === 'EN' ? 'Local to Los Cabos' : 'Con base en Cabo San Lucas'}</span>
           </div>
           <div className="flex items-center space-x-2 text-white">
             <span className="text-2xl">🗣️</span>
-            <span className="text-lg font-medium">Hablamos Español</span>
+            <span className="text-lg font-medium">Entregables en una semana</span>
           </div>
           <div className="flex items-center space-x-2 text-white">
             <span className="text-2xl">🤝</span>
-            <span className="text-lg font-medium">{language === 'EN' ? 'Face-to-Face Service' : 'Servicio Cara a Cara'}</span>
+            <span className="text-lg font-medium">{language === 'EN' ? 'Face-to-Face Service' : 'Atención Personal, de Frente'}</span>
           </div>
         </TrustBadges>
 

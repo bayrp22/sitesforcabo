@@ -123,49 +123,46 @@ const LocalTeamSection: React.FC = () => {
              className="space-y-8"
              {...profilesProps}
            >
-             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-               {/* Floating Profile Images */}
-               {founders.map((founder, index) => (
-                 <div key={`image-${index}`} className="flex justify-center">
-                   <img
-                     src={founder.image}
-                     alt={`${founder.name} - ${founder.title}`}
-                     className="w-40 h-48 md:w-48 md:h-56 lg:w-52 lg:h-64 rounded-2xl object-cover shadow-lg hover:shadow-xl transition-shadow duration-300"
-                   />
-                 </div>
-               ))}
-             </div>
-
-             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-               {/* Profile Info Cards */}
+             {/* Mobile-first: Horizontal stack of tall profile cards */}
+             <div className="flex flex-row gap-4 md:hidden justify-center">
                {founders.map((founder, index) => (
                  <div
-                   key={`info-${index}`}
-                   className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                   key={index}
+                   className="bg-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 max-w-[160px]"
                  >
                    <div className="text-center">
-                     <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                     {/* Profile Image */}
+                     <div className="mb-4">
+                       <img
+                         src={founder.image}
+                         alt={`${founder.name} - ${founder.title[language]}`}
+                         className="w-full h-32 rounded-xl object-cover mx-auto"
+                       />
+                     </div>
+                     
+                     {/* Profile Info */}
+                     <h3 className="text-lg font-bold text-gray-900 mb-1">
                        {founder.name}
                      </h3>
-                     <p className="text-gray-600 font-medium mb-6 text-base">
+                     <p className="text-gray-600 font-medium mb-3 text-sm">
                        {founder.title[language]}
                      </p>
                      
                      {/* Contact Information */}
-                     <div className="space-y-3">
-                       <div className="flex items-center justify-center space-x-3">
-                         <Phone className="w-4 h-4 text-gray-500" />
+                     <div className="space-y-2">
+                       <div className="flex items-center justify-center">
+                         <Phone className="w-3 h-3 text-gray-500 mr-1" />
                          <a 
                            href={`tel:${founder.phone}`}
-                           className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-sm"
+                           className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-xs"
                          >
                            {founder.phone}
                          </a>
                        </div>
-                       <div className="flex items-center justify-center space-x-3">
+                       <div className="flex items-center justify-center">
                          <a 
                            href={`mailto:${founder.email}`}
-                           className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-sm"
+                           className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-xs"
                          >
                            {founder.email}
                          </a>
@@ -174,6 +171,62 @@ const LocalTeamSection: React.FC = () => {
                    </div>
                  </div>
                ))}
+             </div>
+
+             {/* Desktop: Original layout */}
+             <div className="hidden md:block space-y-8">
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                 {/* Floating Profile Images */}
+                 {founders.map((founder, index) => (
+                   <div key={`image-${index}`} className="flex justify-center">
+                     <img
+                       src={founder.image}
+                       alt={`${founder.name} - ${founder.title[language]}`}
+                       className="w-40 h-48 md:w-48 md:h-56 lg:w-52 lg:h-64 rounded-2xl object-cover shadow-lg hover:shadow-xl transition-shadow duration-300"
+                     />
+                   </div>
+                 ))}
+               </div>
+
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                 {/* Profile Info Cards */}
+                 {founders.map((founder, index) => (
+                   <div
+                     key={`info-${index}`}
+                     className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                   >
+                     <div className="text-center">
+                       <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                         {founder.name}
+                       </h3>
+                       <p className="text-gray-600 font-medium mb-6 text-base">
+                         {founder.title[language]}
+                       </p>
+                       
+                       {/* Contact Information */}
+                       <div className="space-y-3">
+                         <div className="flex items-center justify-center space-x-3">
+                           <Phone className="w-4 h-4 text-gray-500" />
+                           <a 
+                             href={`tel:${founder.phone}`}
+                             className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-sm"
+                           >
+                             {founder.phone}
+                           </a>
+                         </div>
+                         <div className="flex items-center justify-center space-x-3">
+                           <a 
+                             href={`mailto:${founder.email}`}
+                             className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-sm"
+                           >
+                             {founder.email}
+                           </a>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 ))}
+               </div>
              </div>
            </ProfilesContainer>
 
