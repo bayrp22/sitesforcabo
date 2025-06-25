@@ -61,7 +61,8 @@ const LocalTeamSection: React.FC = () => {
     EN: {
       headline1: "We Are NOT",
       headline2: "a Faceless Agency",
-      paragraph1: "We're not a faceless agency. We're your neighbors in Los Cabos. We build real relationships and websites that bring value to our community.",
+      paragraph1: "We're your neighbors in Los Cabos. We build real relationships and websites that bring value to our community.",
+      headline3: "",
       paragraph2: " Get to know us! We met as kids at Colegio El Camino and are now founders of Search, your web solutions company. We don't work remotely—we're right here in Los Cabos and always available to meet in person."},
     ES: {
       headline1: "Desde Los Cabos.",
