@@ -64,8 +64,8 @@ const OfferGate: React.FC<OfferGateProps> = ({ onPathSelected }) => {
 
   const content = {
     EN: {
-      headline: "Let's Build You a Free Plan – Tailored to Your Business",
-      question: "To create the perfect strategy for your business, we need to know your starting point:",
+      headline: "We Want to Get to Know You — and Help You Grow Online",
+      question: "To build the right solution, we first need to understand your starting point. Do you already have a website?",
       hasWebsite: {
         title: "Yes, I have a site",
         description: "I already have a website but need improvements, updates, or want to start fresh with a better design."
