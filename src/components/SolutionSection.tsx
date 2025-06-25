@@ -187,7 +187,7 @@ const SolutionSection: React.FC = () => {
             <div className="p-6 md:p-8">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
-                  {language === 'EN' ? 'How Our Process Works' : 'Cómo funciona nuestro proceso'}
+                  {language === 'EN' ? 'How Our Process Works' : 'Cómo Funciona Nuestro Proceso'}
                 </h3>
                 <button
                   onClick={() => setIsModalOpen(false)}
@@ -200,12 +200,12 @@ const SolutionSection: React.FC = () => {
               <div className="space-y-6">
                 <div className="border-l-4 border-[#A5FF00] pl-6">
                   <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                    {language === 'EN' ? '1. Discovery & Planning' : '1. Descubrimiento y Planificación'}
+                    {language === 'EN' ? '1. Discovery & Planning' : '1. Evaluación y Planeación'}
                   </h4>
                   <p className="text-gray-600">
                     {language === 'EN' 
                       ? 'We start with a comprehensive consultation to understand your business goals, target audience, and specific requirements.'
-                      : 'Comenzamos con una consulta integral para entender los objetivos de tu negocio, audiencia objetivo y requisitos específicos.'
+                      : 'Comenzamos con una consulta a fondo para entender los objetivos de negocio, tu público ideal y las necesidades específicas de tu empresa.'
                     }
                   </p>
                 </div>
@@ -217,7 +217,7 @@ const SolutionSection: React.FC = () => {
                   <p className="text-gray-600">
                     {language === 'EN'
                       ? 'Our team creates a custom design and develops your website using modern technologies for optimal performance and user experience.'
-                      : 'Nuestro equipo crea un diseño personalizado y desarrolla tu sitio web usando tecnologías modernas para un rendimiento óptimo y experiencia de usuario.'
+                      : 'Creamos un diseño a la medida y desarrollamos tu sitio con tecnologías modernas, garantizando un rendimiento óptimo y una excelente experiencia de usuario.'
                     }
                   </p>
                 </div>
@@ -229,7 +229,7 @@ const SolutionSection: React.FC = () => {
                   <p className="text-gray-600">
                     {language === 'EN'
                       ? 'We thoroughly test your website across all devices and browsers before launching, ensuring everything works perfectly.'
-                      : 'Probamos exhaustivamente tu sitio web en todos los dispositivos y navegadores antes del lanzamiento, asegurándonos de que todo funcione perfectamente.'
+                      : 'Antes de salir al aire, revisamos cada detalle para que tu sitio funcione perfecto desde el primer clic — en cualquier dispositivo y navegador.'
                     }
                   </p>
                 </div>
@@ -241,7 +241,7 @@ const SolutionSection: React.FC = () => {
                   <p className="text-gray-600">
                     {language === 'EN'
                       ? 'After launch, we provide ongoing support and maintenance to keep your website running smoothly and up-to-date.'
-                      : 'Después del lanzamiento, proporcionamos soporte continuo y mantenimiento para mantener tu sitio web funcionando sin problemas y actualizado.'
+                      : 'Después del lanzamiento, te acompañamos con soporte y mantenimiento para que tu sitio se mantenga eficiente y actualizado.'
                     }
                   </p>
                 </div>
@@ -252,7 +252,7 @@ const SolutionSection: React.FC = () => {
                   onClick={() => setIsModalOpen(false)}
                   className="bg-[#A5FF00] text-black font-semibold px-8 py-3 rounded-lg hover:bg-[#94E600] transition-colors duration-200"
                 >
-                  {language === 'EN' ? 'Got It, Thanks!' : '¡Entendido, Gracias!'}
+                  {language === 'EN' ? 'Got It, Thanks!' : '¡Ya Quedó, Gracias!'}
                 </button>
               </div>
             </div>
