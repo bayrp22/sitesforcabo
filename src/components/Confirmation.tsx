@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, Send, Phone, Mail } from 'lucide-react';
 
 // Try to import Framer Motion, but don't fail if it's not available
 let motion: any;
@@ -19,6 +19,13 @@ interface ConfirmationProps {
 
 const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
   const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   // Listen for language changes from other components
   useEffect(() => {
@@ -54,6 +61,39 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
   // Component selection based on availability
   const Section = isFramerAvailable ? motion.section : 'section';
 
+  // Handle form submission
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      // Simulate form submission (replace with actual API call)
+      console.log('Follow-up form submission:', {
+        ...formData,
+        timestamp: new Date().toISOString(),
+        language,
+        originalPath: path
+      });
+      
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setFormSubmitted(true);
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Form submission failed:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Handle input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
   const content = {
     EN: {
       site: {
@@ -71,10 +111,23 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
         message: "Thanks! Your Digital Launchpad Blueprint will be in your inbox within 1 business day.",
         subtitle: "What's included:",
         steps: [
-          "Custom website strategy",
+          "Custom\nWebsite\nStrategy",
           "Design mockups & wireframes",
           "Timeline & pricing breakdown"
         ]
+      },
+      form: {
+        title: "Questions? We're Here to Help",
+        subtitle: "Rest assured - we'd love to address any questions, comments, or concerns you may have.",
+        namePlaceholder: "Your Name",
+        emailPlaceholder: "Your Email",
+        messagePlaceholder: "Your questions, comments, or concerns...",
+        submitButton: "Send Message",
+        submittingButton: "Sending...",
+        successMessage: "Thank you! We'll get back to you soon.",
+        contactReminder: "Anything else? Feel free to call or email us anytime.",
+        phone: "+52 624 264 4012",
+        email: "bay@searchloscabos.com"
       }
     },
     ES: {
@@ -93,10 +146,23 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
         message: "¡Gracias! Tu Plan de Lanzamiento Digital estará en tu bandeja de entrada dentro de 1 día hábil.",
         subtitle: "Qué incluye:",
         steps: [
-          "Estrategia web personalizada",
+          "Estrategia\nWeb\nPersonalizada",
           "Bocetos y wireframes de diseño",
           "Cronograma y desglose de precios"
         ]
+      },
+      form: {
+        title: "¿Preguntas? Estamos Aquí para Ayudar",
+        subtitle: "Ten la seguridad - nos encantaría abordar cualquier pregunta, comentario o inquietud que puedas tener.",
+        namePlaceholder: "Tu Nombre",
+        emailPlaceholder: "Tu Email",
+        messagePlaceholder: "Tus preguntas, comentarios o inquietudes...",
+        submitButton: "Enviar Mensaje",
+        submittingButton: "Enviando...",
+        successMessage: "¡Gracias! Te responderemos pronto.",
+        contactReminder: "¿Tienes preguntas? No dudes en llamarnos o escribirnos en cualquier momento.",
+        phone: "+52 624 123 4567",
+        email: "bay@searchloscabos.com"
       }
     }
   };
@@ -106,7 +172,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
   return (
     <Section
       id="confirmation"
-      className="bg-gradient-to-b from-white to-gray-50 py-16 md:py-20 lg:py-24"
+      className="bg-gradient-to-b from-gray-50 to-white py-16 md:py-20 lg:py-24"
       {...sectionProps}
     >
       <div className="container mx-auto px-4 md:px-8 max-w-4xl">
@@ -140,12 +206,12 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
                 {currentContent.steps.map((step, index) => (
                   <div 
                     key={index}
-                    className="flex items-center space-x-3 bg-white rounded-lg p-4 shadow-sm"
+                    className="flex items-center space-x-3 p-4"
                   >
                     <div className="bg-[#A5FF00] rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
                       <span className="text-black font-bold text-sm">{index + 1}</span>
                     </div>
-                    <span className="text-gray-700 font-medium text-sm md:text-base">
+                    <span className="text-gray-700 font-medium text-sm md:text-base whitespace-pre-line">
                       {step}
                     </span>
                   </div>
@@ -153,14 +219,103 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
               </div>
             </div>
 
+            {/* Questions Form Section */}
+            <div className="mt-12">
+              <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-6 md:p-8 border border-gray-200">
+                <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-3 text-center">
+                  {content[language].form.title}
+                </h3>
+                <p className="text-gray-600 text-center mb-6 max-w-2xl mx-auto">
+                  {content[language].form.subtitle}
+                </p>
+
+                {formSubmitted ? (
+                  <div className="text-center py-8">
+                    <div className="bg-[#A5FF00]/20 rounded-full border-2 border-[#A5FF00] w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle className="w-8 h-8 text-black" />
+                    </div>
+                    <p className="text-lg font-medium text-gray-900">
+                      {content[language].form.successMessage}
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleFormSubmit} className="space-y-4 max-w-2xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          placeholder={content[language].form.namePlaceholder}
+                          required
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#A5FF00] focus:border-transparent transition-colors"
+                        />
+                      </div>
+                      <div>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          placeholder={content[language].form.emailPlaceholder}
+                          required
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#A5FF00] focus:border-transparent transition-colors"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        placeholder={content[language].form.messagePlaceholder}
+                        required
+                        rows={4}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#A5FF00] focus:border-transparent transition-colors resize-none"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <button
+                        type="submit"
+                        disabled={isSubmitting || !formData.name.trim() || !formData.email.trim() || !formData.message.trim()}
+                        className="bg-[#A5FF00] hover:bg-[#8FE600] disabled:bg-gray-300 disabled:cursor-not-allowed text-black font-semibold px-8 py-3 rounded-lg transition-colors inline-flex items-center space-x-2"
+                      >
+                        <Send className="w-4 h-4" />
+                        <span>
+                          {isSubmitting 
+                            ? content[language].form.submittingButton 
+                            : content[language].form.submitButton
+                          }
+                        </span>
+                      </button>
+                    </div>
+                  </form>
+                )}
+              </div>
+            </div>
+
             {/* Contact Reminder */}
             <div className="mt-8 pt-6 border-t border-gray-200">
-              <p className="text-gray-500 text-sm md:text-base">
-                {language === 'EN' 
-                  ? "Have questions? Feel free to call or email us anytime."
-                  : "¿Tienes preguntas? No dudes en llamarnos o escribirnos en cualquier momento."
-                }
+              <p className="text-gray-500 text-sm md:text-base mb-4">
+                {content[language].form.contactReminder}
               </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a 
+                  href={`tel:${content[language].form.phone}`}
+                  className="flex items-center space-x-2 text-gray-600 hover:text-[#A5FF00] transition-colors"
+                >
+                  <Phone className="w-4 h-4" />
+                  <span className="font-medium">{content[language].form.phone}</span>
+                </a>
+                <a 
+                  href={`mailto:${content[language].form.email}`}
+                  className="flex items-center space-x-2 text-gray-600 hover:text-[#A5FF00] transition-colors"
+                >
+                  <Mail className="w-4 h-4" />
+                  <span className="font-medium">{content[language].form.email}</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
