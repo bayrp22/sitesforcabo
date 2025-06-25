@@ -59,12 +59,10 @@ const LocalTeamSection: React.FC = () => {
 
   const content = {
     EN: {
-      headline1: "Your Local",
-      headline2: "Los Cabos",
-      headline3: "Web Partners",
-      paragraph1: "We're not a faceless agency. We're your neighbors in Los Cabos, building relationships and websites that matter to our community.",
-      paragraph2: "Meet our founders who live and work right here in Los Cabos. We met as kids at Colegio El Camino and now work together locally. We understand Cabo, speak both languages fluently, and are always available for face-to-face meetings."
-    },
+      headline1: "We Are NOT",
+      headline2: "a Faceless Agency",
+      paragraph1: "We're not a faceless agency. We're your neighbors in Los Cabos. We build real relationships and websites that bring value to our community.",
+      paragraph2: " Get to know us! We met as kids at Colegio El Camino and are now founders of Search, your web solutions company. We don't work remotely—we're right here in Los Cabos and always available to meet in person."},
     ES: {
       headline1: "Desde Los Cabos.",
       headline2: "Para Negocios,",
@@ -107,8 +105,8 @@ const LocalTeamSection: React.FC = () => {
           >
                                       <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                {content[language].headline1}<br />
-               {content[language].headline2}<br />
-               {content[language].headline3}
+               {content[language].headline2}
+               {content[language].headline3 && <><br />{content[language].headline3}</>}
              </h2>
              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
                {content[language].paragraph1}
