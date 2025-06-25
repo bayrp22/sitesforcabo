@@ -128,33 +128,32 @@ const LocalTeamSection: React.FC = () => {
                {founders.map((founder, index) => (
                  <div
                    key={index}
-                   className="bg-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 max-w-[160px]"
+                   className="bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 max-w-[180px] min-w-[140px]"
                  >
                    <div className="text-center">
                      {/* Profile Image */}
-                     <div className="mb-4">
+                     <div className="mb-5">
                        <img
                          src={founder.image}
                          alt={`${founder.name} - ${founder.title[language]}`}
-                         className="w-full h-32 rounded-xl object-cover mx-auto"
+                         className="w-full h-28 rounded-xl object-cover mx-auto"
                        />
                      </div>
                      
                      {/* Profile Info */}
-                     <h3 className="text-lg font-bold text-gray-900 mb-1">
+                     <h3 className="text-base font-bold text-gray-900 mb-2">
                        {founder.name}
                      </h3>
-                     <p className="text-gray-600 font-medium mb-3 text-sm">
+                     <p className="text-gray-600 font-medium mb-4 text-xs">
                        {founder.title[language]}
                      </p>
                      
                      {/* Contact Information */}
-                     <div className="space-y-2">
+                     <div className="space-y-3">
                        <div className="flex items-center justify-center">
-                         <Phone className="w-3 h-3 text-gray-500 mr-1" />
                          <a 
                            href={`tel:${founder.phone}`}
-                           className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-xs"
+                           className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-[10px]"
                          >
                            {founder.phone}
                          </a>
@@ -162,7 +161,7 @@ const LocalTeamSection: React.FC = () => {
                        <div className="flex items-center justify-center">
                          <a 
                            href={`mailto:${founder.email}`}
-                           className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-xs"
+                           className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-[10px]"
                          >
                            {founder.email}
                          </a>

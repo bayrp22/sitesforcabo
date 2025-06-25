@@ -72,14 +72,14 @@ const PricingSection: React.FC = () => {
     },
     ES: {
       headline: "Paquetes Transparentes para Cada Presupuesto",
-      buttonText: "Obtener Tu Cotización Personalizada ↓"
+      buttonText: "Obtén Tu Cotización Personalizada ↓"
     }
   };
 
   const pricingTiers = [
     {
-      name: { EN: "Starter", ES: "Inicial" },
-      price: "$15k",
+      name: { EN: "Standard", ES: "Estándar" },
+      price: { EN: "$19K MXN", ES: "$19K MXN" },
       features: {
         EN: [
           "Professional website design",
@@ -90,16 +90,17 @@ const PricingSection: React.FC = () => {
         ],
         ES: [
           "Diseño web profesional",
-          "Diseño responsivo para móviles",
-          "Optimización SEO básica",
+          "Responsivo para móviles",
+          "Optimización de SEO básica",
+          "Mejor visibilidad digital",
           "Formularios de contacto y analíticas",
-          "3 meses de soporte incluido"
+          "Satisfacción garantizada"
         ]
       }
     },
     {
-      name: { EN: "Business", ES: "Negocio" },
-      price: "$30k",
+      name: { EN: "Business", ES: "Empresarial" },
+      price: { EN: "$30K MXN", ES: "$30K MXN" },
       features: {
         EN: [
           "Everything in Starter",
@@ -119,7 +120,7 @@ const PricingSection: React.FC = () => {
     },
     {
       name: { EN: "Premium", ES: "Premium" },
-      price: "+5 sites",
+      price: { EN: "5 Sites or More", ES: "5 Sitios o Más" },
       features: {
         EN: [
           "Everything in Business",
@@ -183,7 +184,7 @@ const PricingSection: React.FC = () => {
                   {tier.name[language]}
                 </h3>
                 <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                  {tier.price}
+                  {tier.price[language]}
                 </div>
               </div>
 
