@@ -66,25 +66,25 @@ const LocalTeamSection: React.FC = () => {
       paragraph2: "Meet our founders who live and work right here in Los Cabos. We met as kids at Colegio El Camino and now work together locally. We understand Cabo, speak both languages fluently, and are always available for face-to-face meetings."
     },
     ES: {
-      headline1: "Tus Socios",
-      headline2: "Los Cabos",
-      headline3: "Web Locales",
-      paragraph1: "No somos una agencia sin rostro. Somos tus vecinos en Los Cabos, construyendo relaciones y sitios web que importan a nuestra comunidad.",
-      paragraph2: "Conoce a nuestros fundadores que viven y trabajan aquí en Los Cabos. Nos conocimos de niños en el Colegio El Camino y ahora trabajamos juntos localmente. Entendemos Cabo, hablamos ambos idiomas con fluidez, y siempre estamos disponibles para reuniones cara a cara."
+      headline1: "Desde Los Cabos.",
+      headline2: "Para Negocios,",
+      headline3: "Como el Tuyo.",
+      paragraph1: "No somos una agencia sin rostro. Somos locales, igual que tu negocio. Construyendo relaciones reales y sitios web que aportan valor a nuestra comunidad.",
+      paragraph2: "¡Conocenos! Nosotros nos conocimos de niños en el Colegio El Camino y ahora somos cofundadores de Search, tu empresa de soluciones web. No trabajamos a distancia. Estamos aquí contigo en Los Cabos, disponibles para cualquier reunión cara a cara."
     }
   };
 
   const founders = [
     {
       name: "Bay Purcell",
-      title: { EN: "CEO & Founder", ES: "CEO y Fundador" },
+      title: { EN: "CEO & Founder", ES: "CEO & Fundador" },
       image: "/images/Bay Profile.png",
       phone: "+52 624 123 4567",
       email: "bay@searchloscabos.com"
     },
     {
       name: "Borja Ponce",
-      title: { EN: "COO & Co-Founder", ES: "COO y Co-Fundador" }, 
+      title: { EN: "COO & Founder", ES: "COO & Fundador" }, 
       image: "/images/Borja Profile.png",
       phone: "+52 624 123 4568",
       email: "borja@searchloscabos.com"

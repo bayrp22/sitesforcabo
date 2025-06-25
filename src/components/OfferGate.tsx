@@ -76,15 +76,15 @@ const OfferGate: React.FC<OfferGateProps> = ({ onPathSelected }) => {
       }
     },
     ES: {
-      headline: "Construyamos un Plan Gratuito – Personalizado para Tu Negocio",
-      question: "Para crear la estrategia perfecta para tu negocio, necesitamos saber tu punto de partida:",
+      headline: "Queremos Conocerte — Y Ayudarte a Crecer Online",
+      question: "Para saber el punto de partida, necesitamos el tuyo: ¿Cuentas con un sitio web?",
       hasWebsite: {
         title: "Sí, tengo un sitio",
         description: "Ya tengo un sitio web pero necesito mejoras, actualizaciones o quiero empezar de nuevo con un mejor diseño."
       },
       needsWebsite: {
         title: "No, necesito un sitio",
-        description: "Estoy empezando desde cero y necesito una solución web completa construida desde el principio."
+        description: "Estoy empezando de cero y necesito una solución web completa construida para mi negocio."
       }
     }
   };

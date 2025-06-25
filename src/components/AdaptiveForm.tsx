@@ -87,11 +87,11 @@ const AdaptiveForm: React.FC<AdaptiveFormProps> = ({ path, onStatusChange }) => 
         nosite: "Comencemos Con Tu Nuevo Sitio Web"
       },
       fields: {
-        name: { label: "Tu Nombre", placeholder: "Ingresa tu nombre completo" },
-        bizName: { label: "Nombre del Negocio", placeholder: "Ingresa el nombre de tu negocio" },
+        name: { label: "Tu Nombre", placeholder: "Nombre Completo" },
+        bizName: { label: "Nombre del Negocio", placeholder: "Nombre de tu Negocio" },
         email: { label: "Correo Electrónico", placeholder: "tu@email.com" },
         url: { label: "URL del Sitio Web Actual", placeholder: "https://tusitio.com" },
-        bizDesc: { label: "Descripción del Negocio", placeholder: "Cuéntanos qué hace tu negocio..." }
+        bizDesc: { label: "Descripción del Negocio", placeholder: "Cuéntenos a qué se dedica su negocio y por qué busca crear un sitio web" }
       },
       submitButton: "Obtener Mi Cotización Gratis",
       submitting: "Enviando..."
