@@ -132,8 +132,8 @@ const OfferGate: React.FC<OfferGateProps> = ({ onPathSelected }) => {
             className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl cursor-pointer transition-all duration-300 md:hover:transform md:hover:scale-105 border-2 border-transparent hover:border-[#A5FF00]"
           >
             <div className="text-center">
-              <div className="bg-[#A5FF00]/20 rounded-full border-4 border-[#A5FF00] w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-8 h-8 md:w-10 md:h-10 text-black" />
+              <div className="bg-green-100 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mx-auto mb-6">
+                <CheckCircle className="w-8 h-8 md:w-10 md:h-10 text-green-600" />
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
                 {content[language].hasWebsite.title}
@@ -150,8 +150,8 @@ const OfferGate: React.FC<OfferGateProps> = ({ onPathSelected }) => {
             className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl cursor-pointer transition-all duration-300 md:hover:transform md:hover:scale-105 border-2 border-transparent hover:border-[#A5FF00]"
           >
             <div className="text-center">
-              <div className="bg-pink-200/60 rounded-full border-4 border-pink-400 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mx-auto mb-6">
-                <UserPlus className="w-8 h-8 md:w-10 md:h-10 text-black" />
+              <div className="bg-blue-100 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mx-auto mb-6">
+                <UserPlus className="w-8 h-8 md:w-10 md:h-10 text-blue-600" />
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
                 {content[language].needsWebsite.title}

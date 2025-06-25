@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
 
 // Try to import Framer Motion, but don't fail if it's not available
@@ -16,12 +16,47 @@ try {
 
 const HeroSection: React.FC = () => {
   const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
+  const [animationStage, setAnimationStage] = useState(0);
+  const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
 
   const changeLanguage = (newLanguage: 'EN' | 'ES') => {
     setLanguage(newLanguage);
     // Dispatch custom event to notify other components
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: newLanguage }));
   };
+
+  // Animation sequence timing
+  const animationDelays = [
+    0,    // Background and texture
+    300,  // Top left logo
+    600,  // Center logo
+    900,  // Main headline
+    1200, // Subheading
+    1500, // Trust badges
+    1800, // CTA button
+    2100, // Language toggle
+    2400  // Scroll arrow
+  ];
+
+  useEffect(() => {
+    // Clear any existing timeouts
+    timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
+    timeoutsRef.current = [];
+
+    // Start animation sequence
+    animationDelays.forEach((delay, index) => {
+      const timeout = setTimeout(() => {
+        setAnimationStage(index + 1);
+      }, delay);
+      timeoutsRef.current.push(timeout);
+    });
+
+    // Cleanup function
+    return () => {
+      timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
+      timeoutsRef.current = [];
+    };
+  }, []); // Only run on mount
 
   const scrollToNextSection = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -100,14 +135,14 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative py-16 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800"
+      className={`min-h-screen flex items-center justify-center relative py-16 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800 animate-bg-fade-in ${animationStage >= 1 ? 'visible' : ''}`}
     >
       {/* Grain overlay */}
-      <div className="absolute inset-0 hero--grain"></div>
+      <div className={`absolute inset-0 hero--grain animate-bg-fade-in ${animationStage >= 1 ? 'visible' : ''}`}></div>
 
       {/* Pink flowing lines background - bottom right */}
       <div 
-        className="absolute bottom-0 right-0 w-2/3 h-2/3 md:w-4/5 md:h-4/5 lg:w-3/4 lg:h-3/4 bg-no-repeat opacity-80 pointer-events-none z-10"
+        className={`absolute bottom-0 right-0 w-2/3 h-2/3 md:w-4/5 md:h-4/5 lg:w-3/4 lg:h-3/4 bg-no-repeat opacity-80 pointer-events-none z-10 animate-bg-fade-in ${animationStage >= 1 ? 'visible' : ''}`}
         style={{
           backgroundImage: 'url(/images/pink-lines-new.png)',
           backgroundPosition: 'bottom right',
@@ -117,7 +152,7 @@ const HeroSection: React.FC = () => {
 
       {/* Company logo in top-left corner with SWS text */}
       <button
-        className="absolute top-6 left-6 flex items-center cursor-pointer hover:opacity-80 transition-opacity duration-200"
+        className={`absolute top-6 left-6 flex items-center cursor-pointer hover:opacity-80 transition-opacity duration-200 animate-slide-in-left ${animationStage >= 2 ? 'visible' : ''}`}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         aria-label="Scroll to top"
       >
@@ -132,7 +167,7 @@ const HeroSection: React.FC = () => {
       </button>
 
       {/* Language Toggle */}
-      <div className="absolute top-6 right-6">
+      <div className={`absolute top-6 right-6 animate-fade-in ${animationStage >= 8 ? 'visible' : ''}`}>
         <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2">
           <button
             onClick={() => changeLanguage('ES')}
@@ -159,18 +194,18 @@ const HeroSection: React.FC = () => {
         <img
           src="/img/company-logo.svg"
           alt="SWS Logo"
-          className="w-24 h-auto mb-8"
+          className={`w-24 h-auto mb-8 animate-scale-in ${animationStage >= 3 ? 'visible' : ''}`}
         />
 
         <Headline
-          className="text-4xl md:text-6xl font-bold text-white mb-8 whitespace-pre-line"
+          className={`text-4xl md:text-6xl font-bold text-white mb-8 whitespace-pre-line animate-fade-in-up ${animationStage >= 4 ? 'visible' : ''}`}
           {...headlineProps}
         >
           {content[language].headline}
         </Headline>
 
         <Paragraph
-          className="text-xl md:text-2xl text-white/90 mb-8"
+          className={`text-xl md:text-2xl text-white/90 mb-8 animate-fade-in-up ${animationStage >= 5 ? 'visible' : ''}`}
           {...sublineProps}
         >
           {content[language].subhead}
@@ -178,7 +213,7 @@ const HeroSection: React.FC = () => {
 
         {/* Trust Badges Row */}
         <TrustBadges
-          className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 mb-10"
+          className={`flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 mb-10 animate-fade-in-up ${animationStage >= 6 ? 'visible' : ''}`}
           {...trustBadgeProps}
         >
           <div className="flex items-center space-x-2 text-white">
@@ -197,7 +232,7 @@ const HeroSection: React.FC = () => {
 
         {/* Primary CTA */}
         <CTAContainer
-          className="flex justify-center mb-12"
+          className={`flex justify-center mb-12 animate-bounce-in ${animationStage >= 7 ? 'visible' : ''}`}
           {...ctaProps}
         >
           <button
@@ -210,13 +245,15 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Enhanced Arrow Animation */}
-      <button
-        onClick={scrollToNextSection}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer hover:opacity-80 transition-opacity duration-200"
-      >
-        <p className="text-white mb-3 text-sm">{content[language].arrowText}</p>
-        <ArrowDown className="w-6 h-6 text-white animate-pulse-custom" />
-      </button>
+      <div className={`absolute bottom-8 left-0 right-0 flex justify-center animate-fade-in-up ${animationStage >= 9 ? 'visible' : ''}`}>
+        <button
+          onClick={scrollToNextSection}
+          className="flex flex-col items-center cursor-pointer hover:opacity-80 transition-opacity duration-200"
+        >
+          <p className="text-white mb-3 text-sm">{content[language].arrowText}</p>
+          <ArrowDown className="w-6 h-6 text-white animate-pulse-custom" />
+        </button>
+      </div>
 
       <style dangerouslySetInnerHTML={{
         __html: `

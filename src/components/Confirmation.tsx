@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CheckCircle, Star } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 
 // Try to import Framer Motion, but don't fail if it's not available
 let motion: any;
@@ -114,16 +114,9 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
           
           {/* Success Icon with Animation */}
           <div className="relative mb-8">
-            <div className="bg-green-100 rounded-full w-24 h-24 md:w-32 md:h-32 flex items-center justify-center mx-auto mb-6 relative overflow-hidden">
-              <CheckCircle className="w-12 h-12 md:w-16 md:h-16 text-green-600 relative z-10" />
+            <div className="bg-[#A5FF00]/20 rounded-full border-4 border-[#A5FF00] w-24 h-24 md:w-32 md:h-32 flex items-center justify-center mx-auto mb-6 relative overflow-hidden">
+              <CheckCircle className="w-12 h-12 md:w-16 md:h-16 text-black relative z-10" />
               
-              {/* Subtle sparkle effects */}
-              <div className="absolute top-2 right-2 animate-pulse">
-                <Star className="w-4 h-4 text-yellow-400 fill-current" />
-              </div>
-              <div className="absolute bottom-3 left-3 animate-pulse delay-500">
-                <Star className="w-3 h-3 text-yellow-400 fill-current" />
-              </div>
             </div>
           </div>
 
