@@ -78,15 +78,16 @@ const PricingSection: React.FC = () => {
 
   const pricingTiers = [
     {
-      name: { EN: "Standard", ES: "Estándar" },
+      name: { EN: "Starter", ES: "Estándar" },
       price: { EN: "$19K MXN", ES: "$19K MXN" },
       features: {
         EN: [
-          "Professional website design",
-          "Mobile-responsive layout",
-          "Basic SEO optimization",
-          "Contact forms & analytics",
-          "3 months support included"
+          "Professional Web Design",
+          "Mobile-Responsive Layout",
+          "Basic SEO Optimization",
+          "Improved Online Visibility",
+          "Contact Forms & Analytics",
+          "Satisfaction Guaranteed"
         ],
         ES: [
           "Diseño web profesional",
@@ -104,17 +105,18 @@ const PricingSection: React.FC = () => {
       features: {
         EN: [
           "Everything in Starter",
-          "Advanced SEO & content strategy",
-          "E-commerce functionality",
-          "Custom integrations",
-          "6 months priority support"
+          "Advanced SEO & LLMO",
+          "e-Commerce Functionality",
+          "Custom Integrations",
+          "Monthly Analytics Reports"
         ],
         ES: [
-          "Todo lo del Inicial",
-          "SEO avanzado y estrategia de contenido",
-          "Funcionalidad de e-commerce",
-          "Integraciones personalizadas",
-          "6 meses de soporte prioritario"
+          "Incluye Todo lo del Paquete Estándar",
+          "SEO Avanzado",
+          "Funcionalidad de e-Commerce",
+          "Integraciones Personalizadas",
+          "Reportes mensuales de analiticas",
+          "Enfocado en las Necesidades de tu Empresa"
         ]
       }
     },
@@ -130,11 +132,12 @@ const PricingSection: React.FC = () => {
           "12 months dedicated support"
         ],
         ES: [
-          "Todo lo del Negocio",
+          "Todo lo del Empresarial",
+          "Precios reducidos por sitio",
           "Aplicaciones web interactivas",
           "Analíticas y seguimiento avanzado",
           "Precios y Cronogramas Personalizados",
-          "12 meses de soporte dedicado"
+          "Mayor Valor"
         ]
       }
     }
