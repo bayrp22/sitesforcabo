@@ -17,12 +17,24 @@ try {
 const HeroSection: React.FC = () => {
   const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
   const [animationStage, setAnimationStage] = useState(0);
+  const [showFullName, setShowFullName] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
 
   const changeLanguage = (newLanguage: 'EN' | 'ES') => {
     setLanguage(newLanguage);
     // Dispatch custom event to notify other components
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: newLanguage }));
+  };
+
+  const toggleCompanyName = () => {
+    setIsTyping(true);
+    setShowFullName(prev => !prev);
+    
+    // Remove typing cursor after animation completes (3 blinks + typewriter transition)
+    setTimeout(() => {
+      setIsTyping(false);
+    }, 1300); // Slightly longer than the blink animation duration (1.2s)
   };
 
   // Animation sequence timing
@@ -153,16 +165,16 @@ const HeroSection: React.FC = () => {
       {/* Company logo in top-left corner with SWS text */}
       <button
         className={`absolute top-6 left-6 flex items-center cursor-pointer hover:opacity-80 transition-opacity duration-200 animate-slide-in-left ${animationStage >= 2 ? 'visible' : ''}`}
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        aria-label="Scroll to top"
+        onClick={toggleCompanyName}
+        aria-label="Toggle company name display"
       >
         <img
           src="/img/company-logo.svg"
           alt="Company Logo"
           className="w-14 h-auto"
         />
-        <span className="text-white text-xl font-semibold ml-2">
-          SWS
+        <span className={`text-white text-xl font-semibold ml-2 company-name-transition ${showFullName ? 'company-name-expanded' : ''} ${isTyping ? 'company-name-typing' : ''}`}>
+          {showFullName ? 'Search Web Services' : 'SWS'}
         </span>
       </button>
 

@@ -103,6 +103,47 @@
     transform: translateY(0) scale(1);
   }
 
+  /* Enhanced Typewriter effect for company name */
+  .company-name-transition {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    max-width: 60px; /* Width for "SWS" */
+  }
+
+  .company-name-expanded {
+    max-width: 220px; /* Width for "Search Web Services" */
+  }
+
+  /* Smooth cursor effect (optional) */
+  .company-name-transition::after {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background-color: currentColor;
+    margin-left: 2px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .company-name-typing::after {
+    opacity: 1;
+    animation: blink-three-times 1.2s ease-in-out;
+  }
+
+  @keyframes blink-three-times {
+    0% { opacity: 1; }
+    8% { opacity: 0; }
+    16% { opacity: 1; }
+    24% { opacity: 0; }
+    32% { opacity: 1; }
+    40% { opacity: 0; }
+    48% { opacity: 1; }
+    100% { opacity: 1; }
+  }
+
   /* Respect user's motion preferences */
   @media (prefers-reduced-motion: reduce) {
     .animate-bg-fade-in,
@@ -113,6 +154,10 @@
     .animate-bounce-in {
       transition: opacity 0.2s ease-out;
       transform: none !important;
+    }
+    
+    .company-name-transition {
+      transition: opacity 0.1s ease-out;
     }
   }
 }
