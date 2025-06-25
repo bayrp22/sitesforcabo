@@ -15,7 +15,7 @@ const ProblemSection: React.FC = () => {
 
   const content = {
     EN: {
-      headline: "Invisible Online = Losing Business",
+      headline: "Without a Website = Less Credibility, Fewer Conversions",
       withSite: "✅ With a Professional Site",
       withoutSite: "❌ Without a Website",
       withFeatures: [
