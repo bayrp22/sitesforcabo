@@ -26,6 +26,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
 
   // Listen for language changes from other components
   useEffect(() => {
@@ -92,6 +93,26 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  // Handle email copy
+  const handleEmailCopy = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    try {
+      await navigator.clipboard.writeText(content[language].form.email);
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = content[language].form.email;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
+    }
   };
 
   const content = {
@@ -308,13 +329,18 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
                   <Phone className="w-4 h-4" />
                   <span className="font-medium">{content[language].form.phone}</span>
                 </a>
-                <a 
-                  href={`mailto:${content[language].form.email}`}
-                  className="flex items-center space-x-2 text-gray-600 hover:text-[#A5FF00] transition-colors"
+                <button 
+                  onClick={handleEmailCopy}
+                  className="flex items-center space-x-2 text-gray-600 hover:text-[#A5FF00] transition-colors relative"
                 >
                   <Mail className="w-4 h-4" />
                   <span className="font-medium">{content[language].form.email}</span>
-                </a>
+                  {emailCopied && (
+                    <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                      {language === 'EN' ? 'Copied!' : '¡Copiado!'}
+                    </span>
+                  )}
+                </button>
               </div>
             </div>
           </div>
