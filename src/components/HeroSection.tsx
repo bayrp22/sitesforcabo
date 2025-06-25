@@ -85,7 +85,7 @@ const HeroSection: React.FC = () => {
   const content = {
     EN: {
       headline: "Launch a Professional Website in Weeks – Without Breaking the Bank",
-      subhead: "SWS builds custom, high-quality websites fast and at a fraction of typical costs—so Los Cabos businesses get online quickly and affordably.",
+      subhead: "At SWS, we create custom websites with quality design, delivered quickly. Perfect for businesses in Los Cabos that want to get online fast and look professional, no fluff.",
       primaryCTA: "Get My Free Quote ↓",
       arrowText: "See How It Works"
     },
@@ -183,15 +183,15 @@ const HeroSection: React.FC = () => {
         >
           <div className="flex items-center space-x-2 text-white">
             <span className="text-2xl">📍</span>
-            <span className="text-lg font-medium">{language === 'EN' ? 'Local to Los Cabos' : 'Con base en Cabo San Lucas'}</span>
+            <span className="text-lg font-medium">{language === 'EN' ? 'Based in Cabo San Lucas' : 'Con base en Cabo San Lucas'}</span>
           </div>
           <div className="flex items-center space-x-2 text-white">
             <span className="text-2xl">🗣️</span>
-            <span className="text-lg font-medium">Entregables en una semana</span>
+            <span className="text-lg font-medium">{language === 'EN' ? 'Hablamos Español' : 'Entregables en una semana'}</span>
           </div>
           <div className="flex items-center space-x-2 text-white">
             <span className="text-2xl">🤝</span>
-            <span className="text-lg font-medium">{language === 'EN' ? 'Face-to-Face Service' : 'Atención Personal, de Frente'}</span>
+            <span className="text-lg font-medium">{language === 'EN' ? 'Deliverables in a Week' : 'Atención Personal, de Frente'}</span>
           </div>
         </TrustBadges>
 
