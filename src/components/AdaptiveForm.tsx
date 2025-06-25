@@ -75,8 +75,8 @@ const AdaptiveForm: React.FC<AdaptiveFormProps> = ({ path, onStatusChange }) => 
         name: { label: "Your Name", placeholder: "Enter your full name" },
         bizName: { label: "Business Name", placeholder: "Enter your business name" },
         email: { label: "Email Address", placeholder: "your@email.com" },
-        url: { label: "Current Website URL", placeholder: "https://yourwebsite.com" },
-        bizDesc: { label: "Business Description", placeholder: "Tell us what your business does..." }
+        url: { label: "Current Website URL", placeholder: "yourwebsite.com" },
+        bizDesc: { label: "Business Description", placeholder: "Tell us what your business does and why you're looking to create a website." }
       },
       submitButton: "Get My Free Quote",
       submitting: "Sending..."
