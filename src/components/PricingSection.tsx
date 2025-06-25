@@ -108,7 +108,8 @@ const PricingSection: React.FC = () => {
           "Advanced SEO & LLMO",
           "e-Commerce Functionality",
           "Custom Integrations",
-          "Monthly Analytics Reports"
+          "Monthly Analytics Reports",
+          "Tailored to Your Business Needs"
         ],
         ES: [
           "Incluye Todo lo del Paquete Estándar",
@@ -126,10 +127,11 @@ const PricingSection: React.FC = () => {
       features: {
         EN: [
           "Everything in Business",
-          "Interactive web applications",
-          "Advanced analytics & tracking",
+          "Reduced Pricing per Site",
+          "Interactive Web Applications",
+          "Advanced Analytics & Tracking",
           "Custom Pricing & Timelines",
-          "12 months dedicated support"
+          "Greater Value"
         ],
         ES: [
           "Todo lo del Empresarial",
