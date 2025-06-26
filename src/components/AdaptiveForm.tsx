@@ -18,6 +18,7 @@ try {
 interface AdaptiveFormProps {
   path: "site" | "nosite" | null;
   onStatusChange?: (status: "idle" | "loading" | "success" | "error") => void;
+  onFormSubmit?: (data: { name: string; email: string }) => void;
 }
 
 interface FormData {
@@ -28,7 +29,7 @@ interface FormData {
   bizDesc?: string;
 }
 
-const AdaptiveForm: React.FC<AdaptiveFormProps> = ({ path, onStatusChange }) => {
+const AdaptiveForm: React.FC<AdaptiveFormProps> = ({ path, onStatusChange, onFormSubmit }) => {
   const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -102,32 +103,62 @@ const AdaptiveForm: React.FC<AdaptiveFormProps> = ({ path, onStatusChange }) => 
     onStatusChange?.("loading");
     
     try {
-      // Prepare form data for Netlify
-      const formData = new FormData();
-      formData.append("form-name", "adaptive-form");
-      formData.append("name", data.name);
-      formData.append("bizName", data.bizName);
-      formData.append("email", data.email);
-      if (data.url) formData.append("url", data.url);
-      if (data.bizDesc) formData.append("bizDesc", data.bizDesc);
-      formData.append("path", path || "");
-      formData.append("language", language);
-      formData.append("timestamp", new Date().toISOString());
+      // Check if we're in development mode
+      const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      
+      if (isDevelopment) {
+        // In development, simulate form submission
+        console.log('Development mode - simulating form submission:', {
+          name: data.name,
+          bizName: data.bizName,
+          email: data.email,
+          url: data.url,
+          bizDesc: data.bizDesc,
+          path,
+          language,
+          timestamp: new Date().toISOString()
+        });
+        
+        // Simulate network delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Pass the form data to parent component
+        onFormSubmit?.({ name: data.name, email: data.email });
+        
+        setIsSuccess(true);
+        onStatusChange?.("success");
+        reset();
+      } else {
+        // In production, submit to Netlify
+        const formData = new FormData();
+        formData.append("form-name", "adaptive-form");
+        formData.append("name", data.name);
+        formData.append("bizName", data.bizName);
+        formData.append("email", data.email);
+        if (data.url) formData.append("url", data.url);
+        if (data.bizDesc) formData.append("bizDesc", data.bizDesc);
+        formData.append("path", path || "");
+        formData.append("language", language);
+        formData.append("timestamp", new Date().toISOString());
 
-      // Submit to Netlify
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString()
-      });
+        // Submit to Netlify
+        const response = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData as any).toString()
+        });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        // Pass the form data to parent component
+        onFormSubmit?.({ name: data.name, email: data.email });
+        
+        setIsSuccess(true);
+        onStatusChange?.("success");
+        reset();
       }
-
-      setIsSuccess(true);
-      onStatusChange?.("success");
-      reset();
     } catch (error) {
       console.error('Form submission error:', error);
       onStatusChange?.("error");

@@ -15,13 +15,14 @@ try {
 
 interface ConfirmationProps {
   path: "site" | "nosite";
+  initialFormData?: { name: string; email: string } | null;
 }
 
-const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
+const Confirmation: React.FC<ConfirmationProps> = ({ path, initialFormData }) => {
   const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    name: initialFormData?.name || '',
+    email: initialFormData?.email || '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -49,6 +50,17 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Update form data when initialFormData changes
+  useEffect(() => {
+    if (initialFormData) {
+      setFormData(prev => ({
+        ...prev,
+        name: initialFormData.name || prev.name,
+        email: initialFormData.email || prev.email
+      }));
+    }
+  }, [initialFormData]);
+
   // Check if Framer Motion is available
   const isFramerAvailable = typeof motion !== 'object' || motion.section !== 'section';
 
@@ -71,29 +83,50 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
 
     setIsSubmitting(true);
     try {
-      // Prepare form data for Netlify
-      const netlifyFormData = new FormData();
-      netlifyFormData.append("form-name", "confirmation-contact");
-      netlifyFormData.append("name", formData.name);
-      netlifyFormData.append("email", formData.email);
-      netlifyFormData.append("message", formData.message);
-      netlifyFormData.append("originalPath", path);
-      netlifyFormData.append("language", language);
-      netlifyFormData.append("timestamp", new Date().toISOString());
+      // Check if we're in development mode
+      const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      
+      if (isDevelopment) {
+        // In development, simulate form submission
+        console.log('Development mode - simulating confirmation form submission:', {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          originalPath: path,
+          language,
+          timestamp: new Date().toISOString()
+        });
+        
+        // Simulate network delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        setFormSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        // In production, submit to Netlify
+        const netlifyFormData = new FormData();
+        netlifyFormData.append("form-name", "confirmation-contact");
+        netlifyFormData.append("name", formData.name);
+        netlifyFormData.append("email", formData.email);
+        netlifyFormData.append("message", formData.message);
+        netlifyFormData.append("originalPath", path);
+        netlifyFormData.append("language", language);
+        netlifyFormData.append("timestamp", new Date().toISOString());
 
-      // Submit to Netlify
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(netlifyFormData as any).toString()
-      });
+        // Submit to Netlify
+        const response = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(netlifyFormData as any).toString()
+        });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        setFormSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
       }
-
-      setFormSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       console.error('Form submission failed:', error);
       // You might want to show an error message to the user
