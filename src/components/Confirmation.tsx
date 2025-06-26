@@ -71,19 +71,32 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
 
     setIsSubmitting(true);
     try {
-      // Simulate form submission (replace with actual API call)
-      console.log('Follow-up form submission:', {
-        ...formData,
-        timestamp: new Date().toISOString(),
-        language,
-        originalPath: path
+      // Prepare form data for Netlify
+      const netlifyFormData = new FormData();
+      netlifyFormData.append("form-name", "confirmation-contact");
+      netlifyFormData.append("name", formData.name);
+      netlifyFormData.append("email", formData.email);
+      netlifyFormData.append("message", formData.message);
+      netlifyFormData.append("originalPath", path);
+      netlifyFormData.append("language", language);
+      netlifyFormData.append("timestamp", new Date().toISOString());
+
+      // Submit to Netlify
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(netlifyFormData as any).toString()
       });
-      
-      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       setFormSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       console.error('Form submission failed:', error);
+      // You might want to show an error message to the user
     } finally {
       setIsSubmitting(false);
     }
@@ -260,7 +273,20 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path }) => {
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleFormSubmit} className="space-y-4 max-w-2xl mx-auto">
+                  <form 
+                    name="confirmation-contact"
+                    method="POST"
+                    data-netlify="true"
+                    data-netlify-honeypot="bot-field"
+                    onSubmit={handleFormSubmit} 
+                    className="space-y-4 max-w-2xl mx-auto"
+                  >
+                    {/* Hidden inputs for Netlify */}
+                    <input type="hidden" name="form-name" value="confirmation-contact" />
+                    <div style={{ display: 'none' }}>
+                      <label>Don't fill this out: <input name="bot-field" /></label>
+                    </div>
+                    
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <input

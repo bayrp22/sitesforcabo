@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { CheckCircle, Mail, User, Building, Globe, FileText, Loader2 } from 'lucide-react';
-import { formHandler } from '@/utils/formHandler';
 
 // Try to import Framer Motion, but don't fail if it's not available
 let motion: any;
@@ -103,21 +102,35 @@ const AdaptiveForm: React.FC<AdaptiveFormProps> = ({ path, onStatusChange }) => 
     onStatusChange?.("loading");
     
     try {
-      const payload = {
-        ...data,
-        path,
-        timestamp: new Date().toISOString(),
-        language
-      };
-      
-      await formHandler(payload);
+      // Prepare form data for Netlify
+      const formData = new FormData();
+      formData.append("form-name", "adaptive-form");
+      formData.append("name", data.name);
+      formData.append("bizName", data.bizName);
+      formData.append("email", data.email);
+      if (data.url) formData.append("url", data.url);
+      if (data.bizDesc) formData.append("bizDesc", data.bizDesc);
+      formData.append("path", path || "");
+      formData.append("language", language);
+      formData.append("timestamp", new Date().toISOString());
+
+      // Submit to Netlify
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString()
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       setIsSuccess(true);
       onStatusChange?.("success");
       reset();
     } catch (error) {
       console.error('Form submission error:', error);
       onStatusChange?.("error");
-      // Handle error state here if needed
     } finally {
       setIsSubmitting(false);
     }
@@ -147,7 +160,19 @@ const AdaptiveForm: React.FC<AdaptiveFormProps> = ({ path, onStatusChange }) => 
         </div>
 
         <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
-          <FormContainer onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <FormContainer 
+            name="adaptive-form"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={handleSubmit(onSubmit)} 
+            className="space-y-6"
+          >
+            {/* Hidden inputs for Netlify */}
+            <input type="hidden" name="form-name" value="adaptive-form" />
+            <div style={{ display: 'none' }}>
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </div>
             
             {/* Name Field */}
             <div>
