@@ -210,14 +210,14 @@ const HeroSection: React.FC = () => {
         />
 
         <Headline
-          className={`text-4xl md:text-6xl font-bold text-white mb-8 whitespace-pre-line animate-fade-in-up ${animationStage >= 4 ? 'visible' : ''}`}
+          className={`text-3xl md:text-6xl font-bold text-white mb-8 whitespace-pre-line animate-fade-in-up ${animationStage >= 4 ? 'visible' : ''}`}
           {...headlineProps}
         >
           {content[language].headline}
         </Headline>
 
         <Paragraph
-          className={`text-xl md:text-2xl text-white/90 mb-8 animate-fade-in-up ${animationStage >= 5 ? 'visible' : ''}`}
+          className={`text-lg md:text-2xl text-white/90 mb-8 animate-fade-in-up ${animationStage >= 5 ? 'visible' : ''}`}
           {...sublineProps}
         >
           {content[language].subhead}
@@ -229,16 +229,16 @@ const HeroSection: React.FC = () => {
           {...trustBadgeProps}
         >
           <div className="flex items-center space-x-2 text-white">
-            <span className="text-2xl">📍</span>
-            <span className="text-lg font-medium">{language === 'EN' ? 'Based in Cabo San Lucas' : 'Con base en Cabo San Lucas'}</span>
+            <span className="text-xl md:text-2xl">📍</span>
+            <span className="text-base md:text-lg font-medium">{language === 'EN' ? 'Based in Cabo San Lucas' : 'Con base en Cabo San Lucas'}</span>
           </div>
           <div className="flex items-center space-x-2 text-white">
-            <span className="text-2xl">🗣️</span>
-            <span className="text-lg font-medium">{language === 'EN' ? 'Hablamos Español' : 'Entregables en una semana'}</span>
+            <span className="text-xl md:text-2xl">🗣️</span>
+            <span className="text-base md:text-lg font-medium">{language === 'EN' ? 'Hablamos Español' : 'Entregables en una semana'}</span>
           </div>
           <div className="flex items-center space-x-2 text-white">
-            <span className="text-2xl">🤝</span>
-            <span className="text-lg font-medium">{language === 'EN' ? 'Deliverables in a Week' : 'Atención Personal, de Frente'}</span>
+            <span className="text-xl md:text-2xl">🤝</span>
+            <span className="text-base md:text-lg font-medium">{language === 'EN' ? 'Deliverables in a Week' : 'Atención Personal, de Frente'}</span>
           </div>
         </TrustBadges>
 
