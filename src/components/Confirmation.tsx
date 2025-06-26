@@ -239,7 +239,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path, initialFormData }) =>
   return (
     <Section
       id="confirmation"
-      className="bg-gradient-to-b from-gray-50 to-white py-16 md:py-20 lg:py-24"
+      className="bg-gradient-to-r from-gray-100 to-gray-50 py-16 md:py-20 lg:py-24"
       {...sectionProps}
     >
       <div className="container mx-auto px-4 md:px-8 max-w-4xl">

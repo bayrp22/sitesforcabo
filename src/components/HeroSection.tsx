@@ -206,7 +206,7 @@ const HeroSection: React.FC = () => {
         <img
           src="/img/company-logo.svg"
           alt="SWS Logo"
-          className={`w-24 h-auto mb-8 animate-scale-in ${animationStage >= 3 ? 'visible' : ''}`}
+          className={`w-24 h-auto mb-8 animate-scale-in hidden md:block ${animationStage >= 3 ? 'visible' : ''}`}
         />
 
         <Headline
