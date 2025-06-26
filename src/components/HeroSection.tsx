@@ -201,7 +201,7 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="text-center px-4 md:px-8 max-w-4xl flex flex-col items-center relative z-20">
+      <div className="text-center px-4 md:px-8 max-w-4xl flex flex-col items-center relative z-20 pt-8 md:pt-0">
         {/* Magnifying glass logo - centered at top */}
         <img
           src="/img/company-logo.svg"
