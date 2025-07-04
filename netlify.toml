@@ -59,8 +59,4 @@
   minify = true
 
 [build.processing.html]
-  pretty_urls = true
-
-# Form submissions
-[[plugins]]
-  package = "netlify-plugin-form-submissions" 
+  pretty_urls = true 
