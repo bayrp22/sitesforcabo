@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://schemas.microsoft.com/wlw/manifest/weblog">
+  <options>
+    <clientType>WordPress</clientType>
+    <supportsEmbeds>No</supportsEmbeds>
+    <supportsScripts>No</supportsScripts>
+  </options>
+  <weblog>
+    <serviceName>Not Available</serviceName>
+    <imageUrl>https://sitesforcabo.netlify.app/img/company-logo.svg</imageUrl>
+    <watermarkImageUrl></watermarkImageUrl>
+    <homepageLinkText>Visit Homepage</homepageLinkText>
+    <adminLinkText>No Admin</adminLinkText>
+    <adminUrl>https://sitesforcabo.netlify.app/</adminUrl>
+    <postEditingUrl>https://sitesforcabo.netlify.app/</postEditingUrl>
+  </weblog>
+  <buttons>
+    <button>
+      <id>0</id>
+      <text>Visit Website</text>
+      <imageUrl>https://sitesforcabo.netlify.app/img/company-logo.svg</imageUrl>
+      <clickUrl>https://sitesforcabo.netlify.app/</clickUrl>
+    </button>
+  </buttons>
+</manifest> 
