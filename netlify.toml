@@ -46,6 +46,14 @@
     Content-Type = "text/plain; charset=utf-8"
     Cache-Control = "public, max-age=3600"
 
+# sellers.json headers
+[[headers]]
+  for = "/sellers.json"
+  [headers.values]
+    Content-Type = "application/json; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+    Access-Control-Allow-Origin = "*"
+
 # Form handling
 [build.processing]
   skip_processing = false
