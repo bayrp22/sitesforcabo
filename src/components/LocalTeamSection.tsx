@@ -85,7 +85,7 @@ const LocalTeamSection: React.FC = () => {
       name: "Borja Ponce",
       title: { EN: "COO & Founder", ES: "COO & Fundador" }, 
       image: "/images/Borja Profile.png",
-      phone: "+52 624 123 4568",
+      phone: "+52 624 184 0829",
       email: "borja@searchloscabos.com"
     }
   ];
