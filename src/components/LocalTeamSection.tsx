@@ -78,7 +78,7 @@ const LocalTeamSection: React.FC = () => {
       name: "Bay Purcell",
       title: { EN: "CEO & Founder", ES: "CEO & Fundador" },
       image: "/images/Bay Profile.png",
-      phone: "+52 624 123 4567",
+      phone: "+52 624 264 4012",
       email: "bay@searchloscabos.com"
     },
     {

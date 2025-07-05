@@ -136,10 +136,10 @@ const NotFound = () => {
               bay@searchloscabos.com
             </a>
             <a
-              href="tel:+526241234567"
+              href="tel:+526242644012"
               className="text-blue-600 hover:text-blue-700 underline"
             >
-              +52 624 123 4567
+              +52 624 264 4012
             </a>
           </div>
         </div>

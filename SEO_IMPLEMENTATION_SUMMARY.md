@@ -154,7 +154,7 @@ Based on Netlify Analytics showing 404 errors for:
 
 ## 📞 **Support Information**
 - **Contact**: bay@searchloscabos.com
-- **Phone**: +52 624 123 4567
+- **Phone**: +52 624 264 4012
 - **Security Contact**: Available via security.txt
 
 ---

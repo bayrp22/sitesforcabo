@@ -228,7 +228,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({ path, initialFormData }) =>
         submittingButton: "Enviando...",
         successMessage: "¡Gracias! Te responderemos pronto.",
         contactReminder: "¿Tienes preguntas? No dudes en llamarnos o escribirnos en cualquier momento.",
-        phone: "+52 624 123 4567",
+        phone: "+52 624 264 4012",
         email: "bay@searchloscabos.com"
       }
     }
